@@ -8,6 +8,7 @@ type HeroStat = {
   value: number
   suffix: string
   label: string
+  mobileLabel?: string
 }
 
 type HeroSlide = {
@@ -46,9 +47,18 @@ function StatValue({
   }, [active, mv, value])
 
   return (
-    <p className="font-stat text-[40px] leading-[50px] font-semibold whitespace-nowrap text-white">
+    <p className="font-stat hidden text-[40px] leading-[50px] font-semibold whitespace-nowrap text-white lg:block">
       {active ? `${display}${suffix}` : '0'}
     </p>
+  )
+}
+
+function CardIcon() {
+  return (
+    <span
+      className="mb-auto size-4 shrink-0 border border-white lg:hidden"
+      aria-hidden="true"
+    />
   )
 }
 
@@ -62,6 +72,7 @@ export function HeroStatsCarousel({
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const slideCount = slides.length
+  const priceLabel = startingPrice.mobileLabel ?? startingPrice.label
 
   useEffect(() => {
     if (reducedMotion || paused || slideCount < 2) return
@@ -77,20 +88,25 @@ export function HeroStatsCarousel({
   }
 
   return (
-    <div className="pointer-events-auto absolute top-[679px] left-[647px] flex h-[110px] items-end gap-4 max-lg:top-auto max-lg:right-4 max-lg:bottom-6 max-lg:left-4 max-lg:flex-wrap max-lg:justify-center">
-      <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
+    <div className="pointer-events-auto absolute inset-x-4 bottom-4 top-auto left-4 right-4 flex h-auto items-stretch justify-between gap-2 lg:inset-x-auto lg:top-[679px] lg:right-auto lg:bottom-auto lg:left-[647px] lg:h-[110px] lg:items-end lg:justify-start lg:gap-4">
+      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
+        <CardIcon />
         <StatValue
           value={plotsReady.value}
           suffix={plotsReady.suffix}
           active={countActive}
         />
-        <p className="w-full text-[16px] font-semibold leading-normal">{plotsReady.label}</p>
+        <p className="w-full text-[12px] leading-tight font-semibold lg:text-[16px] lg:leading-normal">
+          {plotsReady.label}
+        </p>
       </div>
 
       <div
-        className="relative h-[150px] w-[300px] shrink-0 overflow-hidden rounded-lg bg-glass backdrop-blur-[25px]"
+        className="relative h-[72px] w-[100px] shrink-0 self-end overflow-hidden rounded-lg bg-glass backdrop-blur-[25px] lg:h-[150px] lg:w-[300px]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+        onTouchEnd={() => setPaused(false)}
       >
         <button
           type="button"
@@ -114,7 +130,7 @@ export function HeroStatsCarousel({
         ))}
         {slideCount > 1 ? (
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-2 z-[2] flex justify-center gap-1.5"
+            className="pointer-events-none absolute inset-x-0 bottom-2 z-[2] hidden justify-center gap-1.5 lg:flex"
             aria-hidden="true"
           >
             {slides.map((slide, i) => (
@@ -122,8 +138,8 @@ export function HeroStatsCarousel({
                 key={slide.src}
                 className={
                   i === index
-                    ? 'h-1.5 w-1.5 rounded-full bg-white'
-                    : 'h-1.5 w-1.5 rounded-full bg-white/40'
+                    ? 'size-1.5 rounded-full bg-white'
+                    : 'size-1.5 rounded-full bg-white/40'
                 }
               />
             ))}
@@ -131,13 +147,19 @@ export function HeroStatsCarousel({
         ) : null}
       </div>
 
-      <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
+      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
+        <CardIcon />
         <StatValue
           value={startingPrice.value}
           suffix={startingPrice.suffix}
           active={countActive}
         />
-        <p className="w-full text-[14px] font-medium leading-normal">{startingPrice.label}</p>
+        <p className="w-full text-[12px] leading-tight font-medium lg:hidden">
+          {priceLabel}
+        </p>
+        <p className="hidden w-full text-[14px] leading-normal font-medium lg:block">
+          {startingPrice.label}
+        </p>
       </div>
     </div>
   )

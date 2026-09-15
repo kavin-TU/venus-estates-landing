@@ -91,6 +91,7 @@ export const site = {
         value: 15,
         suffix: 'K',
         label: 'Starting Price for Plots',
+        mobileLabel: 'Starting Price',
       },
       slides: [
         {

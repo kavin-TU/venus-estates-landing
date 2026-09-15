@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 import heroBgImage from '@/assets/images/hero/bg.png'
 import heroBgCutout from '@/assets/images/hero/cutout.png'
 import aboutConnector from '@/assets/images/hero/about-connector.svg'
-import arrowDownRight from '@/assets/images/icons/arrow-down-right.svg'
+import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
 import { HeroStatsCarousel } from './HeroStatsCarousel'
 import { useHeroIntro } from './useHeroIntro'
@@ -16,9 +17,26 @@ const FILTER_IDENTITY = 'grayscale(0) saturate(1) contrast(1) brightness(1)'
 
 const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 
+function useIsLg() {
+  const [isLg, setIsLg] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 1024px)').matches : true,
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const onChange = () => setIsLg(mq.matches)
+    onChange()
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return isLg
+}
+
 export function HeroSection() {
   const { hero } = site.home
   const { colorize, textSettled, showAbout, countActive, reducedMotion } = useHeroIntro()
+  const isLg = useIsLg()
 
   const settled = textSettled || reducedMotion
   const colored = colorize || reducedMotion
@@ -28,29 +46,29 @@ export function HeroSection() {
     duration: reducedMotion ? 0 : 1.15,
     ease: COLORIZE_EASE,
   }
+  const settledY = isLg ? '10%' : '125%'
 
   return (
     <section className="relative h-[min(873px,100dvh)] w-full overflow-hidden bg-ink lg:h-[873px]">
-      {/* Media stack — full bleed to top; object-position drops gate/horse so nav sits in sky */}
+      {/* Media stack — full bleed to top */}
       <div className="absolute inset-0">
-        {/* 1. Base plate — full-bleed, BW → color */}
         <motion.img
           src={heroBgImage}
           alt={hero.imageAlt}
-          className="absolute inset-0 size-full max-w-none object-cover object-[center_12%]"
+          className="absolute inset-0 size-full max-w-none object-cover object-[center_12%] max-lg:object-[center_20%]"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : BASE_BW }}
           transition={filterTransition}
         />
 
-        {/* 2. VENUS watermark — between base and cutout; travels top → seat */}
+        {/* VENUS watermark — between base and cutout; smaller/lower on mobile */}
         <motion.p
-          className="pointer-events-none absolute top-0 left-1/2 z-[1] font-display text-[min(280px,18vw)] leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none"
+          className="pointer-events-none absolute top-0 left-1/2 z-[1] font-display text-[clamp(48px,16vw,88px)] leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none lg:text-[min(280px,18vw)]"
           initial={false}
           animate={{
             x: '-50%',
-            y: settled ? '10%' : '-95%',
-            opacity: settled ? 0.32 : 0.55,
+            y: settled ? settledY : '-95%',
+            opacity: settled ? 0.3 : 0.55,
           }}
           transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
           aria-hidden="true"
@@ -58,23 +76,22 @@ export function HeroSection() {
           {hero.watermark}
         </motion.p>
 
-        {/* 3. Gate cutout — aligned over base, above watermark */}
         <motion.img
           src={heroBgCutout}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[2] size-full max-w-none object-cover object-[center_12%]"
+          className="pointer-events-none absolute inset-0 z-[2] size-full max-w-none object-cover object-[center_12%] max-lg:object-[center_20%]"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : CUTOUT_BW }}
           transition={filterTransition}
         />
       </div>
 
-      {/* 4–5. UI overlays on centered 1440 rail */}
+      {/* UI overlays */}
       <div className="pointer-events-none absolute inset-0 z-10 mx-auto max-w-[1440px]">
-        {/* About project — after only */}
+        {/* About + Explore — left-aligned on mobile, absolute rail on desktop */}
         <motion.div
-          className="pointer-events-auto absolute top-[369px] left-[183px] hidden w-[346px] flex-col gap-[30px] lg:flex"
+          className="pointer-events-auto absolute inset-x-4 top-[42%] bottom-auto flex w-auto max-w-[346px] flex-col items-start gap-5 text-left max-lg:mx-0 lg:inset-x-auto lg:top-[369px] lg:left-[183px] lg:w-[346px] lg:gap-[30px]"
           initial={false}
           animate={{
             opacity: aboutOn ? 1 : 0,
@@ -86,11 +103,13 @@ export function HeroSection() {
             <img
               src={aboutConnector}
               alt=""
-              className="pointer-events-none absolute top-[7px] left-[169px] h-[14px] w-[214px]"
+              className="pointer-events-none absolute top-[7px] left-[169px] hidden h-[14px] w-[214px] lg:block"
             />
             <div className="flex flex-col gap-2.5">
-              <h2 className="text-[20px] font-black leading-normal">{hero.projectName}</h2>
-              <p className="text-[16px] font-semibold leading-normal text-white/95">
+              <h2 className="text-[18px] font-black leading-normal lg:text-[20px]">
+                {hero.projectName}
+              </h2>
+              <p className="text-[14px] font-semibold leading-snug text-white/95 lg:text-[16px] lg:leading-normal">
                 {hero.projectBlurb}
               </p>
             </div>
@@ -98,16 +117,16 @@ export function HeroSection() {
 
           <Link
             to={hero.explorePath}
-            className="relative h-10 w-[200px] overflow-hidden rounded-full border-2 border-white"
+            className="relative h-10 w-[200px] shrink-0 overflow-hidden rounded-full border-2 border-white"
           >
             <span className="absolute top-1/2 left-[calc(50%-29px)] -translate-y-1/2 text-[16px] font-semibold text-white">
               {hero.exploreLabel}
             </span>
             <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-white p-2.5">
               <img
-                src={arrowDownRight}
+                src={arrowUpRight}
                 alt=""
-                className="h-[14px] w-[14px] -scale-y-100 brightness-0"
+                className="h-[14px] w-[14px] brightness-0"
                 width={14}
                 height={14}
               />

@@ -19,12 +19,12 @@ export function Navbar() {
         overlay ? 'absolute' : 'sticky bg-ink',
       )}
     >
-      <div className="pointer-events-auto mx-auto flex h-[100px] max-w-[1440px] items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-20">
+      <div className="pointer-events-auto mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:h-[100px] lg:px-20 lg:py-6">
         <NavLink to="/" className="shrink-0" onClick={() => setMenuOpen(false)}>
           <img
             src={logo}
             alt={logoAlt}
-            className="h-[50px] w-[63px] object-contain"
+            className="h-10 w-auto object-contain lg:h-[50px] lg:w-[63px]"
             width={63}
             height={50}
           />
@@ -69,7 +69,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to={cta.bookVisit.path}
-            className="inline-flex items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] py-3 text-[16px] font-semibold text-white transition hover:brightness-110"
+            className="hidden items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] py-3 text-[16px] font-semibold text-white transition hover:brightness-110 lg:inline-flex"
           >
             {cta.bookVisit.label}
             <img src={arrowUpRight} alt="" className="size-4" width={16} height={16} />
