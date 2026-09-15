@@ -1,0 +1,42 @@
+---
+description: Site content and data conventions for Venus Estates
+globs: src/content/**/*
+alwaysApply: false
+---
+
+# Content data rules
+
+`src/content/site.ts` is the single source of truth for marketing and navigation data.
+
+## Required shape
+
+Keep (or extend) the `site` object with:
+
+- Brand: `name`, `nameUpper`, `logoAlt`, `about`
+- `address`, `contact`
+- `navLinks`, `quickLinks`, `legalLinks`, `socialLinks`
+- `cta` (bookVisit, connect, viewProjects)
+- `footer` headings / prompts
+- Feature copy blocks (e.g. `home`)
+
+Derive stub/content routes via `pageRoutes` from nav + legal (exclude Home).
+
+## When adding a page
+
+1. Add `{ label, path }` to `navLinks` (and `quickLinks` if it belongs in the footer).
+2. Add feature copy under `site` if needed.
+3. Add `features/<name>/` + route in `app/router` (or rely on `pageRoutes` + StubPage until built).
+
+## Types
+
+- Link/CTA/social shapes live in `src/types/site.ts`.
+- Use `satisfies` / `as const` so labels and paths stay typed.
+
+```ts
+// ❌ BAD — duplicate nav in a component
+const links = [{ label: 'Home', path: '/' }]
+
+// ✅ GOOD — read from content
+import { site } from '@/content'
+site.navLinks.map(...)
+```

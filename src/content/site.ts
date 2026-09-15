@@ -70,6 +70,25 @@ export const site = {
     headline: 'Thoughtfully planned communities for lasting value',
     subcopy:
       'Trusted developments across Salem — quality, transparency, and spaces built for how you live.',
+    hero: {
+      watermark: 'VENUS',
+      projectName: 'THE METRO CITY',
+      projectBlurb:
+        'A premium plotted development in Sarvoy, Attur, with two successful phases offering thoughtfully planned residential plots',
+      exploreLabel: 'Explore',
+      explorePath: '/projects',
+      plotsReady: {
+        value: 80,
+        suffix: '+',
+        label: 'Plots Ready to Own',
+      },
+      startingPrice: {
+        value: 15,
+        suffix: 'K',
+        label: 'Starting Price for Plots',
+      },
+      imageAlt: 'The Metro City entrance gate at Venus Estates',
+    },
   },
 } as const
 

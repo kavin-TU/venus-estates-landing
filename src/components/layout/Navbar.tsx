@@ -1,23 +1,36 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import logo from '@/assets/images/logo.png'
+import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
 import { cn } from '@/lib'
-import { ArrowUpRight } from '@/components/ui'
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+  const overlay = pathname === '/'
   const { navLinks, cta, logoAlt } = site
 
   return (
-    <header className="sticky top-0 z-50 bg-ink">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <header
+      className={cn(
+        'pointer-events-none inset-x-0 top-0 z-50',
+        overlay ? 'absolute' : 'sticky bg-ink',
+      )}
+    >
+      <div className="pointer-events-auto mx-auto flex h-[100px] max-w-[1440px] items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-20">
         <NavLink to="/" className="shrink-0" onClick={() => setMenuOpen(false)}>
-          <img src={logo} alt={logoAlt} className="h-14 w-auto object-contain sm:h-16" />
+          <img
+            src={logo}
+            alt={logoAlt}
+            className="h-[50px] w-[63px] object-contain"
+            width={63}
+            height={50}
+          />
         </NavLink>
 
         <nav
-          className="hidden items-center rounded-full bg-nav-pill px-2 py-2 backdrop-blur-md xl:flex"
+          className="hidden h-[52px] w-full max-w-[868px] items-center justify-between rounded-full bg-nav-pill px-[50px] backdrop-blur-[10px] lg:flex"
           aria-label="Primary"
         >
           {navLinks.map((link) => (
@@ -27,14 +40,23 @@ export function Navbar() {
               end={link.path === '/'}
               className={({ isActive }) =>
                 cn(
-                  'whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-medium tracking-wide transition-colors',
-                  isActive
-                    ? 'text-accent underline decoration-accent decoration-2 underline-offset-8'
-                    : 'text-white/90 hover:text-accent',
+                  'group relative flex flex-col items-center whitespace-nowrap text-[16px] font-medium leading-normal tracking-wide',
+                  isActive ? 'text-secondary' : 'text-white hover:text-secondary',
                 )
               }
             >
-              {link.label}
+              {({ isActive }) => (
+                <>
+                  <span>{link.label}</span>
+                  <span
+                    className={cn(
+                      'mt-0 h-[2px] w-full transition-colors',
+                      isActive ? 'bg-secondary' : 'bg-transparent group-hover:bg-secondary/40',
+                    )}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -42,15 +64,15 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to={cta.bookVisit.path}
-            className="inline-flex items-center gap-2 rounded-full bg-accent-bright px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 sm:px-5"
+            className="inline-flex items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] py-3 text-[16px] font-semibold text-white transition hover:brightness-110"
           >
             {cta.bookVisit.label}
-            <ArrowUpRight className="size-3.5" />
+            <img src={arrowUpRight} alt="" className="size-4" width={16} height={16} />
           </Link>
 
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 text-white xl:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 text-white lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -81,7 +103,7 @@ export function Navbar() {
       {menuOpen ? (
         <nav
           id="mobile-nav"
-          className="border-t border-white/10 bg-ink px-4 py-4 xl:hidden"
+          className="pointer-events-auto border-t border-white/10 bg-ink/95 px-4 py-4 backdrop-blur-md lg:hidden"
           aria-label="Mobile"
         >
           <ul className="mx-auto flex max-w-[1440px] flex-col gap-1">
@@ -94,7 +116,7 @@ export function Navbar() {
                   className={({ isActive }) =>
                     cn(
                       'block rounded-lg px-3 py-2.5 text-sm font-medium',
-                      isActive ? 'bg-white/5 text-accent' : 'text-white/90 hover:bg-white/5',
+                      isActive ? 'bg-white/5 text-secondary' : 'text-white/90 hover:bg-white/5',
                     )
                   }
                 >
