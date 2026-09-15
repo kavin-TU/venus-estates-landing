@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom'
 import { animate, motion, useMotionValue, useMotionValueEvent } from 'motion/react'
 import { useEffect, useState } from 'react'
-import metroCityBw from '@/assets/images/hero/metro-city-bw.png'
-import metroCityColor from '@/assets/images/hero/metro-city-color.png'
-import metroCityTransparent from '@/assets/images/hero/metro-city-transparent.png'
+import heroBgImage from '@/assets/hero-bg-image.png'
+import heroBgCutout from '@/assets/hero-bg-image-cutout.png'
 import thumbBefore from '@/assets/images/hero/thumb-before.png'
 import thumbAfter from '@/assets/images/hero/thumb-after.png'
 import aboutConnector from '@/assets/images/hero/about-connector.svg'
 import arrowDownRight from '@/assets/images/icons/arrow-down-right.svg'
 import { site } from '@/content'
 import { useHeroIntro } from './useHeroIntro'
+
+/** Base layer BW: sat min + cool/dim (approx of temp cool) */
+const BASE_BW = 'grayscale(1) saturate(0) brightness(0.92) contrast(1)'
+/** Cutout BW: sat min + high contrast/highlights */
+const CUTOUT_BW = 'grayscale(1) saturate(0) contrast(1.85) brightness(1.2)'
+const FILTER_IDENTITY = 'grayscale(0) saturate(1) contrast(1) brightness(1)'
+
+const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 
 function StatValue({
   value,
@@ -29,7 +36,7 @@ function StatValue({
 
   useEffect(() => {
     if (!active) return
-    const controls = animate(mv, value, { duration: 1.15, ease: [0.22, 1, 0.36, 1] })
+    const controls = animate(mv, value, { duration: 1.15, ease: COLORIZE_EASE })
     return () => controls.stop()
   }, [active, mv, value])
 
@@ -50,24 +57,22 @@ export function HeroSection() {
   const aboutOn = showAbout || reducedMotion
   const thumbAfterOn = afterThumb || reducedMotion
   const counting = countActive || reducedMotion
+  const filterTransition = {
+    duration: reducedMotion ? 0 : 1.15,
+    ease: COLORIZE_EASE,
+  }
 
   return (
     <section className="relative mx-auto h-[min(873px,100dvh)] w-full max-w-[1440px] overflow-hidden bg-ink lg:h-[873px]">
-      {/* 1. Base plates — B&W → color dusk */}
+      {/* 1. Base plate — BW filters → original color */}
       <div className="absolute inset-0">
-        <img
-          src={metroCityBw}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 size-full max-w-none object-cover object-bottom"
-        />
         <motion.img
-          src={metroCityColor}
+          src={heroBgImage}
           alt={hero.imageAlt}
           className="absolute inset-0 size-full max-w-none object-cover object-bottom"
           initial={false}
-          animate={{ opacity: colored ? 1 : 0 }}
-          transition={{ duration: reducedMotion ? 0 : 1.15, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ filter: colored ? FILTER_IDENTITY : BASE_BW }}
+          transition={filterTransition}
         />
       </div>
 
@@ -79,18 +84,22 @@ export function HeroSection() {
           y: settled ? -304 : -620,
           opacity: settled ? 0.4 : 0.65,
         }}
-        transition={{ duration: reducedMotion ? 0 : 1.15, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
         aria-hidden="true"
       >
         {hero.watermark}
       </motion.p>
 
-      {/* 3. Transparent gate cutout — sits above watermark */}
+      {/* 3. Gate cutout — aligned over base, above watermark */}
       <div className="pointer-events-none absolute inset-0 z-[2]">
-        <img
-          src={metroCityTransparent}
+        <motion.img
+          src={heroBgCutout}
           alt=""
+          aria-hidden="true"
           className="absolute inset-0 size-full max-w-none object-cover object-bottom"
+          initial={false}
+          animate={{ filter: colored ? FILTER_IDENTITY : CUTOUT_BW }}
+          transition={filterTransition}
         />
       </div>
 
