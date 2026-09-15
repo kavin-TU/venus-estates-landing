@@ -1,4 +1,9 @@
 import type { CtaLink, NavLink, SocialLink } from '@/types'
+import heroSlide1 from '@/assets/images/hero/slides/slide-1.png'
+import heroSlide2 from '@/assets/images/hero/slides/slide-2.png'
+import heroSlide3 from '@/assets/images/hero/slides/slide-3.png'
+import heroSlide4 from '@/assets/images/hero/slides/slide-4.png'
+import heroSlide5 from '@/assets/images/hero/slides/slide-5.png'
 
 export const site = {
   name: 'Venus Estates',
@@ -87,6 +92,28 @@ export const site = {
         suffix: 'K',
         label: 'Starting Price for Plots',
       },
+      slides: [
+        {
+          src: heroSlide1,
+          alt: 'The Metro City entrance at dusk',
+        },
+        {
+          src: heroSlide2,
+          alt: 'Horse statue at The Metro City gateway',
+        },
+        {
+          src: heroSlide3,
+          alt: 'The Metro City gate night lighting',
+        },
+        {
+          src: heroSlide4,
+          alt: 'The Metro City site overview',
+        },
+        {
+          src: heroSlide5,
+          alt: 'The Metro City gateway in full color',
+        },
+      ],
       imageAlt: 'The Metro City entrance gate at Venus Estates',
     },
   },

@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom'
-import { animate, motion, useMotionValue, useMotionValueEvent } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
 import heroBgImage from '@/assets/hero-bg-image.png'
 import heroBgCutout from '@/assets/hero-bg-image-cutout.png'
-import thumbBefore from '@/assets/images/hero/thumb-before.png'
-import thumbAfter from '@/assets/images/hero/thumb-after.png'
 import aboutConnector from '@/assets/images/hero/about-connector.svg'
 import arrowDownRight from '@/assets/images/icons/arrow-down-right.svg'
 import { site } from '@/content'
+import { HeroStatsCarousel } from './HeroStatsCarousel'
 import { useHeroIntro } from './useHeroIntro'
 
 /** Base layer BW: sat min + cool/dim (approx of temp cool) */
@@ -18,44 +16,13 @@ const FILTER_IDENTITY = 'grayscale(0) saturate(1) contrast(1) brightness(1)'
 
 const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 
-function StatValue({
-  value,
-  suffix,
-  active,
-}: {
-  value: number
-  suffix: string
-  active: boolean
-}) {
-  const mv = useMotionValue(0)
-  const [display, setDisplay] = useState('0')
-
-  useMotionValueEvent(mv, 'change', (latest) => {
-    setDisplay(String(Math.round(latest)))
-  })
-
-  useEffect(() => {
-    if (!active) return
-    const controls = animate(mv, value, { duration: 1.15, ease: COLORIZE_EASE })
-    return () => controls.stop()
-  }, [active, mv, value])
-
-  return (
-    <p className="font-stat text-[40px] leading-[50px] font-semibold whitespace-nowrap text-white">
-      {active ? `${display}${suffix}` : '0'}
-    </p>
-  )
-}
-
 export function HeroSection() {
   const { hero } = site.home
-  const { colorize, textSettled, showAbout, afterThumb, countActive, reducedMotion } =
-    useHeroIntro()
+  const { colorize, textSettled, showAbout, countActive, reducedMotion } = useHeroIntro()
 
   const settled = textSettled || reducedMotion
   const colored = colorize || reducedMotion
   const aboutOn = showAbout || reducedMotion
-  const thumbAfterOn = afterThumb || reducedMotion
   const counting = countActive || reducedMotion
   const filterTransition = {
     duration: reducedMotion ? 0 : 1.15,
@@ -148,46 +115,13 @@ export function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* Bottom glass stats — Figma left 647 / top 679 */}
-        <div className="pointer-events-auto absolute top-[679px] left-[647px] flex h-[110px] items-end gap-4 max-lg:top-auto max-lg:right-4 max-lg:bottom-6 max-lg:left-4 max-lg:flex-wrap max-lg:justify-center">
-          <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
-            <StatValue
-              value={hero.plotsReady.value}
-              suffix={hero.plotsReady.suffix}
-              active={counting}
-            />
-            <p className="w-full text-[16px] font-semibold leading-normal">
-              {hero.plotsReady.label}
-            </p>
-          </div>
-
-          <div className="relative h-[150px] w-[300px] shrink-0 overflow-hidden rounded-lg bg-glass backdrop-blur-[25px]">
-            <img
-              src={thumbBefore}
-              alt=""
-              className="absolute inset-0 size-full max-w-none object-cover"
-            />
-            <motion.img
-              src={thumbAfter}
-              alt=""
-              className="absolute inset-0 size-full max-w-none object-cover"
-              initial={false}
-              animate={{ opacity: thumbAfterOn ? 1 : 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.8, ease: COLORIZE_EASE }}
-            />
-          </div>
-
-          <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
-            <StatValue
-              value={hero.startingPrice.value}
-              suffix={hero.startingPrice.suffix}
-              active={counting}
-            />
-            <p className="w-full text-[14px] font-medium leading-normal">
-              {hero.startingPrice.label}
-            </p>
-          </div>
-        </div>
+        <HeroStatsCarousel
+          slides={hero.slides}
+          plotsReady={hero.plotsReady}
+          startingPrice={hero.startingPrice}
+          countActive={counting}
+          reducedMotion={reducedMotion}
+        />
       </div>
     </section>
   )
