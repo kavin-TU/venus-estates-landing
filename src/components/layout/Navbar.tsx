@@ -1,4 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { motion } from 'motion/react'
 import { useState } from 'react'
 import logo from '@/assets/images/logo.png'
 import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
@@ -30,7 +31,7 @@ export function Navbar() {
         </NavLink>
 
         <nav
-          className="hidden h-[52px] w-full max-w-[868px] items-center justify-between rounded-full bg-nav-pill px-[50px] backdrop-blur-[10px] lg:flex"
+          className="hidden h-[52px] w-full max-w-[868px] items-center justify-between rounded-full bg-transparent px-[50px] lg:flex"
           aria-label="Primary"
         >
           {navLinks.map((link) => (
@@ -40,7 +41,7 @@ export function Navbar() {
               end={link.path === '/'}
               className={({ isActive }) =>
                 cn(
-                  'group relative flex flex-col items-center whitespace-nowrap text-[16px] font-medium leading-normal tracking-wide',
+                  'group relative flex flex-col items-center whitespace-nowrap text-[16px] font-medium leading-normal tracking-wide transition-colors duration-300',
                   isActive ? 'text-secondary' : 'text-white hover:text-secondary',
                 )
               }
@@ -48,13 +49,17 @@ export function Navbar() {
               {({ isActive }) => (
                 <>
                   <span>{link.label}</span>
-                  <span
-                    className={cn(
-                      'mt-0 h-[2px] w-full transition-colors',
-                      isActive ? 'bg-secondary' : 'bg-transparent group-hover:bg-secondary/40',
+                  <span className="relative mt-0 h-[2px] w-full" aria-hidden="true">
+                    {isActive ? (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute inset-0 bg-secondary"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    ) : (
+                      <span className="absolute inset-0 bg-transparent transition-colors duration-300 group-hover:bg-secondary/40" />
                     )}
-                    aria-hidden="true"
-                  />
+                  </span>
                 </>
               )}
             </NavLink>
@@ -103,7 +108,7 @@ export function Navbar() {
       {menuOpen ? (
         <nav
           id="mobile-nav"
-          className="pointer-events-auto border-t border-white/10 bg-ink/95 px-4 py-4 backdrop-blur-md lg:hidden"
+          className="pointer-events-auto border-t border-white/10 bg-ink px-4 py-4 lg:hidden"
           aria-label="Mobile"
         >
           <ul className="mx-auto flex max-w-[1440px] flex-col gap-1">
@@ -115,7 +120,7 @@ export function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      'block rounded-lg px-3 py-2.5 text-sm font-medium',
+                      'block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-300',
                       isActive ? 'bg-white/5 text-secondary' : 'text-white/90 hover:bg-white/5',
                     )
                   }

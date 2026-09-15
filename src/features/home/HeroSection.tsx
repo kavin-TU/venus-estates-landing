@@ -63,26 +63,27 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative mx-auto h-[min(873px,100dvh)] w-full max-w-[1440px] overflow-hidden bg-ink lg:h-[873px]">
-      {/* 1. Base plate — BW filters → original color */}
+    <section className="relative h-[min(873px,100dvh)] w-full overflow-hidden bg-ink lg:h-[873px]">
+      {/* 1. Base plate — full-bleed, BW → color */}
       <div className="absolute inset-0">
         <motion.img
           src={heroBgImage}
           alt={hero.imageAlt}
-          className="absolute inset-0 size-full max-w-none object-cover object-bottom"
+          className="absolute inset-0 size-full max-w-none object-cover object-center"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : BASE_BW }}
           transition={filterTransition}
         />
       </div>
 
-      {/* 2. VENUS watermark — between base and cutout */}
+      {/* 2. VENUS watermark — between base and cutout; travels top → seat */}
       <motion.p
-        className="pointer-events-none absolute top-0 left-[113px] z-[1] font-display text-[280px] leading-[300px] font-extrabold tracking-tight whitespace-nowrap text-white select-none max-lg:left-[4vw] max-lg:text-[18vw] max-lg:leading-none"
+        className="pointer-events-none absolute top-0 left-1/2 z-[1] font-display text-[min(280px,18vw)] leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none"
         initial={false}
         animate={{
-          y: settled ? -304 : -620,
-          opacity: settled ? 0.4 : 0.65,
+          x: '-50%',
+          y: settled ? '10%' : '-95%',
+          opacity: settled ? 0.32 : 0.55,
         }}
         transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
         aria-hidden="true"
@@ -96,94 +97,97 @@ export function HeroSection() {
           src={heroBgCutout}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 size-full max-w-none object-cover object-bottom"
+          className="absolute inset-0 size-full max-w-none object-cover object-center"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : CUTOUT_BW }}
           transition={filterTransition}
         />
       </div>
 
-      {/* 4. About project — after only */}
-      <motion.div
-        className="absolute top-[369px] left-[183px] z-10 hidden w-[346px] flex-col gap-[30px] lg:flex"
-        initial={false}
-        animate={{
-          opacity: aboutOn ? 1 : 0,
-          y: aboutOn ? 0 : 18,
-        }}
-        transition={{ duration: reducedMotion ? 0 : 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-      >
-        <div className="relative w-full text-white">
-          <img
-            src={aboutConnector}
-            alt=""
-            className="pointer-events-none absolute top-[7px] left-[169px] h-[14px] w-[214px]"
-          />
-          <div className="flex flex-col gap-2.5">
-            <h2 className="text-[20px] font-black leading-normal">{hero.projectName}</h2>
-            <p className="text-[16px] font-semibold leading-normal text-white/95">
-              {hero.projectBlurb}
+      {/* 4–5. UI overlays on centered 1440 rail */}
+      <div className="pointer-events-none absolute inset-0 z-10 mx-auto max-w-[1440px]">
+        {/* About project — after only */}
+        <motion.div
+          className="pointer-events-auto absolute top-[369px] left-[183px] hidden w-[346px] flex-col gap-[30px] lg:flex"
+          initial={false}
+          animate={{
+            opacity: aboutOn ? 1 : 0,
+            y: aboutOn ? 0 : 18,
+          }}
+          transition={{ duration: reducedMotion ? 0 : 0.7, ease: COLORIZE_EASE, delay: 0.08 }}
+        >
+          <div className="relative w-full text-white">
+            <img
+              src={aboutConnector}
+              alt=""
+              className="pointer-events-none absolute top-[7px] left-[169px] h-[14px] w-[214px]"
+            />
+            <div className="flex flex-col gap-2.5">
+              <h2 className="text-[20px] font-black leading-normal">{hero.projectName}</h2>
+              <p className="text-[16px] font-semibold leading-normal text-white/95">
+                {hero.projectBlurb}
+              </p>
+            </div>
+          </div>
+
+          <Link
+            to={hero.explorePath}
+            className="relative h-10 w-[200px] overflow-hidden rounded-full border-2 border-white"
+          >
+            <span className="absolute top-1/2 left-[calc(50%-29px)] -translate-y-1/2 text-[16px] font-semibold text-white">
+              {hero.exploreLabel}
+            </span>
+            <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-white p-2.5">
+              <img
+                src={arrowDownRight}
+                alt=""
+                className="h-[14px] w-[14px] -scale-y-100 brightness-0"
+                width={14}
+                height={14}
+              />
+            </span>
+          </Link>
+        </motion.div>
+
+        {/* Bottom glass stats — Figma left 647 / top 679 */}
+        <div className="pointer-events-auto absolute top-[679px] left-[647px] flex h-[110px] items-end gap-4 max-lg:top-auto max-lg:right-4 max-lg:bottom-6 max-lg:left-4 max-lg:flex-wrap max-lg:justify-center">
+          <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
+            <StatValue
+              value={hero.plotsReady.value}
+              suffix={hero.plotsReady.suffix}
+              active={counting}
+            />
+            <p className="w-full text-[16px] font-semibold leading-normal">
+              {hero.plotsReady.label}
             </p>
           </div>
-        </div>
 
-        <Link
-          to={hero.explorePath}
-          className="relative h-10 w-[200px] overflow-hidden rounded-full border-2 border-white"
-        >
-          <span className="absolute top-1/2 left-[calc(50%-29px)] -translate-y-1/2 text-[16px] font-semibold text-white">
-            {hero.exploreLabel}
-          </span>
-          <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-white p-2.5">
+          <div className="relative h-[150px] w-[300px] shrink-0 overflow-hidden rounded-lg bg-glass backdrop-blur-[25px]">
             <img
-              src={arrowDownRight}
+              src={thumbBefore}
               alt=""
-              className="h-[14px] w-[14px] -scale-y-100 brightness-0"
-              width={14}
-              height={14}
+              className="absolute inset-0 size-full max-w-none object-cover"
             />
-          </span>
-        </Link>
-      </motion.div>
+            <motion.img
+              src={thumbAfter}
+              alt=""
+              className="absolute inset-0 size-full max-w-none object-cover"
+              initial={false}
+              animate={{ opacity: thumbAfterOn ? 1 : 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.8, ease: COLORIZE_EASE }}
+            />
+          </div>
 
-      {/* 5. Bottom glass stats — Figma left 647 / top 679 */}
-      <div className="absolute top-[679px] left-[647px] z-10 flex h-[110px] items-end gap-4 max-lg:top-auto max-lg:right-4 max-lg:bottom-6 max-lg:left-4 max-lg:flex-wrap max-lg:justify-center">
-        <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
-          <StatValue
-            value={hero.plotsReady.value}
-            suffix={hero.plotsReady.suffix}
-            active={counting}
-          />
-          <p className="w-full text-[16px] font-semibold leading-normal">
-            {hero.plotsReady.label}
-          </p>
-        </div>
-
-        <div className="relative h-[150px] w-[300px] shrink-0 overflow-hidden rounded-lg bg-glass backdrop-blur-[25px]">
-          <img
-            src={thumbBefore}
-            alt=""
-            className="absolute inset-0 size-full max-w-none object-cover"
-          />
-          <motion.img
-            src={thumbAfter}
-            alt=""
-            className="absolute inset-0 size-full max-w-none object-cover"
-            initial={false}
-            animate={{ opacity: thumbAfterOn ? 1 : 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </div>
-
-        <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
-          <StatValue
-            value={hero.startingPrice.value}
-            suffix={hero.startingPrice.suffix}
-            active={counting}
-          />
-          <p className="w-full text-[14px] font-medium leading-normal">
-            {hero.startingPrice.label}
-          </p>
+          <div className="flex h-[110px] w-[190px] flex-col items-start justify-center gap-2 rounded-[15px] bg-glass px-5 text-white backdrop-blur-[8px]">
+            <StatValue
+              value={hero.startingPrice.value}
+              suffix={hero.startingPrice.suffix}
+              active={counting}
+            />
+            <p className="w-full text-[14px] font-medium leading-normal">
+              {hero.startingPrice.label}
+            </p>
+          </div>
         </div>
       </div>
     </section>
