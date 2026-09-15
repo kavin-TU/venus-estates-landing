@@ -64,40 +64,39 @@ export function HeroSection() {
 
   return (
     <section className="relative h-[min(873px,100dvh)] w-full overflow-hidden bg-ink lg:h-[873px]">
-      {/* 1. Base plate — full-bleed, BW → color */}
+      {/* Media stack — full bleed to top; object-position drops gate/horse so nav sits in sky */}
       <div className="absolute inset-0">
+        {/* 1. Base plate — full-bleed, BW → color */}
         <motion.img
           src={heroBgImage}
           alt={hero.imageAlt}
-          className="absolute inset-0 size-full max-w-none object-cover object-center"
+          className="absolute inset-0 size-full max-w-none object-cover object-[center_12%]"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : BASE_BW }}
           transition={filterTransition}
         />
-      </div>
 
-      {/* 2. VENUS watermark — between base and cutout; travels top → seat */}
-      <motion.p
-        className="pointer-events-none absolute top-0 left-1/2 z-[1] font-display text-[min(280px,18vw)] leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none"
-        initial={false}
-        animate={{
-          x: '-50%',
-          y: settled ? '10%' : '-95%',
-          opacity: settled ? 0.32 : 0.55,
-        }}
-        transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
-        aria-hidden="true"
-      >
-        {hero.watermark}
-      </motion.p>
+        {/* 2. VENUS watermark — between base and cutout; travels top → seat */}
+        <motion.p
+          className="pointer-events-none absolute top-0 left-1/2 z-[1] font-display text-[min(280px,18vw)] leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none"
+          initial={false}
+          animate={{
+            x: '-50%',
+            y: settled ? '10%' : '-95%',
+            opacity: settled ? 0.32 : 0.55,
+          }}
+          transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
+          aria-hidden="true"
+        >
+          {hero.watermark}
+        </motion.p>
 
-      {/* 3. Gate cutout — aligned over base, above watermark */}
-      <div className="pointer-events-none absolute inset-0 z-[2]">
+        {/* 3. Gate cutout — aligned over base, above watermark */}
         <motion.img
           src={heroBgCutout}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 size-full max-w-none object-cover object-center"
+          className="pointer-events-none absolute inset-0 z-[2] size-full max-w-none object-cover object-[center_12%]"
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : CUTOUT_BW }}
           transition={filterTransition}
