@@ -17,6 +17,9 @@ const FILTER_IDENTITY = 'grayscale(0) saturate(1) contrast(1) brightness(1)'
 
 const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 
+/** Desktop: full-bleed cover. Mobile: width-first framing centered on gate sign (~60% x). */
+const HERO_MEDIA_FRAME =
+'absolute max-w-none max-lg:top-[38%] max-lg:left-[21%] max-lg:h-auto max-lg:w-[270%] max-lg:-translate-x-1/2 max-lg:-translate-y-1/2 lg:inset-0 lg:size-full lg:object-cover lg:object-[center_12%]'
 function useIsLg() {
   const [isLg, setIsLg] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(min-width: 1024px)').matches : true,
@@ -55,7 +58,7 @@ export function HeroSection() {
         <motion.img
           src={heroBgImage}
           alt={hero.imageAlt}
-          className="absolute inset-0 size-full max-w-none object-cover object-[center_12%] max-lg:object-[center_20%]"
+          className={HERO_MEDIA_FRAME}
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : BASE_BW }}
           transition={filterTransition}
@@ -80,7 +83,7 @@ export function HeroSection() {
           src={heroBgCutout}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[2] size-full max-w-none object-cover object-[center_12%] max-lg:object-[center_20%]"
+          className={`pointer-events-none z-[2] ${HERO_MEDIA_FRAME}`}
           initial={false}
           animate={{ filter: colored ? FILTER_IDENTITY : CUTOUT_BW }}
           transition={filterTransition}
