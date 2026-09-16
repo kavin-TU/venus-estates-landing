@@ -7,14 +7,13 @@ import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
 import { cn } from '@/lib'
 import {
-  breakpointToLayoutKey,
   heroAbout,
   heroMediaFrame,
   heroWatermark,
-  heroWatermarkSettledY,
+  heroWatermarkIntro,
+  heroWatermarkSettled,
 } from './heroLayout'
 import { HeroStatsCarousel } from './HeroStatsCarousel'
-import { useBreakpoint } from './useBreakpoint'
 import { useHeroIntro } from './useHeroIntro'
 
 /** Base layer BW: sat min + cool/dim (approx of temp cool) */
@@ -28,7 +27,6 @@ const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 export function HeroSection() {
   const { hero } = site.home
   const { colorize, textSettled, showAbout, countActive, reducedMotion } = useHeroIntro()
-  const bp = useBreakpoint()
 
   const settled = textSettled || reducedMotion
   const colored = colorize || reducedMotion
@@ -38,7 +36,6 @@ export function HeroSection() {
     duration: reducedMotion ? 0 : 1.15,
     ease: COLORIZE_EASE,
   }
-  const settledY = heroWatermarkSettledY[breakpointToLayoutKey[bp]]
 
   return (
     <section className="relative h-[min(873px,100dvh)] w-full overflow-hidden bg-ink lg:h-[873px]">
@@ -53,15 +50,15 @@ export function HeroSection() {
           transition={filterTransition}
         />
 
-        {/* VENUS watermark — between base and cutout */}
+        {/* VENUS watermark — CSS owns breakpoint Y; Motion only opacity */}
         <motion.p
-          className={heroWatermark}
+          className={cn(
+            heroWatermark,
+            settled ? heroWatermarkSettled : heroWatermarkIntro,
+            reducedMotion && 'duration-0',
+          )}
           initial={false}
-          animate={{
-            x: '-50%',
-            y: settled ? settledY : '-95%',
-            opacity: settled ? 0.3 : 0.55,
-          }}
+          animate={{ opacity: settled ? 0.3 : 0.55 }}
           transition={{ duration: reducedMotion ? 0 : 1.15, ease: COLORIZE_EASE }}
           aria-hidden="true"
         >

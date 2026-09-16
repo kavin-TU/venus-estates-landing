@@ -1,14 +1,5 @@
 import { cn } from '@/lib'
 
-export type HeroBreakpoint = 'mobile' | 'tablet' | 'desktop'
-
-/** Map useBreakpoint() phone|tablet|desktop → layout keys */
-export const breakpointToLayoutKey = {
-  phone: 'mobile',
-  tablet: 'tablet',
-  desktop: 'desktop',
-} as const satisfies Record<string, HeroBreakpoint>
-
 /** Hero bg + cutout image framing */
 export const heroMediaFrame = cn(
   // shared
@@ -33,22 +24,29 @@ export const heroAbout = cn(
   'lg:inset-x-auto lg:top-[369px] lg:left-[183px] lg:w-[346px] lg:gap-[30px]',
 )
 
-/** VENUS watermark static classes */
+/** VENUS watermark — base styles + transform transition (CSS owns breakpoint Y) */
 export const heroWatermark = cn(
   // shared
-  'pointer-events-none absolute top-0 left-1/2 z-[1] font-display leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none',
-  // mobile + tablet
+  'pointer-events-none absolute top-0 left-1/2 z-[1] -translate-x-1/2 font-display leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none',
+  'transition-transform duration-[1150ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none',
+  // mobile + tablet type
   'text-[clamp(48px,16vw,88px)]',
-  // desktop
+  // desktop type
   'lg:text-[min(280px,18vw)]',
 )
 
-/** Settled watermark translateY by breakpoint */
-export const heroWatermarkSettledY = {
-  mobile: '125%',
-  tablet: '80%',
-  desktop: '10%',
-} as const satisfies Record<HeroBreakpoint, string>
+/** Intro: above viewport */
+export const heroWatermarkIntro = '-translate-y-[95%]'
+
+/** Settled Y — Tailwind breakpoints (no JS resize listener) */
+export const heroWatermarkSettled = cn(
+  // mobile
+  'translate-y-[125%]',
+  // tablet
+  'md:max-lg:translate-y-[80%]',
+  // desktop
+  'lg:translate-y-[10%]',
+)
 
 /** Stats carousel layout */
 export const heroStats = {
