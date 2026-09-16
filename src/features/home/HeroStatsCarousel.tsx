@@ -47,7 +47,7 @@ function StatValue({
   }, [active, mv, value])
 
   return (
-    <p className="font-stat text-[22px] leading-none font-semibold whitespace-nowrap text-white lg:text-[40px] lg:leading-[50px]">
+    <p className="font-stat text-[22px] leading-none font-semibold whitespace-nowrap text-white md:max-lg:text-[28px] lg:text-[40px] lg:leading-[50px]">
       {active ? `${display}${suffix}` : `0${suffix}`}
     </p>
   )
@@ -80,8 +80,8 @@ export function HeroStatsCarousel({
   }
 
   return (
-    <div className="pointer-events-auto absolute inset-x-4 bottom-56 top-auto left-4 right-4 flex h-auto items-stretch justify-between gap-2 lg:inset-x-auto lg:top-[679px] lg:right-auto lg:bottom-auto lg:left-[647px] lg:h-[110px] lg:items-end lg:justify-start lg:gap-4">
-      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
+    <div className="pointer-events-auto absolute inset-x-4 bottom-56 top-auto left-4 right-4 flex h-auto items-stretch justify-between gap-2 md:max-lg:bottom-24 lg:inset-x-auto lg:top-[679px] lg:right-auto lg:bottom-auto lg:left-[647px] lg:h-[110px] lg:items-end lg:justify-start lg:gap-4">
+      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] md:max-lg:min-h-[88px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
         <StatValue
           value={plotsReady.value}
           suffix={plotsReady.suffix}
@@ -93,7 +93,7 @@ export function HeroStatsCarousel({
       </div>
 
       <div
-        className="relative h-[72px] w-[100px] shrink-0 self-end overflow-hidden rounded-lg bg-glass backdrop-blur-[25px] lg:h-[150px] lg:w-[300px]"
+        className="relative h-[72px] w-[100px] shrink-0 self-end overflow-hidden rounded-lg bg-glass backdrop-blur-[25px] md:max-lg:h-[100px] md:max-lg:w-[140px] lg:h-[150px] lg:w-[300px]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
@@ -138,7 +138,7 @@ export function HeroStatsCarousel({
         ) : null}
       </div>
 
-      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
+      <div className="flex min-h-[72px] min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px] md:max-lg:min-h-[88px] lg:h-[110px] lg:min-h-0 lg:w-[190px] lg:flex-none lg:justify-center lg:gap-2 lg:rounded-[15px] lg:px-5 lg:py-0">
         <StatValue
           value={startingPrice.value}
           suffix={startingPrice.suffix}

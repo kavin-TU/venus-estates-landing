@@ -17,29 +17,40 @@ const FILTER_IDENTITY = 'grayscale(0) saturate(1) contrast(1) brightness(1)'
 
 const COLORIZE_EASE = [0.22, 1, 0.36, 1] as const
 
-/** Desktop: full-bleed cover. Mobile: width-first framing centered on gate sign (~60% x). */
+/** Phone (<md): width-first framing. Tablet (md–lg): milder zoom. Desktop (lg+): full-bleed cover. */
 const HERO_MEDIA_FRAME =
-'absolute max-w-none max-lg:top-[38%] max-lg:left-[21%] max-lg:h-auto max-lg:w-[270%] max-lg:-translate-x-1/2 max-lg:-translate-y-1/2 lg:inset-0 lg:size-full lg:object-cover lg:object-[center_12%]'
-function useIsLg() {
-  const [isLg, setIsLg] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 1024px)').matches : true,
-  )
+  'absolute max-w-none max-md:top-[38%] max-md:left-[21%] max-md:h-auto max-md:w-[270%] max-md:-translate-x-1/2 max-md:-translate-y-1/2 md:max-lg:top-[42%] md:max-lg:left-[30%] md:max-lg:h-auto md:max-lg:w-[180%] md:max-lg:-translate-x-1/2 md:max-lg:-translate-y-1/2 lg:inset-0 lg:size-full lg:translate-x-0 lg:translate-y-0 lg:object-cover lg:object-[center_12%]'
+
+function useBreakpoint() {
+  const get = () => {
+    if (typeof window === 'undefined') return 'desktop' as const
+    if (window.matchMedia('(min-width: 1024px)').matches) return 'desktop' as const
+    if (window.matchMedia('(min-width: 768px)').matches) return 'tablet' as const
+    return 'phone' as const
+  }
+
+  const [bp, setBp] = useState(get)
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
-    const onChange = () => setIsLg(mq.matches)
+    const mqLg = window.matchMedia('(min-width: 1024px)')
+    const mqMd = window.matchMedia('(min-width: 768px)')
+    const onChange = () => setBp(get())
     onChange()
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
+    mqLg.addEventListener('change', onChange)
+    mqMd.addEventListener('change', onChange)
+    return () => {
+      mqLg.removeEventListener('change', onChange)
+      mqMd.removeEventListener('change', onChange)
+    }
   }, [])
 
-  return isLg
+  return bp
 }
 
 export function HeroSection() {
   const { hero } = site.home
   const { colorize, textSettled, showAbout, countActive, reducedMotion } = useHeroIntro()
-  const isLg = useIsLg()
+  const bp = useBreakpoint()
 
   const settled = textSettled || reducedMotion
   const colored = colorize || reducedMotion
@@ -49,7 +60,7 @@ export function HeroSection() {
     duration: reducedMotion ? 0 : 1.15,
     ease: COLORIZE_EASE,
   }
-  const settledY = isLg ? '10%' : '125%'
+  const settledY = bp === 'desktop' ? '10%' : bp === 'tablet' ? '80%' : '125%'
 
   return (
     <section className="relative h-[min(873px,100dvh)] w-full overflow-hidden bg-ink lg:h-[873px]">
@@ -94,7 +105,7 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0 z-10 mx-auto max-w-[1440px]">
         {/* About + Explore — left-aligned on mobile, absolute rail on desktop */}
         <motion.div
-          className="pointer-events-auto absolute inset-x-4 top-[42%] bottom-auto flex w-auto max-w-[346px] flex-col items-start gap-5 text-left max-lg:mx-0 lg:inset-x-auto lg:top-[369px] lg:left-[183px] lg:w-[346px] lg:gap-[30px]"
+          className="pointer-events-auto absolute inset-x-4 top-[42%] bottom-auto flex w-auto max-w-[346px] flex-col items-start gap-5 text-left max-lg:mx-0 md:max-lg:top-[36%] lg:inset-x-auto lg:top-[369px] lg:left-[183px] lg:w-[346px] lg:gap-[30px]"
           initial={false}
           animate={{
             opacity: aboutOn ? 1 : 0,
