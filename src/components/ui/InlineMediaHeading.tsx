@@ -26,7 +26,7 @@ function HeadingSegment({ segment }: { segment: InlineMediaHeadingSegment }) {
   return (
     <span
       className={cn(
-        'text-[24px] font-bold uppercase leading-none sm:text-[28px] lg:text-[32px]',
+        'text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:text-[32px]',
         segment.accent && 'text-secondary',
       )}
     >

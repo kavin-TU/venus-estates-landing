@@ -19,9 +19,9 @@ import heroSlide2 from '@/assets/images/hero/slides/slide-2.png'
 import heroSlide3 from '@/assets/images/hero/slides/slide-3.png'
 import heroSlide4 from '@/assets/images/hero/slides/slide-4.png'
 import heroSlide5 from '@/assets/images/hero/slides/slide-5.png'
-import aboutHeadingImg1 from '@/assets/images/section-2/about-heading-img1.png'
-import aboutHeadingImg2 from '@/assets/images/section-2/about-heading-img2.png'
-import section2Img from '@/assets/images/section-2/section-2.png'
+import aboutHeadingImg1 from '@/assets/images/about/heading-pill-1.png'
+import aboutHeadingImg2 from '@/assets/images/about/heading-pill-2.png'
+import aboutBlueprint from '@/assets/images/about/blueprint-house.png'
 import headingPill from '@/assets/images/shared/heading-pill.jpg'
 import metroCitySketch from '@/assets/images/shared/metro-city-sketch.jpg'
 import venusAvenueGate from '@/assets/images/shared/venus-avenue-gate.jpg'
@@ -158,7 +158,7 @@ export const site = {
     },
     about: {
       image: {
-        src: section2Img,
+        src: aboutBlueprint,
         alt: 'Architectural line drawing of a Venus Estates home over a floor plan',
       },
       heading: {
@@ -410,19 +410,19 @@ export const site = {
         },
         {
           quote: placeholderReview,
-          name: 'Arun Kumar',
+          name: 'John Doe',
           rating: 5,
           avatar: { src: testimonialAvatar, alt: 'Arun Kumar' },
         },
         {
           quote: placeholderReview,
-          name: 'Arun Kumar',
+          name: 'John mohan',
           rating: 5,
           avatar: { src: testimonialAvatar, alt: 'Arun Kumar' },
         },
         {
           quote: placeholderReview,
-          name: 'Arun Kumar',
+          name: 'John kumar',
           rating: 5,
           avatar: { src: testimonialAvatar, alt: 'Arun Kumar' },
         },
