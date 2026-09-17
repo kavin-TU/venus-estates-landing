@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Figma API dumps (local design inspection only)
+.figma-*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

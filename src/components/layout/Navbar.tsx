@@ -14,11 +14,14 @@ function getNavChrome(pathname: string): NavChrome {
     pathname === '/' ||
     pathname === '/projects' ||
     pathname === '/gallery' ||
+    pathname === '/blog' ||
     pathname.startsWith('/plots')
   ) {
     return 'overlay'
   }
-  if (pathname.startsWith('/gallery/')) return 'light'
+  if (pathname.startsWith('/gallery/') || pathname.startsWith('/blog/')) {
+    return 'light'
+  }
   return 'dark'
 }
 

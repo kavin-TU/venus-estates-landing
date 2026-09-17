@@ -1,4 +1,6 @@
 import type {
+  BlogArticle,
+  BlogBodyBlock,
   BlogPost,
   ConsentRun,
   CtaLink,
@@ -44,6 +46,10 @@ import mosaicPlotMarkers from '@/assets/images/mosaic/plot-markers.jpg'
 import testimonialAvatar from '@/assets/images/testimonials/avatar.jpg'
 import blogPost1 from '@/assets/images/blogs/post-1.jpg'
 import blogPost2 from '@/assets/images/blogs/post-2.jpg'
+import blogCoverGate from '@/assets/images/blogs/cover-gate.jpg'
+import blogCoverJk from '@/assets/images/blogs/cover-jk.jpg'
+import blogCoverPlot from '@/assets/images/blogs/cover-plot.jpg'
+import blogCoverStreet from '@/assets/images/blogs/cover-street.jpg'
 import projectsBanner from '@/assets/images/projects/banner.jpg'
 import plotCard from '@/assets/images/plots/card.jpg'
 import plotDetailHero from '@/assets/images/plots/detail-hero.jpg'
@@ -507,31 +513,29 @@ export const site = {
         ] as const satisfies readonly (readonly InlineMediaHeadingSegment[])[],
       },
       cta: { label: 'View All Blogs', path: '/blog' } satisfies CtaLink,
-      // Placeholder copy mirrors the Figma design, which repeats one post.
+      // Teasers mirror site.blog.posts; paths point at real detail routes.
       posts: [
         {
           date: 'Jul 28, 2026',
           title:
             '10 Things to Check Before Buying a Plot in Salem: A Complete Buyer’s Guide (2026)',
           image: { src: blogPost1, alt: 'Pricing guide for homebuyers' },
-          path: '/blog',
+          path: '/blog/buyers-guide-salem-plot',
         },
         {
           date: 'Jul 28, 2026',
-          title:
-            '10 Things to Check Before Buying a Plot in Salem: A Complete Buyer’s Guide (2026)',
+          title: "Salem's Next Biggest Real Estate Investment",
           image: {
             src: blogPost2,
             alt: 'A location-wise investment guide for Salem',
           },
-          path: '/blog',
+          path: '/blog/salem-next-biggest-investment',
         },
         {
-          date: 'Jul 28, 2026',
-          title:
-            '10 Things to Check Before Buying a Plot in Salem: A Complete Buyer’s Guide (2026)',
+          date: 'Jul 14, 2026',
+          title: 'Pricing Guide for Homebuyers and Investors in Salem',
           image: { src: blogPost1, alt: 'Pricing guide for homebuyers' },
-          path: '/blog',
+          path: '/blog/salem-pricing-guide',
         },
       ] as const satisfies readonly BlogPost[],
     },
@@ -908,6 +912,270 @@ export const site = {
         { src: galleryJk4, alt: 'JK Garden entrance avenue' },
       ],
     })) as GalleryAlbum[],
+  },
+
+  blog: {
+    banner: {
+      image: {
+        src: projectsBanner,
+        alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
+      } satisfies ImageAsset,
+    },
+
+    intro: {
+      heading: [
+        { text: 'our', accent: true },
+        { text: ' blog' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Stay informed about the Salem real estate market through practical guides, investment insights, and project updates from Venus Estates. Explore buyer checklists, location tips, and pricing advice before you invest.',
+    },
+
+    relatedHeading: [
+      { text: 'related', accent: true },
+      { text: ' articles' },
+    ] as const satisfies readonly EmphasisRun[],
+
+    pageSize: 6,
+
+    posts: [
+      {
+        slug: 'buyers-guide-salem-plot',
+        date: 'Jul 28, 2026',
+        title:
+          '10 Things to Check Before Buying a Plot in Salem: A Complete Buyer’s Guide (2026)',
+        excerpt:
+          'A practical checklist covering title, approvals, access, utilities, and neighbourhood fit before you buy a plot in Salem.',
+        image: { src: blogCoverPlot, alt: 'Pricing guide for homebuyers' },
+        path: '/blog/buyers-guide-salem-plot',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Buying a plot is one of the most important real-estate decisions you will make. In Salem’s growing corridors, the right checks upfront protect both your lifestyle goals and long-term investment value.',
+          },
+          {
+            type: 'heading',
+            text: 'What to verify before you commit',
+          },
+          {
+            type: 'list',
+            items: [
+              'Clear title and chain of ownership documents',
+              'DTCP / RERA approvals where applicable',
+              'Road access, drainage, and plot orientation',
+              'Water and electricity availability',
+              'Neighbourhood amenities and future development plans',
+              'Compound wall, layout quality, and site visit findings',
+              'Resale and appreciation potential for the micro-market',
+              'Developer track record and delivery timelines',
+              'Loan eligibility and registration costs',
+              'Written answers to every open question before booking',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Venus Estates designs layouts with transparent documentation, ready infrastructure, and clear site access so buyers can evaluate each of these points with confidence.',
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'salem-next-biggest-investment',
+        date: 'Jul 28, 2026',
+        title: "Salem's Next Biggest Real Estate Investment",
+        excerpt:
+          'Why thoughtfully planned plot communities in Salem are attracting homebuyers and long-term investors alike.',
+        image: {
+          src: blogCoverGate,
+          alt: 'Venus Avenue entrance along a growing Salem corridor',
+        },
+        path: '/blog/salem-next-biggest-investment',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Salem continues to emerge as a strong residential and investment destination, driven by improving connectivity, educational hubs, and carefully planned plotted developments.',
+          },
+          {
+            type: 'heading',
+            text: 'Why plotted developments stand out',
+          },
+          {
+            type: 'paragraph',
+            text: 'Compared with ready homes, plots give buyers control over design, pacing, and long-term value. When the layout is approved, connected, and delivered by a trusted developer, that flexibility becomes a lasting advantage.',
+          },
+          {
+            type: 'list',
+            items: [
+              'Growing demand along key Salem corridors',
+              'Infrastructure-led appreciation potential',
+              'Freedom to build when the timing is right',
+            ],
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'salem-pricing-guide',
+        date: 'Jul 14, 2026',
+        title: 'Pricing Guide for Homebuyers and Investors in Salem',
+        excerpt:
+          'How to read plot pricing bands, compare locations, and budget for registration and development costs.',
+        image: { src: blogPost1, alt: 'Pricing guide for homebuyers' },
+        path: '/blog/salem-pricing-guide',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Plot prices in Salem vary by corridor, facing, size, and the maturity of surrounding infrastructure. A clear pricing framework helps you compare options without chasing short-term noise.',
+          },
+          {
+            type: 'heading',
+            text: 'Budget beyond the ticket price',
+          },
+          {
+            type: 'list',
+            items: [
+              'Registration, stamp duty, and documentation fees',
+              'Compound, driveway, and early site works',
+              'Utility deposits and connection charges',
+              'Contingency for plan approvals and design',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Ask for a transparent cost breakdown during your site visit so the number you plan against matches the number you will actually pay.',
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'location-checklist-salem',
+        date: 'Jul 7, 2026',
+        title: 'How to Choose the Right Location for Your Plot in Salem',
+        excerpt:
+          'A location checklist covering commute, schools, healthcare, and growth corridors before you shortlist sites.',
+        image: {
+          src: blogCoverStreet,
+          alt: 'A location-wise investment guide for Salem',
+        },
+        path: '/blog/location-checklist-salem',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Location decides everyday convenience as much as appreciation. Walk the neighbourhood at different times of day, map your commute, and check how quickly essential services are reachable.',
+          },
+          {
+            type: 'list',
+            items: [
+              'Road connectivity and peak-hour access',
+              'Schools, colleges, and hospitals nearby',
+              'Daily retail and social infrastructure',
+              'Upcoming civic and private projects',
+            ],
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'dtcp-rera-basics',
+        date: 'Jun 30, 2026',
+        title: 'DTCP and RERA Basics Every Salem Plot Buyer Should Know',
+        excerpt:
+          'A plain-language overview of approvals, layout compliance, and what documents to request from the developer.',
+        image: { src: blogCoverJk, alt: 'Approved layout community in Salem' },
+        path: '/blog/dtcp-rera-basics',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Approvals are the foundation of a safe purchase. Understanding DTCP layout clearance and RERA registration helps you ask sharper questions and avoid incomplete paperwork.',
+          },
+          {
+            type: 'heading',
+            text: 'Documents to request',
+          },
+          {
+            type: 'list',
+            items: [
+              'Approved layout plan and survey sketches',
+              'Title deed and encumbrance certificate',
+              'RERA registration details where applicable',
+              'Tax receipts and NOCs relevant to the site',
+            ],
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'site-visit-tips',
+        date: 'Jun 22, 2026',
+        title: 'What to Look for During a Plot Site Visit',
+        excerpt:
+          'A field checklist for orientation, soil feel, access roads, and on-ground amenities before you decide.',
+        image: {
+          src: blogPost2,
+          alt: 'A location-wise investment guide for Salem',
+        },
+        path: '/blog/site-visit-tips',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'A site visit turns brochure promises into lived reality. Arrive with a short list, take photos, and note anything that feels unresolved before you leave the plot.',
+          },
+          {
+            type: 'list',
+            items: [
+              'Approach road width and surface quality',
+              'Plot markers, levels, and drainage path',
+              'Neighbourhood activity and noise',
+              'On-site amenities already delivered',
+            ],
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'nri-buying-plots',
+        date: 'Jun 15, 2026',
+        title: 'A Practical Guide for NRIs Buying Plots in Salem',
+        excerpt:
+          'Remote buying tips covering documentation, power of attorney, and how Venus Estates supports NRI purchasers.',
+        image: { src: blogCoverGate, alt: 'Venus Estates entrance for site visits' },
+        path: '/blog/nri-buying-plots',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'NRI buyers often need clear remote processes as much as strong locations. From verified documents to coordinated site visits for family, a structured journey reduces friction across time zones.',
+          },
+          {
+            type: 'list',
+            items: [
+              'Digital document sharing and verification',
+              'Power of attorney options when needed',
+              'Scheduled video or in-person site walkthroughs',
+              'Transparent payment and registration milestones',
+            ],
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+      {
+        slug: 'build-later-strategy',
+        date: 'Jun 8, 2026',
+        title: 'Buy Now, Build Later: Making a Plot Strategy Work',
+        excerpt:
+          'How to hold a plot patiently, protect the asset, and plan construction when your timeline is ready.',
+        image: {
+          src: blogCoverPlot,
+          alt: 'Open plot ready for future construction',
+        },
+        path: '/blog/build-later-strategy',
+        body: [
+          {
+            type: 'paragraph',
+            text: 'Many buyers purchase a plot years before they build. That strategy works best when holding costs, fencing, taxes, and neighbourhood growth are planned from day one.',
+          },
+          {
+            type: 'heading',
+            text: 'Hold with intention',
+          },
+          {
+            type: 'paragraph',
+            text: 'Secure the boundary, stay current on dues, and revisit the micro-market annually so your eventual home design matches how the area has matured.',
+          },
+        ] as const satisfies readonly BlogBodyBlock[],
+      },
+    ] as const satisfies readonly BlogArticle[],
   },
 } as const
 

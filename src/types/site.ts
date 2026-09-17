@@ -92,6 +92,23 @@ export type BlogPost = {
   path: string
 }
 
+/** One block of long-form article copy on a blog detail page. */
+export type BlogBodyBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'list'; items: readonly string[] }
+
+/** Full article used by /blog listing + /blog/:slug (home teasers reuse a subset). */
+export type BlogArticle = {
+  slug: string
+  date: string
+  title: string
+  excerpt: string
+  image: ImageAsset
+  path: string
+  body: readonly BlogBodyBlock[]
+}
+
 export type ProjectStatus = 'upcoming' | 'ongoing' | 'completed'
 
 export type ProjectFilter = {

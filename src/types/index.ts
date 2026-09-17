@@ -1,4 +1,6 @@
 export type {
+  BlogArticle,
+  BlogBodyBlock,
   BlogPost,
   ConsentRun,
   CtaLink,

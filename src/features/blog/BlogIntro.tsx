@@ -1,0 +1,23 @@
+import type { EmphasisRun } from '@/types'
+import { site } from '@/content'
+
+export function BlogIntro() {
+  const { intro } = site.blog
+  const heading: readonly EmphasisRun[] = intro.heading
+
+  return (
+    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
+      <h1 className="text-[24px] font-bold uppercase leading-[1.3125] text-ink sm:text-[28px] lg:w-[292px] lg:shrink-0 lg:text-[32px]">
+        {heading.map((run, index) => (
+          <span key={index} className={run.accent ? 'text-secondary' : undefined}>
+            {run.text}
+          </span>
+        ))}
+      </h1>
+
+      <p className="text-[16px] font-medium leading-[21px] text-ink lg:w-[598px] lg:text-justify">
+        {intro.body}
+      </p>
+    </div>
+  )
+}
