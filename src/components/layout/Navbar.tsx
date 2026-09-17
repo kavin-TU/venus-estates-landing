@@ -7,12 +7,13 @@ import { site } from '@/content'
 import { cn } from '@/lib'
 
 /** Pages that open with a full-bleed hero, so the bar floats over it. */
-const OVERLAY_PATHS = new Set(['/', '/projects'])
+const isOverlayPath = (pathname: string) =>
+  pathname === '/' || pathname === '/projects' || pathname.startsWith('/plots')
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
-  const overlay = OVERLAY_PATHS.has(pathname)
+  const overlay = isOverlayPath(pathname)
   const { navLinks, cta, logoAlt } = site
 
   return (

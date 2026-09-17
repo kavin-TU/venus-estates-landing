@@ -109,6 +109,32 @@ export type ProjectListing = {
   path: string
 }
 
+export type PlotFacing = 'north' | 'south' | 'east' | 'west'
+
+export type PlotFilterOption = {
+  id: string
+  label: string
+}
+
+/** A plot card on the /plots listing page. */
+export type PlotListing = {
+  slug: string
+  name: string
+  location: string
+  facing: PlotFacing
+  facingLabel: string
+  sqft: number
+  sqftLabel: string
+  priceBand: string
+  image: ImageAsset
+  path: string
+}
+
+export type PlotStat = {
+  value: string
+  label: string
+}
+
 export type EnquiryField = {
   name: string
   label: string

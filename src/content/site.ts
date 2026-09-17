@@ -8,6 +8,8 @@ import type {
   ImageAsset,
   InlineMediaHeadingSegment,
   NavLink,
+  PlotFilterOption,
+  PlotListing,
   ProjectCard,
   ProjectFilter,
   ProjectListing,
@@ -42,6 +44,13 @@ import testimonialAvatar from '@/assets/images/testimonials/avatar.jpg'
 import blogPost1 from '@/assets/images/blogs/post-1.jpg'
 import blogPost2 from '@/assets/images/blogs/post-2.jpg'
 import projectsBanner from '@/assets/images/projects/banner.jpg'
+import plotCard from '@/assets/images/plots/card.jpg'
+import plotDetailHero from '@/assets/images/plots/detail-hero.jpg'
+import plotGallery1 from '@/assets/images/plots/gallery-1.jpg'
+import plotGallery2 from '@/assets/images/plots/gallery-2.jpg'
+import plotGallery3 from '@/assets/images/plots/gallery-3.jpg'
+import plotGallery4 from '@/assets/images/plots/gallery-4.jpg'
+import plotEnquiryBg from '@/assets/images/plots/enquiry-bg.jpg'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -641,8 +650,199 @@ export const site = {
         src: projectMetroCity,
         alt: `The Metro City Phase 2 entrance gate, listing ${index + 1}`,
       },
-      path: '/projects',
+      path: '/plots',
     })) as ProjectListing[],
+  },
+
+  plots: {
+    banner: {
+      image: {
+        src: projectsBanner,
+        alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
+      } satisfies ImageAsset,
+    },
+
+    intro: {
+      heading: [{ text: 'Marutham Garden' }] as const satisfies readonly EmphasisRun[],
+      body: 'Discover Marutham Garden, a thoughtfully planned plot development in Salem, designed for comfortable living and smart investment. With well-planned layouts, quality infrastructure, and convenient connectivity, every plot offers the right foundation to build your dream home and create lasting value.',
+    },
+
+    filters: {
+      facing: [
+        { id: 'all', label: 'All Facing' },
+        { id: 'north', label: 'North' },
+        { id: 'south', label: 'South' },
+        { id: 'east', label: 'East' },
+        { id: 'west', label: 'West' },
+      ] as const satisfies readonly PlotFilterOption[],
+      sqft: [
+        { id: 'all', label: 'All Sq.ft' },
+        { id: '1000-1500', label: '1,000 – 1,500' },
+        { id: '1500-2000', label: '1,500 – 2,000' },
+        { id: '2000+', label: '2,000+' },
+      ] as const satisfies readonly PlotFilterOption[],
+      price: [
+        { id: 'all', label: 'All Price' },
+        { id: 'under-15l', label: 'Under 15L' },
+        { id: '15l-25l', label: '15L – 25L' },
+        { id: '25l+', label: '25L+' },
+      ] as const satisfies readonly PlotFilterOption[],
+      facingLabel: 'Facing',
+      sqftLabel: 'Sq.ft Range',
+      priceLabel: 'Price Range',
+      resetLabel: 'Reset Filters',
+    },
+
+    pageSize: 6,
+
+    // Placeholder plots mirror the Figma frame; facing/sqft/price vary so filters work.
+    items: (
+      [
+        { facing: 'south', sqft: 1406, priceBand: 'under-15l', slug: 'marutham-south-1406' },
+        { facing: 'north', sqft: 1620, priceBand: '15l-25l', slug: 'marutham-north-1620' },
+        { facing: 'east', sqft: 2264, priceBand: '15l-25l', slug: 'marutham-east-2264' },
+        { facing: 'west', sqft: 1180, priceBand: 'under-15l', slug: 'marutham-west-1180' },
+        { facing: 'south', sqft: 1850, priceBand: '15l-25l', slug: 'marutham-south-1850' },
+        { facing: 'north', sqft: 2400, priceBand: '25l+', slug: 'marutham-north-2400' },
+        { facing: 'east', sqft: 1406, priceBand: 'under-15l', slug: 'marutham-east-1406' },
+        { facing: 'south', sqft: 2100, priceBand: '25l+', slug: 'marutham-south-2100' },
+      ] as const
+    ).map((plot) => ({
+      slug: plot.slug,
+      name: 'Marutham Garden',
+      location: 'K.R. Thoppur, Salem, Tamil Nadu, India',
+      facing: plot.facing,
+      facingLabel: plot.facing.charAt(0).toUpperCase() + plot.facing.slice(1),
+      sqft: plot.sqft,
+      sqftLabel: plot.sqft.toLocaleString('en-IN'),
+      priceBand: plot.priceBand,
+      image: {
+        src: plotCard,
+        alt: `Marutham Garden plot, ${plot.facing} facing, ${plot.sqft} sq.ft`,
+      },
+      path: `/plots/${plot.slug}`,
+    })) as PlotListing[],
+
+    details: {
+      'marutham-south-1406': {
+        hero: {
+          image: {
+            src: plotDetailHero,
+            alt: 'Marutham Garden entrance and landscaped drive',
+          } satisfies ImageAsset,
+          title: 'Marutham Garden',
+          body: 'Own a premium residential plot in a rapidly developing neighborhood, perfect for your dream home or a valuable long-term investment.',
+          stats: [
+            { value: '2,264', label: 'Square feet Plot' },
+            { value: 'SOUTH', label: 'Facing Property' },
+            { value: '14.2L', label: 'Rupees' },
+          ],
+        },
+        gallery: {
+          heading: [
+            { text: 'image', accent: true },
+            { text: ' gallery' },
+          ] as const satisfies readonly EmphasisRun[],
+          body: 'Step into the world of Venus Estates through our image gallery and experience our projects before you visit. Explore thoughtfully planned layouts, well-developed infrastructure, beautiful surroundings, key amenities, and the progress of our developments.',
+          images: [
+            { src: plotGallery1, alt: 'Marutham Garden landscaped entrance' },
+            { src: plotGallery2, alt: 'Marutham Garden plot roadway' },
+            { src: plotGallery3, alt: 'Marutham Garden development overview' },
+            { src: plotGallery4, alt: 'Marutham Garden site progress' },
+          ] as const satisfies readonly ImageAsset[],
+          pageSize: 2,
+        },
+        location: {
+          heading: [
+            { text: 'Location And Neighbourhoods' },
+          ] as const satisfies readonly EmphasisRun[],
+          body: 'Marutham Garden is thoughtfully located in Salem, offering convenient access to key roads, essential amenities, educational institutions, healthcare facilities, and everyday conveniences. Its well-connected surroundings make it an ideal choice for building your dream home and a promising long-term investment.',
+          coordinates: {
+            lat: 11.6761,
+            lng: 78.0067,
+            zoom: 15,
+            markerLabel: 'Marutham Garden',
+          },
+          label: 'Location',
+          address: 'MARUTHAM GARDEN, K.R. Thoppur, Salem, Tamil Nadu, India',
+          reasonsHeading: 'why this location ?',
+          reasons: [
+            'Close proximity to Avinashi Road',
+            'Easy access to schools, colleges & hospitals',
+            'Surrounded by fast developing residential hubs',
+            'High appreciation potential',
+            'Peaceful environment with great connectivity',
+          ],
+        },
+        enquiry: {
+          background: {
+            src: plotEnquiryBg,
+            alt: '',
+          } satisfies ImageAsset,
+          heading: [
+            { text: 'enquiry form' },
+          ] as const satisfies readonly EmphasisRun[],
+          interestHeading: 'Interested in the project?',
+          interestBody: 'Book the site visit and team get you in touch',
+          fields: {
+            firstName: {
+              name: 'firstName',
+              label: 'first name',
+              placeholder: 'Enter  your first name',
+            },
+            lastName: {
+              name: 'lastName',
+              label: 'last name',
+              placeholder: 'Enter  your last name',
+            },
+            email: {
+              name: 'email',
+              label: 'email',
+              placeholder: 'Enter  your email',
+            },
+            phone: {
+              name: 'phone',
+              label: 'Phone No',
+              placeholder: 'Enter phone number',
+            },
+            desiredDate: {
+              name: 'desiredDate',
+              label: 'Desired date',
+              placeholder: 'dd/mm/yyyy',
+            },
+            additional: {
+              name: 'additional',
+              label: 'additional information',
+              placeholder: 'Enter  additional information if you want to tell',
+            },
+          } satisfies Record<string, EnquiryField>,
+          dialCode: '+91',
+          otpNotice:
+            'To Ensure The Security Of Your Account. An OTP Will Be Sent To The Mobile Number You Provided.',
+          consents: {
+            policy: [
+              { text: 'By selecting this, you agree to our ' },
+              { text: 'Privacy Policy', path: '/privacy' },
+              { text: ', ' },
+              { text: 'Terms and Conditions', path: '/terms' },
+              { text: ' and ' },
+              { text: 'Cookie Policy', path: '/privacy' },
+              { text: '.' },
+            ] as const satisfies readonly ConsentRun[],
+            contact:
+              'I authorize the Venusestates team to contact me. This will override the registry with DNC / NDNC',
+          },
+          submitLabel: 'Submit Enquiry',
+          contactLabels: {
+            phone: 'phone',
+            email: 'email',
+            office: 'phone',
+          },
+          officeAddress:
+            'Our Corporate Office, Venus Estates Private Limited, 3rd Floor, Ganesh Towers, SKS Hospital Road, Kaaliya Pillai Thoppu, Fairlands, Salem – 636004 Tamil Nadu',
+        },
+      },
+    },
   },
 } as const
 
