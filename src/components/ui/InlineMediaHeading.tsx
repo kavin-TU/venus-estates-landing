@@ -4,13 +4,14 @@ import { cn } from '@/lib'
 type InlineMediaHeadingProps = {
   lines: readonly (readonly InlineMediaHeadingSegment[])[]
   as?: 'h2' | 'h3'
+  /** Must carry the heading colour — segments inherit it. */
   className?: string
 }
 
 function HeadingSegment({ segment }: { segment: InlineMediaHeadingSegment }) {
   if (segment.type === 'image') {
     return (
-      <span className="inline-block h-[30px] w-20 shrink-0 overflow-hidden rounded-full bg-white align-middle">
+      <span className="inline-block h-[22px] w-14 shrink-0 overflow-hidden rounded-full bg-white align-middle lg:h-[30px] lg:w-20">
         <img
           src={segment.src}
           alt={segment.alt}
@@ -25,7 +26,7 @@ function HeadingSegment({ segment }: { segment: InlineMediaHeadingSegment }) {
   return (
     <span
       className={cn(
-        'text-[32px] font-bold uppercase leading-none text-ink',
+        'text-[24px] font-bold uppercase leading-none sm:text-[28px] lg:text-[32px]',
         segment.accent && 'text-secondary',
       )}
     >

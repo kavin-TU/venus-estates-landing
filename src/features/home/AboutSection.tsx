@@ -19,7 +19,7 @@ export function AboutSection() {
         </div>
 
         <div className="flex min-w-0 flex-1 flex-col justify-between gap-8 lg:max-w-[598px]">
-          <InlineMediaHeading lines={about.heading.lines} />
+          <InlineMediaHeading lines={about.heading.lines} className="text-ink" />
 
           <div className="flex flex-col items-start gap-6">
             <p className="text-justify text-[16px] font-medium leading-normal text-ink">

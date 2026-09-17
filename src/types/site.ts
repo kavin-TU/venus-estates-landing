@@ -36,3 +36,70 @@ export type SiteContact = {
   phoneHref: string
   email: string
 }
+
+export type ImageAsset = {
+  src: string
+  alt: string
+}
+
+export type ProjectCard = {
+  /** Two-digit ordinal shown above the name, e.g. '01' */
+  index: string
+  name: string
+  plots: string
+  image: ImageAsset
+  path: string
+}
+
+export type ReasonIcon =
+  | 'transparent'
+  | 'legal'
+  | 'approved'
+  | 'onTime'
+  | 'location'
+
+export type ReasonCard = {
+  icon: ReasonIcon
+  title: string
+  body: string
+  /** Set on the single featured card, which renders light-on-image */
+  image?: ImageAsset
+}
+
+/** One run of mixed-emphasis copy: accent runs render orange, muted runs grey */
+export type EmphasisRun = {
+  text: string
+  accent?: boolean
+  muted?: boolean
+}
+
+export type Testimonial = {
+  quote: string
+  name: string
+  rating: number
+  avatar: ImageAsset
+}
+
+export type FaqItem = {
+  question: string
+  answer: string
+}
+
+export type BlogPost = {
+  date: string
+  title: string
+  image: ImageAsset
+  path: string
+}
+
+export type EnquiryField = {
+  name: string
+  label: string
+  placeholder: string
+}
+
+/** One run of consent copy; runs with a path render as links */
+export type ConsentRun = {
+  text: string
+  path?: string
+}
