@@ -5,6 +5,7 @@ export type {
   BlogPost,
   CapitalGrowthCard,
   ConsentRun,
+  ContactStep,
   CtaLink,
   EmphasisRun,
   EnquiryField,

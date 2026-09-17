@@ -5,6 +5,7 @@ import type {
   BlogPost,
   CapitalGrowthCard,
   ConsentRun,
+  ContactStep,
   CtaLink,
   EmphasisRun,
   EnquiryField,
@@ -81,6 +82,8 @@ import investorHero from '@/assets/images/investor/hero.png'
 import investorChartIcon from '@/assets/images/investor/icon-chart.png'
 import investorMapIcon from '@/assets/images/investor/icon-map.png'
 import investorShieldIcon from '@/assets/images/investor/icon-shield.png'
+import contactMap from '@/assets/images/contact/map.png'
+import contactEnquiryBg from '@/assets/images/contact/enquiry-bg.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1405,6 +1408,81 @@ export const site = {
         phone: { name: 'phone', label: 'Phone No', placeholder: 'Enter phone number' },
         desiredDate: { name: 'desiredDate', label: 'Desired Date', placeholder: 'dd/mm/yyyy' },
       } satisfies Record<string, EnquiryField>,
+      submitLabel: 'Submit Enquiry',
+    },
+  },
+
+  contactPage: {
+    hero: {
+      image: {
+        src: contactMap,
+        alt: 'Satellite map of the Marutham Garden plot location amid nearby temples and landmarks in Salem',
+      } satisfies ImageAsset,
+      locationHeading: 'Location',
+      locationBody:
+        'Our Corporate Office, Venus Estates Private Limited, 3rd Floor, Ganesh Towers, SKS Hospital Road, Kaaliya Pillai Thoppu, Fairlands, Salem – 636004 Tamil Nadu',
+    },
+
+    expect: {
+      heading: [
+        { text: 'WHAT ', accent: true },
+        { text: 'TO EXPECT?' },
+      ] as const satisfies readonly EmphasisRun[],
+      steps: [
+        {
+          index: '1',
+          title: 'Fill The Form',
+          body: 'Share your details, preferences and your convenient date for the visit.',
+        },
+        {
+          index: '2',
+          title: 'We Confirm Your Visit',
+          body: 'Our team calls you within 24 hours to confirm your slot and answer any questions.',
+        },
+        {
+          index: '3',
+          title: 'Visit the Site',
+          body: 'Walk the plot and experience the infrastructure & surroundings firsthand.',
+        },
+      ] as const satisfies readonly ContactStep[],
+    },
+
+    schedule: {
+      background: {
+        src: contactEnquiryBg,
+        alt: 'Plotted development road bordered by trees and street lighting in daylight',
+      } satisfies ImageAsset,
+      heading: [
+        { text: 'SCHEDULE', accent: true },
+        { text: ' YOUR SITE VISIT' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Book the site visit and team get you in touch',
+      formHeading: [{ text: 'ENQUIRY FORM' }] as const satisfies readonly EmphasisRun[],
+      dialCode: '+91',
+      otpNotice:
+        'To ensure the security of your account, an OTP will be sent to the mobile number you provided.',
+      fields: {
+        firstName: { name: 'firstName', label: 'First Name', placeholder: 'Enter your first name' },
+        lastName: { name: 'lastName', label: 'Last Name', placeholder: 'Enter your last name' },
+        email: { name: 'email', label: 'Email', placeholder: 'Enter your email' },
+        phone: { name: 'phone', label: 'Phone No', placeholder: 'Enter phone number' },
+        desiredDate: { name: 'desiredDate', label: 'Desired Date', placeholder: 'dd/mm/yyyy' },
+        additional: {
+          name: 'additional',
+          label: 'Additional Information',
+          placeholder: 'Enter additional information if you want to tell',
+        },
+      } satisfies Record<string, EnquiryField>,
+      contactLabels: {
+        phone: 'Phone',
+        email: 'Email',
+        address: 'Address',
+        hours: 'Working Hours',
+      },
+      hoursLines: [
+        'Mon To Sat: 9:30 AM To 6:00 PM',
+        'Sunday: 10:00 AM To 2:00 PM',
+      ] as const,
       submitLabel: 'Submit Enquiry',
     },
   },

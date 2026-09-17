@@ -202,6 +202,13 @@ export type CapitalGrowthCard = {
   body: string
 }
 
+/** One numbered step in the Contact page's "What To Expect?" row. */
+export type ContactStep = {
+  index: string
+  title: string
+  body: string
+}
+
 /** One run of consent copy; runs with a path render as links */
 export type ConsentRun = {
   text: string
