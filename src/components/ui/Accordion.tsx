@@ -24,7 +24,7 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
         return (
           <div
             key={item.question}
-            className="rounded-lg bg-white/70 px-5 py-4 transition-colors"
+            className="flex flex-col gap-4 rounded-lg border border-line bg-white p-4"
           >
             <h3>
               <button
@@ -38,7 +38,7 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
                 {item.question}
                 <ArrowUpRight
                   className={cn(
-                    'size-5 shrink-0 text-secondary transition-transform duration-300',
+                    'size-6 shrink-0 text-secondary transition-transform duration-300',
                     open && 'rotate-90',
                   )}
                 />
@@ -49,7 +49,7 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
               role="region"
               aria-labelledby={buttonId}
               hidden={!open}
-              className="pt-3 text-[16px] font-medium leading-relaxed text-ink/80"
+              className="text-[16px] font-medium leading-relaxed text-ink/80"
             >
               {item.answer}
             </div>

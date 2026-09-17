@@ -1,4 +1,3 @@
-import { motion } from 'motion/react'
 import type { Testimonial } from '@/types'
 import { site } from '@/content'
 import { cn, useCarousel } from '@/lib'
@@ -9,8 +8,6 @@ import {
   Quotes,
   Star,
 } from '@/components/ui'
-
-const EASE = [0.22, 1, 0.36, 1] as const
 
 function TestimonialCard({
   item,
@@ -77,8 +74,9 @@ function TestimonialCard({
 export function TestimonialsSection() {
   const { testimonials } = site.home
   const items: readonly Testimonial[] = testimonials.items
-  const { index, setIndex, next, prev, pauseHandlers, reducedMotion } =
-    useCarousel(items.length)
+  const { index, setIndex, next, prev, pauseHandlers } = useCarousel(
+    items.length,
+  )
 
   const previous = items[(index - 1 + items.length) % items.length]
   const following = items[(index + 1) % items.length]
@@ -117,15 +115,9 @@ export function TestimonialsSection() {
             <TestimonialCard item={following} active={false} />
           </div>
 
-          <motion.div
-            key={index}
-            className="relative mx-auto w-full max-w-[500px]"
-            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.45, ease: EASE }}
-          >
+          <div className="relative mx-auto w-full max-w-[500px]">
             <TestimonialCard item={items[index]} active />
-          </motion.div>
+          </div>
         </div>
 
         <CarouselDots

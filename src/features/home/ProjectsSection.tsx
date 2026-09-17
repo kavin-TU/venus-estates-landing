@@ -50,6 +50,7 @@ export function ProjectsSection() {
 
   return (
     <section className="bg-mist text-ink">
+      {/* Header keeps the 1440 container; the card rail below is full-bleed. */}
       <div className="mx-auto max-w-[1440px] pt-12 lg:pt-[50px]">
         <div className="flex flex-col gap-8 px-6 pb-10 sm:px-10 lg:flex-row lg:items-start lg:gap-[50px] lg:px-[100px] lg:pb-[50px]">
           <div className="flex flex-col items-start gap-2 lg:w-[501px] lg:shrink-0">
@@ -77,12 +78,12 @@ export function ProjectsSection() {
             ))}
           </p>
         </div>
+      </div>
 
-        <div className={projectsRail}>
-          {cards.map((card) => (
-            <ProjectTile key={card.name} card={card} />
-          ))}
-        </div>
+      <div className={projectsRail}>
+        {cards.map((card) => (
+          <ProjectTile key={card.name} card={card} />
+        ))}
       </div>
     </section>
   )

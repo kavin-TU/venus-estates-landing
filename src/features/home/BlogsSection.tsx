@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'motion/react'
 import type { BlogPost } from '@/types'
 import { site } from '@/content'
 import { cn, useCarousel } from '@/lib'
@@ -9,8 +8,6 @@ import {
   CarouselDots,
   InlineMediaHeading,
 } from '@/components/ui'
-
-const EASE = [0.22, 1, 0.36, 1] as const
 
 function BlogCard({ post, featured }: { post: BlogPost; featured: boolean }) {
   return (
@@ -41,8 +38,9 @@ function BlogCard({ post, featured }: { post: BlogPost; featured: boolean }) {
 export function BlogsSection() {
   const { blogs } = site.home
   const posts: readonly BlogPost[] = blogs.posts
-  const { index, setIndex, next, prev, pauseHandlers, reducedMotion } =
-    useCarousel(posts.length)
+  const { index, setIndex, next, prev, pauseHandlers } = useCarousel(
+    posts.length,
+  )
 
   // The middle slot is the featured one, so the window starts one before.
   const window = Array.from(
@@ -66,12 +64,8 @@ export function BlogsSection() {
           />
         </div>
 
-        <motion.div
-          key={index}
+        <div
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[351fr_506fr_351fr] lg:items-start"
-          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reducedMotion ? 0 : 0.45, ease: EASE }}
           {...pauseHandlers}
         >
           {window.map((post, slot) => (
@@ -82,7 +76,7 @@ export function BlogsSection() {
               <BlogCard post={post} featured={slot === 1} />
             </div>
           ))}
-        </motion.div>
+        </div>
 
         <div className="flex items-center justify-between gap-6">
           <Link

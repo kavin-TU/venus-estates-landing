@@ -20,7 +20,7 @@ export function MosaicSection() {
   const label: readonly InlineMediaHeadingSegment[] = site.home.mosaic.label
 
   return (
-    <section className="bg-ink">
+    <section className="bg-white">
       <div className="mx-auto max-w-[1440px] px-5 py-12 lg:py-[75px]">
         <div className="grid gap-3.5 md:grid-cols-2 lg:h-[684px] lg:grid-cols-[511fr_350fr_511fr]">
           {/* Left column — two equal tiles */}
