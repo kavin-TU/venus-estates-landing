@@ -8,7 +8,10 @@ import { cn } from '@/lib'
 
 /** Pages that open with a full-bleed hero, so the bar floats over it. */
 const isOverlayPath = (pathname: string) =>
-  pathname === '/' || pathname === '/projects' || pathname.startsWith('/plots')
+  pathname === '/' ||
+  pathname === '/projects' ||
+  pathname === '/gallery' ||
+  pathname.startsWith('/plots')
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)

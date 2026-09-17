@@ -135,6 +135,17 @@ export type PlotStat = {
   label: string
 }
 
+/** An album card on the /gallery listing page. */
+export type GalleryAlbum = {
+  slug: string
+  name: string
+  location: string
+  imageCountLabel: string
+  cover: ImageAsset
+  path: string
+  images: readonly ImageAsset[]
+}
+
 export type EnquiryField = {
   name: string
   label: string

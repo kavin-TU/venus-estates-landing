@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from '@/components/layout'
 import { pageRoutes } from '@/content'
+import { GalleryAlbumPage, GalleryPage } from '@/features/gallery'
 import { HomePage } from '@/features/home'
 import { PlotDetailPage, PlotsPage } from '@/features/plots'
 import { ProjectsPage } from '@/features/projects'
@@ -8,7 +9,7 @@ import { toRoutePath } from '@/lib'
 import { StubPage } from '@/pages'
 
 /** Paths with a real page; everything else still falls back to StubPage. */
-const BUILT_PATHS = new Set(['/projects', '/plots'])
+const BUILT_PATHS = new Set(['/projects', '/plots', '/gallery'])
 
 export function AppRouter() {
   return (
@@ -18,6 +19,8 @@ export function AppRouter() {
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="plots" element={<PlotsPage />} />
         <Route path="plots/:slug" element={<PlotDetailPage />} />
+        <Route path="gallery" element={<GalleryPage />} />
+        <Route path="gallery/:slug" element={<GalleryAlbumPage />} />
         {pageRoutes
           .filter((page) => !BUILT_PATHS.has(page.path))
           .map((page) => (

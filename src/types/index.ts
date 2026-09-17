@@ -5,6 +5,7 @@ export type {
   EmphasisRun,
   EnquiryField,
   FaqItem,
+  GalleryAlbum,
   ImageAsset,
   InlineMediaHeadingSegment,
   NavLink,

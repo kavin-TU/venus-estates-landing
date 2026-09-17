@@ -5,6 +5,7 @@ import type {
   EmphasisRun,
   EnquiryField,
   FaqItem,
+  GalleryAlbum,
   ImageAsset,
   InlineMediaHeadingSegment,
   NavLink,
@@ -51,6 +52,11 @@ import plotGallery2 from '@/assets/images/plots/gallery-2.jpg'
 import plotGallery3 from '@/assets/images/plots/gallery-3.jpg'
 import plotGallery4 from '@/assets/images/plots/gallery-4.jpg'
 import plotEnquiryBg from '@/assets/images/plots/enquiry-bg.jpg'
+import galleryCoverJk from '@/assets/images/gallery/cover-jk-garden.jpg'
+import galleryJk1 from '@/assets/images/gallery/jk-1.jpg'
+import galleryJk2 from '@/assets/images/gallery/jk-2.jpg'
+import galleryJk3 from '@/assets/images/gallery/jk-3.jpg'
+import galleryJk4 from '@/assets/images/gallery/jk-4.jpg'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -843,6 +849,58 @@ export const site = {
         },
       },
     },
+  },
+
+  gallery: {
+    banner: {
+      image: {
+        src: projectsBanner,
+        alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
+      } satisfies ImageAsset,
+    },
+
+    intro: {
+      heading: [
+        { text: 'image', accent: true },
+        { text: ' gallery' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Step into the world of Venus Estates through our image gallery and experience our projects before you visit. Explore thoughtfully planned layouts, well-developed infrastructure, beautiful surroundings, key amenities, and the progress of our developments.',
+    },
+
+    /** Detail page title for the shared JK Garden album placeholders. */
+    albumHeading: 'jk gardens',
+
+    pageSize: 6,
+
+    // Placeholder albums mirror the Figma frame, which repeats JK Garden.
+    albums: (
+      [
+        'jk-garden',
+        'jk-garden-2',
+        'jk-garden-3',
+        'jk-garden-4',
+        'jk-garden-5',
+        'jk-garden-6',
+        'jk-garden-7',
+        'jk-garden-8',
+      ] as const
+    ).map((slug) => ({
+      slug,
+      name: 'JK GARDEN',
+      location: 'vadachennai, tamilnadu',
+      imageCountLabel: '50+ Images',
+      cover: {
+        src: galleryCoverJk,
+        alt: 'JK Garden project gallery cover',
+      },
+      path: `/gallery/${slug}`,
+      images: [
+        { src: galleryJk1, alt: 'JK Garden landscape view' },
+        { src: galleryJk2, alt: 'JK Garden site roadway' },
+        { src: galleryJk3, alt: 'JK Garden development overview' },
+        { src: galleryJk4, alt: 'JK Garden entrance avenue' },
+      ],
+    })) as GalleryAlbum[],
   },
 } as const
 
