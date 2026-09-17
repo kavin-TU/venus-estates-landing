@@ -86,7 +86,7 @@ export function ReasonSection() {
       <img
         src={reasons.background.src}
         alt={reasons.background.alt}
-        className="absolute inset-0 -z-10 size-full object-cover"
+        className="absolute inset-0 -z-10 size-full object-cover opacity-10"
         loading="lazy"
       />
 
