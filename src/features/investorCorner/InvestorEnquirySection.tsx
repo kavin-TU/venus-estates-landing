@@ -1,8 +1,8 @@
 import { site } from '@/content'
 import { TwoPanelEnquirySection } from '@/features/shared'
 
-export function NriEnquirySection() {
-  const { enquiry } = site.nriCorner
+export function InvestorEnquirySection() {
+  const { enquiry } = site.investorCorner
 
   return (
     <TwoPanelEnquirySection

@@ -1,18 +1,20 @@
 import type {
+  AssetComparisonColumn,
   BlogArticle,
   BlogBodyBlock,
   BlogPost,
+  CapitalGrowthCard,
   ConsentRun,
   CtaLink,
   EmphasisRun,
   EnquiryField,
   FaqItem,
   GalleryAlbum,
+  GrowthStat,
   ImageAsset,
   InlineMediaHeadingSegment,
   NavLink,
   NriCredentialCard,
-  NriStat,
   PlotFilterOption,
   PlotListing,
   ProjectCard,
@@ -75,6 +77,10 @@ import nriVideoIcon from '@/assets/images/nri/icon-video.png'
 import nriBankIcon from '@/assets/images/nri/icon-bank.png'
 import nriHandshakeIcon from '@/assets/images/nri/icon-handshake.png'
 import nriBuildingsWatermark from '@/assets/images/nri/watermark-buildings.png'
+import investorHero from '@/assets/images/investor/hero.png'
+import investorChartIcon from '@/assets/images/investor/icon-chart.png'
+import investorMapIcon from '@/assets/images/investor/icon-map.png'
+import investorShieldIcon from '@/assets/images/investor/icon-shield.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1190,6 +1196,24 @@ export const site = {
     ] as const satisfies readonly BlogArticle[],
   },
 
+  /** Content chunks shared verbatim across multiple "corner" pages. */
+  shared: {
+    growthStats: {
+      icon: {
+        src: nriStepperIcon,
+        alt: '',
+      } satisfies ImageAsset,
+      stats: [
+        { index: '01', value: '15–20% Growth', label: 'Forecast' },
+        { index: '02', value: 'Up to 15% Commercial', label: 'Yields' },
+        { index: '03', value: '53.33 Acre ELCOT IT', label: 'SEZ' },
+        { index: '04', value: '11 New Industrial', label: 'Parks' },
+        { index: '05', value: '₹12L – ₹20L Accessible', label: 'Capital Entry' },
+        { index: '06', value: '52-Day Liquidity', label: 'Window' },
+      ] as const satisfies readonly GrowthStat[],
+    },
+  },
+
   nriCorner: {
     hero: {
       image: {
@@ -1214,18 +1238,6 @@ export const site = {
         { text: ' ARE TURNING TO SALEM’S LAND MARKET' },
       ] as const satisfies readonly EmphasisRun[],
       body: 'Salem is no longer just a peaceful hometown—it’s the industrial, medical and transit backbone of Tamil Nadu.',
-      icon: {
-        src: nriStepperIcon,
-        alt: '',
-      } satisfies ImageAsset,
-      stats: [
-        { index: '01', value: '15–20% Growth', label: 'Forecast' },
-        { index: '02', value: 'Up to 15% Commercial', label: 'Yields' },
-        { index: '03', value: '53.33 Acre ELCOT IT', label: 'SEZ' },
-        { index: '04', value: '11 New Industrial', label: 'Parks' },
-        { index: '05', value: '₹12L – ₹20L Accessible', label: 'Capital Entry' },
-        { index: '06', value: '52-Day Liquidity', label: 'Window' },
-      ] as const satisfies readonly NriStat[],
     },
 
     credentials: {
@@ -1275,6 +1287,113 @@ export const site = {
       image: {
         src: nriEnquiryBg,
         alt: 'NRI desk consultation for remote plot buyers',
+      } satisfies ImageAsset,
+      dialCode: '+91',
+      otpNotice:
+        'To ensure the security of your account, an OTP will be sent to the mobile number you provided.',
+      fields: {
+        firstName: { name: 'firstName', label: 'First Name', placeholder: 'Enter your first name' },
+        lastName: { name: 'lastName', label: 'Last Name', placeholder: 'Enter your last name' },
+        email: { name: 'email', label: 'Email', placeholder: 'Enter your email' },
+        phone: { name: 'phone', label: 'Phone No', placeholder: 'Enter phone number' },
+        desiredDate: { name: 'desiredDate', label: 'Desired Date', placeholder: 'dd/mm/yyyy' },
+      } satisfies Record<string, EnquiryField>,
+      submitLabel: 'Submit Enquiry',
+    },
+  },
+
+  investorCorner: {
+    hero: {
+      image: {
+        src: investorHero,
+        alt: 'Mosaic of Venus Estates project photography including The Metro City entrance and site details, with a "Why Us" caption tile',
+      } satisfies ImageAsset,
+    },
+
+    assetComparison: {
+      heading: [
+        { text: 'ASSET ' },
+        { text: 'CLASS', accent: true },
+        { text: ' COMPARISON' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Compare different real estate asset classes to understand their potential, benefits, and suitability for your investment goals. Make informed decisions based on value, growth potential, and long-term returns.',
+      columns: [
+        {
+          label: 'Traditional Mutual Funds / FDs',
+          values: [
+            'Capital Appreciation',
+            'Risk Level',
+            'Maintenance Overheads',
+            'Title Transparency',
+          ],
+        },
+        {
+          label: 'Traditional Mutual Funds / FDs',
+          values: ['6% – 7%', 'Low (Nullified by Inflation)', 'Zero', 'N/A'],
+        },
+        {
+          label: 'Residential Apartments',
+          values: ['7% – 8%', 'Low (Building Depreciates)', 'High', 'Builder Dependant'],
+        },
+        {
+          label: 'Venus Plotted Developments',
+          highlighted: true,
+          badge: 'Best Choice',
+          values: [
+            '15% – 20%',
+            'Zero (Clear Titles)',
+            'Near Zero',
+            '100% DTCP & RERA / Clear Titles',
+          ],
+        },
+      ] as const satisfies readonly AssetComparisonColumn[],
+    },
+
+    why: {
+      heading: [
+        { text: 'WHY ' },
+        { text: 'SMART INVESTORS', accent: true },
+        { text: ' CHOOSE SALEM PLOTTED DEVELOPMENTS' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Salem is no longer just a peaceful hometown—it’s the industrial, medical and transit backbone of Tamil Nadu.',
+    },
+
+    capitalGrowth: {
+      heading: [
+        { text: 'ACCELERATING ', accent: true },
+        { text: 'YOUR CAPITAL GROWTH' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Invest in thoughtfully selected real estate opportunities designed to build long-term wealth. With strategic locations, quality developments, and strong growth potential, Venus Estates helps you make confident investments for a more valuable future.',
+      cards: [
+        {
+          icon: { src: investorMapIcon, alt: '' },
+          title: 'High-Growth Site Selection',
+          body: 'Layouts developed along growth corridors — bypass corridors, industrial zones & education hubs.',
+        },
+        {
+          icon: { src: investorChartIcon, alt: '' },
+          title: 'Infrastructure Value boost',
+          body: 'We don’t just sell land. We add value — 10+ premium amenities.',
+        },
+        {
+          icon: { src: investorShieldIcon, alt: '' },
+          title: 'Bank-Verified Security',
+          body: '100% clear parent titles & multi-bank clearances — ensuring your capital is safe from disputes.',
+        },
+      ] as const satisfies readonly CapitalGrowthCard[],
+    },
+
+    enquiry: {
+      heading: [
+        { text: 'PARTNER WITH ' },
+        { text: 'SALEM’S MOST TRUSTED', accent: true },
+        { text: ' LAND DEVELOPERS' },
+      ] as const satisfies readonly EmphasisRun[],
+      subheading:
+        'whether you’re an individual looking to park surplus funds safely or an institutional buyer building a portfolio, our team of experts is ready to assist you.',
+      image: {
+        src: venusAvenueGate,
+        alt: 'Venus Avenue entrance gate at dusk',
       } satisfies ImageAsset,
       dialCode: '+91',
       otpNotice:

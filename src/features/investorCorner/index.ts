@@ -1,0 +1,1 @@
+export { InvestorCornerPage } from './InvestorCornerPage'

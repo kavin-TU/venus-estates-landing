@@ -169,8 +169,8 @@ export type EnquiryField = {
   placeholder: string
 }
 
-/** One numbered item in the NRI Corner "why Salem" stat row. */
-export type NriStat = {
+/** One numbered item in a "why Salem" growth-stat row, shared by the NRI and Investor corner pages. */
+export type GrowthStat = {
   /** Two-digit ordinal shown above the value, e.g. '01' */
   index: string
   value: string
@@ -185,6 +185,21 @@ export type NriCredentialCard = {
   /** Large low-opacity icon in the card's bottom-right corner; only set on some cards. */
   watermark?: ImageAsset
   title: string
+}
+
+/** One column of the Investor Corner asset-class comparison table. */
+export type AssetComparisonColumn = {
+  label: string
+  highlighted?: boolean
+  badge?: string
+  /** Exactly 4 rows, in the same fixed order for every column. */
+  values: readonly string[]
+}
+
+export type CapitalGrowthCard = {
+  icon: ImageAsset
+  title: string
+  body: string
 }
 
 /** One run of consent copy; runs with a path render as links */

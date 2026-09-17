@@ -1,8 +1,8 @@
 import { site } from '@/content'
 import { GrowthStatsSection } from '@/features/shared'
 
-export function NriWhySection() {
-  const { why } = site.nriCorner
+export function InvestorWhySection() {
+  const { why } = site.investorCorner
   const { growthStats } = site.shared
 
   return (
