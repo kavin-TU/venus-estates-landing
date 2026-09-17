@@ -169,6 +169,24 @@ export type EnquiryField = {
   placeholder: string
 }
 
+/** One numbered item in the NRI Corner "why Salem" stat row. */
+export type NriStat = {
+  /** Two-digit ordinal shown above the value, e.g. '01' */
+  index: string
+  value: string
+  label: string
+}
+
+export type NriCredentialTone = 'primary' | 'accent'
+
+export type NriCredentialCard = {
+  tone: NriCredentialTone
+  icon: ImageAsset
+  /** Large low-opacity icon in the card's bottom-right corner; only set on some cards. */
+  watermark?: ImageAsset
+  title: string
+}
+
 /** One run of consent copy; runs with a path render as links */
 export type ConsentRun = {
   text: string

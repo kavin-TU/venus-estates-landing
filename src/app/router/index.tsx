@@ -4,13 +4,14 @@ import { pageRoutes } from '@/content'
 import { BlogDetailPage, BlogPage } from '@/features/blog'
 import { GalleryAlbumPage, GalleryPage } from '@/features/gallery'
 import { HomePage } from '@/features/home'
+import { NriCornerPage } from '@/features/nriCorner'
 import { PlotDetailPage, PlotsPage } from '@/features/plots'
 import { ProjectsPage } from '@/features/projects'
 import { toRoutePath } from '@/lib'
 import { StubPage } from '@/pages'
 
 /** Paths with a real page; everything else still falls back to StubPage. */
-const BUILT_PATHS = new Set(['/projects', '/plots', '/gallery', '/blog'])
+const BUILT_PATHS = new Set(['/projects', '/plots', '/gallery', '/blog', '/nri-corner'])
 
 export function AppRouter() {
   return (
@@ -24,6 +25,7 @@ export function AppRouter() {
         <Route path="gallery/:slug" element={<GalleryAlbumPage />} />
         <Route path="blog" element={<BlogPage />} />
         <Route path="blog/:slug" element={<BlogDetailPage />} />
+        <Route path="nri-corner" element={<NriCornerPage />} />
         {pageRoutes
           .filter((page) => !BUILT_PATHS.has(page.path))
           .map((page) => (

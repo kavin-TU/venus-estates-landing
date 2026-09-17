@@ -11,6 +11,8 @@ import type {
   ImageAsset,
   InlineMediaHeadingSegment,
   NavLink,
+  NriCredentialCard,
+  NriStat,
   PlotFilterOption,
   PlotListing,
   ProjectCard,
@@ -63,6 +65,16 @@ import galleryJk1 from '@/assets/images/gallery/jk-1.jpg'
 import galleryJk2 from '@/assets/images/gallery/jk-2.jpg'
 import galleryJk3 from '@/assets/images/gallery/jk-3.jpg'
 import galleryJk4 from '@/assets/images/gallery/jk-4.jpg'
+import nriHero from '@/assets/images/nri/hero.png'
+import nriCredentialsImage from '@/assets/images/nri/credentials.png'
+import nriEnquiryBg from '@/assets/images/nri/enquiry-bg.png'
+import nriStepperIcon from '@/assets/images/nri/icon-stepper.png'
+import nriFileIcon from '@/assets/images/nri/icon-file.png'
+import nriFileWatermark from '@/assets/images/nri/watermark-file.png'
+import nriVideoIcon from '@/assets/images/nri/icon-video.png'
+import nriBankIcon from '@/assets/images/nri/icon-bank.png'
+import nriHandshakeIcon from '@/assets/images/nri/icon-handshake.png'
+import nriBuildingsWatermark from '@/assets/images/nri/watermark-buildings.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1176,6 +1188,106 @@ export const site = {
         ] as const satisfies readonly BlogBodyBlock[],
       },
     ] as const satisfies readonly BlogArticle[],
+  },
+
+  nriCorner: {
+    hero: {
+      image: {
+        src: nriHero,
+        alt: 'Sunset view of a paved plot road lined with palm trees and mountains beyond',
+      } satisfies ImageAsset,
+      heading: [
+        { text: 'OWN A ' },
+        { text: 'PRIME LAND', accent: true },
+        { text: ' BACK HOME IN SALEM WITHOUT BOARDING A FLIGHT' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'From clear legal vetting to complete plot maintenance, Venus Estates makes investing in Salem’s booming real estate seamless, secure & stress-free for non-resident Indians.',
+      complianceLine:
+        '100% NRI-Compliant Digital Processes | Pre-Approved Bank Loans | Post-Sale Site Upkeep',
+      cta: { label: 'Schedule a Virtual Site Tour', path: '/plots' } satisfies CtaLink,
+    },
+
+    why: {
+      heading: [
+        { text: 'WHY ' },
+        { text: 'NRI’S', accent: true },
+        { text: ' ARE TURNING TO SALEM’S LAND MARKET' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Salem is no longer just a peaceful hometown—it’s the industrial, medical and transit backbone of Tamil Nadu.',
+      icon: {
+        src: nriStepperIcon,
+        alt: '',
+      } satisfies ImageAsset,
+      stats: [
+        { index: '01', value: '15–20% Growth', label: 'Forecast' },
+        { index: '02', value: 'Up to 15% Commercial', label: 'Yields' },
+        { index: '03', value: '53.33 Acre ELCOT IT', label: 'SEZ' },
+        { index: '04', value: '11 New Industrial', label: 'Parks' },
+        { index: '05', value: '₹12L – ₹20L Accessible', label: 'Capital Entry' },
+        { index: '06', value: '52-Day Liquidity', label: 'Window' },
+      ] as const satisfies readonly NriStat[],
+    },
+
+    credentials: {
+      heading: [
+        { text: 'OUR ' },
+        { text: 'CREDENTIALS', accent: true },
+        { text: ' & COMMITMENTS' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'Built on trust, transparency, and quality, Venus Estates is committed to delivering legally secure, thoughtfully planned, and high-quality developments. Our credentials reflect our dedication to customer satisfaction, responsible development, and creating lasting value for every investment.',
+      image: {
+        src: nriCredentialsImage,
+        alt: 'Plotted development road at sunset with completed homes in the distance',
+      } satisfies ImageAsset,
+      cards: [
+        {
+          tone: 'primary',
+          icon: { src: nriFileIcon, alt: '' },
+          watermark: { src: nriFileWatermark, alt: '' },
+          title: '100% Transparent Paperwork',
+        },
+        {
+          tone: 'accent',
+          icon: { src: nriVideoIcon, alt: '' },
+          title: 'Live Video Tours',
+        },
+        {
+          tone: 'accent',
+          icon: { src: nriBankIcon, alt: '' },
+          title: 'Remote Banking & Financial Support',
+        },
+        {
+          tone: 'primary',
+          icon: { src: nriHandshakeIcon, alt: '' },
+          watermark: { src: nriBuildingsWatermark, alt: '' },
+          title: 'After-Sale Property Stewardship',
+        },
+      ] as const satisfies readonly NriCredentialCard[],
+    },
+
+    enquiry: {
+      heading: [
+        { text: 'TALK TO OUR DEDICATED ' },
+        { text: 'NRI DESK', accent: true },
+      ] as const satisfies readonly EmphasisRun[],
+      subheading:
+        'explore prime plots in salem, designed for comfortable living, smart investment, and lasting value.',
+      image: {
+        src: nriEnquiryBg,
+        alt: 'NRI desk consultation for remote plot buyers',
+      } satisfies ImageAsset,
+      dialCode: '+91',
+      otpNotice:
+        'To ensure the security of your account, an OTP will be sent to the mobile number you provided.',
+      fields: {
+        firstName: { name: 'firstName', label: 'First Name', placeholder: 'Enter your first name' },
+        lastName: { name: 'lastName', label: 'Last Name', placeholder: 'Enter your last name' },
+        email: { name: 'email', label: 'Email', placeholder: 'Enter your email' },
+        phone: { name: 'phone', label: 'Phone No', placeholder: 'Enter phone number' },
+        desiredDate: { name: 'desiredDate', label: 'Desired Date', placeholder: 'dd/mm/yyyy' },
+      } satisfies Record<string, EnquiryField>,
+      submitLabel: 'Submit Enquiry',
+    },
   },
 } as const
 

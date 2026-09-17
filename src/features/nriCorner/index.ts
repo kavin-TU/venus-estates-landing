@@ -1,0 +1,1 @@
+export { NriCornerPage } from './NriCornerPage'
