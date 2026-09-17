@@ -41,7 +41,7 @@ import mosaicPlotMarkers from '@/assets/images/mosaic/plot-markers.jpg'
 import testimonialAvatar from '@/assets/images/testimonials/avatar.jpg'
 import blogPost1 from '@/assets/images/blogs/post-1.jpg'
 import blogPost2 from '@/assets/images/blogs/post-2.jpg'
-import venusAvenueSketch from '@/assets/images/projects/venus-avenue-sketch.jpg'
+import projectsBanner from '@/assets/images/projects/banner.jpg'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -590,17 +590,10 @@ export const site = {
         { text: 'OUR', accent: true },
         { text: ' PROJECTS' },
       ] as const satisfies readonly EmphasisRun[],
-      /** Banner tiles alternate the photographed gate with its pencil study. */
-      tiles: {
-        photo: {
-          src: venusAvenueGate,
-          alt: 'Venus Avenue entrance gate with palm-lined drive',
-        } satisfies ImageAsset,
-        sketch: {
-          src: venusAvenueSketch,
-          alt: 'Pencil study of the Venus Avenue entrance gate',
-        } satisfies ImageAsset,
-      },
+      image: {
+        src: projectsBanner,
+        alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
+      } satisfies ImageAsset,
     },
 
     intro: {
