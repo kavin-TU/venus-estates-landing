@@ -868,7 +868,14 @@ export const site = {
     },
 
     /** Detail page title for the shared JK Garden album placeholders. */
-    albumHeading: 'jk gardens',
+    albumHeading: {
+      lines: [
+        [
+          { type: 'text', text: 'JK', accent: true },
+          { type: 'text', text: 'GARDENS' },
+        ],
+      ] as const satisfies readonly (readonly InlineMediaHeadingSegment[])[],
+    },
 
     pageSize: 6,
 

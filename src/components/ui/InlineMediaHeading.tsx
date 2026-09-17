@@ -3,7 +3,7 @@ import { cn } from '@/lib'
 
 type InlineMediaHeadingProps = {
   lines: readonly (readonly InlineMediaHeadingSegment[])[]
-  as?: 'h2' | 'h3'
+  as?: 'h1' | 'h2' | 'h3'
   /** Must carry the heading colour — segments inherit it. */
   className?: string
 }
