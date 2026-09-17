@@ -1,2 +1,7 @@
 export { Footer, Layout, Navbar } from './layout'
-export { ArrowUpRight, SocialIcon } from './ui'
+export {
+  ArrowUpRight,
+  InlineMediaHeading,
+  SocialIcon,
+  StatRow,
+} from './ui'

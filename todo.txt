@@ -1,0 +1,2 @@
+1. scafold the images and rename it properly 
+2. make the brand-color , accent color like that as variable or define in css and use it or vite 
