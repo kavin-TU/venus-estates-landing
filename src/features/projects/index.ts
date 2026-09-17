@@ -1,0 +1,5 @@
+export { ProjectsBanner } from './ProjectsBanner'
+export { ProjectsFilters } from './ProjectsFilters'
+export { ProjectsGrid } from './ProjectsGrid'
+export { ProjectsIntro } from './ProjectsIntro'
+export { ProjectsPage } from './ProjectsPage'

@@ -92,6 +92,23 @@ export type BlogPost = {
   path: string
 }
 
+export type ProjectStatus = 'upcoming' | 'ongoing' | 'completed'
+
+export type ProjectFilter = {
+  id: ProjectStatus | 'all'
+  label: string
+}
+
+/** A project on the /projects listing page (distinct from the home ProjectCard). */
+export type ProjectListing = {
+  name: string
+  location: string
+  status: ProjectStatus
+  statusLabel: string
+  image: ImageAsset
+  path: string
+}
+
 export type EnquiryField = {
   name: string
   label: string

@@ -9,6 +9,8 @@ import type {
   InlineMediaHeadingSegment,
   NavLink,
   ProjectCard,
+  ProjectFilter,
+  ProjectListing,
   ReasonCard,
   SocialLink,
   StatItem,
@@ -39,6 +41,7 @@ import mosaicPlotMarkers from '@/assets/images/mosaic/plot-markers.jpg'
 import testimonialAvatar from '@/assets/images/testimonials/avatar.jpg'
 import blogPost1 from '@/assets/images/blogs/post-1.jpg'
 import blogPost2 from '@/assets/images/blogs/post-2.jpg'
+import venusAvenueSketch from '@/assets/images/projects/venus-avenue-sketch.jpg'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -579,6 +582,74 @@ export const site = {
       },
       submitLabel: 'Submit Enquiry',
     },
+  },
+
+  projects: {
+    banner: {
+      heading: [
+        { text: 'OUR', accent: true },
+        { text: ' PROJECTS' },
+      ] as const satisfies readonly EmphasisRun[],
+      /** Banner tiles alternate the photographed gate with its pencil study. */
+      tiles: {
+        photo: {
+          src: venusAvenueGate,
+          alt: 'Venus Avenue entrance gate with palm-lined drive',
+        } satisfies ImageAsset,
+        sketch: {
+          src: venusAvenueSketch,
+          alt: 'Pencil study of the Venus Avenue entrance gate',
+        } satisfies ImageAsset,
+      },
+    },
+
+    intro: {
+      heading: [
+        { text: 'From ' },
+        { text: 'Idea To', accent: true },
+        { text: ' Final Projects' },
+      ] as const satisfies readonly EmphasisRun[],
+      body: 'We are creating thoughtfully planned real-estate communities designed for modern living, smart investment, and lasting value. Explore our growing portfolio of projects, each built with quality, connectivity, and your future in mind.',
+    },
+
+    filters: [
+      { id: 'all', label: 'All projects' },
+      { id: 'upcoming', label: 'Upcoming' },
+      { id: 'ongoing', label: 'Ongoing' },
+      { id: 'completed', label: 'Completed' },
+    ] as const satisfies readonly ProjectFilter[],
+
+    /** How many cards fill one page of the grid (3 rows x 2 columns). */
+    pageSize: 6,
+
+    // Placeholder listings mirror the Figma frame, which repeats one card.
+    // Statuses are spread so the filters visibly do something; replace with
+    // real projects when they are ready.
+    items: [
+      'ongoing',
+      'ongoing',
+      'upcoming',
+      'completed',
+      'ongoing',
+      'completed',
+      'upcoming',
+      'ongoing',
+    ].map((status, index) => ({
+      name: 'THE METRO CITY PHASE 2',
+      location: 'vadachennai, tamilnadu',
+      status,
+      statusLabel:
+        status === 'ongoing'
+          ? 'On Going'
+          : status === 'upcoming'
+            ? 'Upcoming'
+            : 'Completed',
+      image: {
+        src: projectMetroCity,
+        alt: `The Metro City Phase 2 entrance gate, listing ${index + 1}`,
+      },
+      path: '/projects',
+    })) as ProjectListing[],
   },
 } as const
 

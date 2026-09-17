@@ -6,10 +6,13 @@ import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
 import { cn } from '@/lib'
 
+/** Pages that open with a full-bleed hero, so the bar floats over it. */
+const OVERLAY_PATHS = new Set(['/', '/projects'])
+
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
-  const overlay = pathname === '/'
+  const overlay = OVERLAY_PATHS.has(pathname)
   const { navLinks, cta, logoAlt } = site
 
   return (
