@@ -1,4 +1,6 @@
 import type {
+  AboutFocusCard,
+  AboutStat,
   AssetComparisonColumn,
   BlogArticle,
   BlogBodyBlock,
@@ -14,6 +16,7 @@ import type {
   GrowthStat,
   ImageAsset,
   InlineMediaHeadingSegment,
+  LeaderProfile,
   NavLink,
   NriCredentialCard,
   PlotFilterOption,
@@ -84,6 +87,13 @@ import investorMapIcon from '@/assets/images/investor/icon-map.png'
 import investorShieldIcon from '@/assets/images/investor/icon-shield.png'
 import contactMap from '@/assets/images/contact/map.png'
 import contactEnquiryBg from '@/assets/images/contact/enquiry-bg.png'
+import aboutHeroMosaic from '@/assets/images/about-us/hero-mosaic.png'
+import aboutStoryWatermark from '@/assets/images/about-us/about-us-hero.png'
+import aboutWhatWeDoImage from '@/assets/images/about-us/wereheroto.png'
+import aboutVisionIcon from '@/assets/images/about-us/icon-eye.png'
+import aboutMissionIcon from '@/assets/images/about-us/icon-target.png'
+import aboutStatsBg from '@/assets/images/about-us/projectstats.png'
+import aboutLeadershipPhoto from '@/assets/images/about-us/leadership.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -114,14 +124,21 @@ export const site = {
   navLinks: [
     { label: 'Home', path: '/' },
     { label: 'Projects', path: '/projects' },
-    { label: 'About Us', path: '/about' },
+    {
+      label: 'About Us',
+      path: '/about/our-story',
+      children: [
+        { label: 'Our Story', path: '/about/our-story' },
+        { label: 'Why Us', path: '/about/why-us' },
+      ],
+    },
     { label: 'Store', path: '/store' },
     { label: 'Gallery', path: '/gallery' },
     { label: 'Blog', path: '/blog' },
     { label: 'NRI Corner', path: '/nri-corner' },
     { label: 'Investor Corner', path: '/investor-corner' },
     { label: 'Contact Us', path: '/contact' },
-  ] as const satisfies readonly NavLink[],
+  ] satisfies readonly NavLink[],
 
   quickLinks: [
     { label: 'Home', path: '/' },
@@ -1486,10 +1503,101 @@ export const site = {
       submitLabel: 'Submit Enquiry',
     },
   },
+
+  aboutPage: {
+    hero: {
+      image: {
+        src: aboutHeroMosaic,
+        alt: 'Mosaic of Venus Estates project photography including The Metro City entrance and site details',
+      } satisfies ImageAsset,
+      heading: 'ABOUT US',
+    },
+
+    story: {
+      watermark: {
+        src: aboutStoryWatermark,
+        alt: '',
+      } satisfies ImageAsset,
+      paragraphsLeft: [
+        'Founded in 2023 with humble beginnings, Venus Estates was established with a simple yet ambitious vision—to create thoughtfully planned developments that enrich the way people live. What began as a focused real estate venture has rapidly evolved into one of the fastest-growing lifestyle-focused real estate companies in Tamil Nadu’s Kongu Belt.',
+        'In a short span of time, Venus Estates has successfully completed over 10 projects and facilitated the development and sale of more than one million square feet of residential land. Built on the pillars of trust, transparency, quality, and customer satisfaction, the company has earned the confidence of homeowners, investors, and communities across the region.',
+        'With a strong geographical focus on Tamil Nadu’s Kongu Belt, Venus Estates is strategically expanding across Salem, Erode, Tiruppur, Coimbatore, Dharmapuri, and Attur—some of the state’s most dynamic and rapidly growing markets.',
+      ] as const,
+      paragraphsRight: [
+        'Today, Venus Estates has evolved far beyond conventional plotted developments. Its diverse portfolio now includes DTCP-approved plotted layouts, premium villa communities, integrated farm communities, lifestyle townships, and apartment developments, each thoughtfully designed to deliver exceptional living experiences and lasting value.',
+        'Driven by innovation, meticulous planning, and a long-term vision, the company continues to introduce distinctive projects that redefine modern living while preserving sustainability and community well-being. With several landmark developments in the pipeline, Venus Estates is well positioned for its next phase of growth.',
+        'More than a real estate developer, Venus Estates is building a lifestyle movement—creating vibrant communities where families flourish, investments appreciate, and generations build lasting memories.',
+      ] as const,
+    },
+
+    whatWeDo: {
+      heading: [
+        { text: 'WHAT ' },
+        { text: 'WE’RE', accent: true },
+        { text: ' HERE TO DO' },
+      ] as const satisfies readonly EmphasisRun[],
+      image: {
+        src: aboutWhatWeDoImage,
+        alt: 'The Metro City clubhouse building at dusk',
+      } satisfies ImageAsset,
+      cards: [
+        {
+          icon: { src: aboutVisionIcon, alt: '' },
+          title: 'Our Vision',
+          body: 'To redefine real estate development through thoughtful design, innovation and integrity — creating spaces that inspire trust, comfort and long-term value.',
+        },
+        {
+          icon: { src: aboutMissionIcon, alt: '' },
+          title: 'Our Mission',
+          body: 'To consistently deliver high-quality projects that reflect excellence in architecture, engineering and execution — while nurturing long-term relationships with clients, investors and communities.',
+        },
+      ] as const satisfies readonly AboutFocusCard[],
+    },
+
+    stats: {
+      background: {
+        src: aboutStatsBg,
+        alt: 'The Prestige by Global Venus Estates entrance gate at dusk',
+      } satisfies ImageAsset,
+      items: [
+        { value: '10+', label: 'Years of Combined Industry Experience' },
+        { value: '10+', label: 'Projects Completed' },
+        { value: '05+', label: 'Ongoing Projects' },
+      ] as const satisfies readonly AboutStat[],
+    },
+
+    leadership: {
+      heading: [
+        { text: 'OUR ' },
+        { text: 'LEADERSHIP', accent: true },
+      ] as const satisfies readonly EmphasisRun[],
+      profiles: [
+        {
+          index: '1',
+          name: 'Arjunsri Baskar & Prem Kumar',
+          title: 'Managing Directors, Venus Estates',
+          body: [
+            'Arjunsri Baskar and Prem Kumar are the Managing Directors of Venus Estates India Pvt. Ltd., united by a lifelong friendship, a shared entrepreneurial vision, and a passion for excellence.',
+            'Having grown up together, their partnership is founded on trust, discipline, and a common vision of creating exceptional real estate developments that leave a lasting impact.',
+            'As former National-level Table Tennis players, they have carried the values of teamwork, discipline, resilience, integrity, and continuous improvement into the business world, shaping a leadership style that emphasizes collaboration, innovation, strategic thinking, and long-term value creation.',
+            'Prem Kumar, a Civil Engineer and experienced entrepreneur, brings expertise in operations, legal, regulatory, and compliance matters. Arjunsri Baskar, an Architect, leads architecture, construction, finance, branding, and business strategy, with a focus on luxury design and exceptional customer experiences. Together, their complementary strengths drive Venus Estates to create sustainable, thoughtfully planned communities that deliver quality, transparency, and lasting value while building a legacy for future generations.',
+          ],
+          photo: {
+            src: aboutLeadershipPhoto,
+            alt: 'Arjunsri Baskar and Prem Kumar, Managing Directors of Venus Estates',
+          },
+        },
+      ] as const satisfies readonly LeaderProfile[],
+    },
+  },
 } as const
 
-/** Content pages derived from nav + legal (excludes Home). */
+/** Content pages derived from nav (incl. dropdown children) + legal (excludes Home). */
+const flattenedNavLinks = site.navLinks
+  .filter((link) => link.path !== '/')
+  .flatMap((link) => [link, ...(link.children ?? [])])
+
 export const pageRoutes: NavLink[] = [
-  ...site.navLinks.filter((link) => link.path !== '/'),
+  ...Array.from(new Map(flattenedNavLinks.map((link) => [link.path, link])).values()),
   ...site.legalLinks,
 ]

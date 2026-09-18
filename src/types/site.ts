@@ -1,6 +1,8 @@
 export type NavLink = {
   label: string
   path: string
+  /** Sub-pages shown in a dropdown (desktop) / indented list (mobile) under this link. */
+  children?: readonly NavLink[]
 }
 
 export type SocialPlatform = 'youtube' | 'facebook' | 'instagram'
@@ -213,4 +215,23 @@ export type ContactStep = {
 export type ConsentRun = {
   text: string
   path?: string
+}
+
+export type AboutFocusCard = {
+  icon: ImageAsset
+  title: string
+  body: string
+}
+
+export type AboutStat = {
+  value: string
+  label: string
+}
+
+export type LeaderProfile = {
+  index: string
+  name: string
+  title: string
+  body: readonly string[]
+  photo: ImageAsset
 }

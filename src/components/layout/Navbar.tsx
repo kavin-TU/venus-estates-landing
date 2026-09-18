@@ -18,6 +18,7 @@ function getNavChrome(pathname: string): NavChrome {
     pathname === '/nri-corner' ||
     pathname === '/investor-corner' ||
     pathname === '/contact' ||
+    pathname === '/about/our-story' ||
     pathname.startsWith('/plots')
   ) {
     return 'overlay'
@@ -60,38 +61,63 @@ export function Navbar() {
           aria-label="Primary"
         >
           {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              end={link.path === '/'}
-              className={({ isActive }) =>
-                cn(
-                  'group relative flex flex-col items-center whitespace-nowrap text-[16px] font-medium leading-normal tracking-wide transition-colors duration-300',
-                  isActive
-                    ? 'text-secondary'
-                    : light
-                      ? 'text-ink hover:text-secondary'
-                      : 'text-white hover:text-secondary',
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span>{link.label}</span>
-                  <span className="relative mt-0 h-[2px] w-full" aria-hidden="true">
-                    {isActive ? (
-                      <motion.span
-                        layoutId="nav-active"
-                        className="absolute inset-0 bg-secondary"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    ) : (
-                      <span className="absolute inset-0 bg-transparent transition-colors duration-300 group-hover:bg-secondary/40" />
-                    )}
-                  </span>
-                </>
-              )}
-            </NavLink>
+            <div key={link.path} className="group/dropdown relative flex flex-col items-center">
+              <NavLink
+                to={link.path}
+                end={link.path === '/'}
+                className={({ isActive }) =>
+                  cn(
+                    'group relative flex flex-col items-center whitespace-nowrap text-[16px] font-medium leading-normal tracking-wide transition-colors duration-300',
+                    isActive
+                      ? 'text-secondary'
+                      : light
+                        ? 'text-ink hover:text-secondary'
+                        : 'text-white hover:text-secondary',
+                  )
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <span>{link.label}</span>
+                    <span className="relative mt-0 h-[2px] w-full" aria-hidden="true">
+                      {isActive ? (
+                        <motion.span
+                          layoutId="nav-active"
+                          className="absolute inset-0 bg-secondary"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      ) : (
+                        <span className="absolute inset-0 bg-transparent transition-colors duration-300 group-hover:bg-secondary/40" />
+                      )}
+                    </span>
+                  </>
+                )}
+              </NavLink>
+
+              {link.children ? (
+                <div className="invisible absolute top-full left-1/2 z-10 -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-200 group-hover/dropdown:visible group-hover/dropdown:opacity-100">
+                  <ul className="flex min-w-[160px] flex-col gap-0.5 rounded-xl border border-ink/10 bg-white p-1.5 shadow-lg">
+                    {link.children.map((child) => (
+                      <li key={child.path}>
+                        <NavLink
+                          to={child.path}
+                          className={({ isActive }) =>
+                            cn(
+                              'block rounded-lg px-3 py-2 text-[14px] font-medium whitespace-nowrap transition-colors duration-200',
+                              isActive
+                                ? 'bg-mist text-secondary'
+                                : 'text-ink hover:bg-mist hover:text-secondary',
+                            )
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
           ))}
         </nav>
 
@@ -172,6 +198,33 @@ export function Navbar() {
                 >
                   {link.label}
                 </NavLink>
+
+                {link.children ? (
+                  <ul className="mt-1 flex flex-col gap-1 border-l border-current/10 pl-3">
+                    {link.children.map((child) => (
+                      <li key={child.path}>
+                        <NavLink
+                          to={child.path}
+                          onClick={() => setMenuOpen(false)}
+                          className={({ isActive }) =>
+                            cn(
+                              'block rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-300',
+                              isActive
+                                ? light
+                                  ? 'bg-ink/5 text-secondary'
+                                  : 'bg-white/5 text-secondary'
+                                : light
+                                  ? 'text-ink/80 hover:bg-ink/5'
+                                  : 'text-white/80 hover:bg-white/5',
+                            )
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </li>
             ))}
           </ul>

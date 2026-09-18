@@ -1,4 +1,6 @@
 export type {
+  AboutFocusCard,
+  AboutStat,
   AssetComparisonColumn,
   BlogArticle,
   BlogBodyBlock,
@@ -14,6 +16,7 @@ export type {
   GrowthStat,
   ImageAsset,
   InlineMediaHeadingSegment,
+  LeaderProfile,
   NavLink,
   NriCredentialCard,
   NriCredentialTone,

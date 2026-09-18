@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from '@/components/layout'
 import { pageRoutes } from '@/content'
+import { AboutStoryPage } from '@/features/about'
 import { BlogDetailPage, BlogPage } from '@/features/blog'
 import { ContactPage } from '@/features/contact'
 import { GalleryAlbumPage, GalleryPage } from '@/features/gallery'
@@ -21,6 +22,7 @@ const BUILT_PATHS = new Set([
   '/nri-corner',
   '/investor-corner',
   '/contact',
+  '/about/our-story',
 ])
 
 export function AppRouter() {
@@ -38,6 +40,8 @@ export function AppRouter() {
         <Route path="nri-corner" element={<NriCornerPage />} />
         <Route path="investor-corner" element={<InvestorCornerPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="about" element={<Navigate to="/about/our-story" replace />} />
+        <Route path="about/our-story" element={<AboutStoryPage />} />
         {pageRoutes
           .filter((page) => !BUILT_PATHS.has(page.path))
           .map((page) => (
