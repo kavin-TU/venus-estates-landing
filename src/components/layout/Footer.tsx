@@ -114,26 +114,23 @@ export function Footer() {
               </span>
             ))}
           </p>
-
-          <div className="mt-6 flex justify-center">
-            <button
-              type="button"
-              aria-label={footer.backToTopLabel}
-              onClick={scrollToTop}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-paper/80 text-paper transition hover:bg-paper/10"
-            >
-              <ArrowUp className="size-4" />
-            </button>
-          </div>
         </div>
 
-        <div className="mt-10 overflow-hidden pb-2">
+        <div className="relative mt-10 flex items-end justify-center overflow-hidden pb-2">
           <p
-            className="font-display select-none text-center text-[clamp(2.75rem,14vw,11rem)] font-extrabold leading-none tracking-[0.02em] text-paper"
+            className="font-display select-none whitespace-nowrap text-center text-[clamp(1.5rem,6.5vw,4.5rem)] font-extrabold leading-none tracking-[0.02em] text-paper"
             aria-hidden="true"
           >
             {nameUpper}
           </p>
+          <button
+            type="button"
+            aria-label={footer.backToTopLabel}
+            onClick={scrollToTop}
+            className="absolute right-0 bottom-2 inline-flex size-10 items-center justify-center rounded-full bg-brand text-paper transition hover:bg-brand/90"
+          >
+            <ArrowUp className="size-4" />
+          </button>
         </div>
       </div>
     </footer>
