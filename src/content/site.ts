@@ -91,20 +91,20 @@ import contactMap from '@/assets/images/contact/map.png'
 import contactEnquiryBg from '@/assets/images/contact/enquiry-bg.png'
 import aboutHeroMosaic from '@/assets/images/about-us/hero-mosaic.png'
 import aboutStoryWatermark from '@/assets/images/about-us/about-us-hero.png'
-import aboutWhatWeDoImage from '@/assets/images/about-us/wereheroto.png'
+import aboutWhatWeDoImage from '@/assets/images/about-us/what-we-do.png'
 import aboutVisionIcon from '@/assets/images/about-us/icon-eye.png'
 import aboutMissionIcon from '@/assets/images/about-us/icon-target.png'
-import aboutStatsBg from '@/assets/images/about-us/projectstats.png'
+import aboutStatsBg from '@/assets/images/about-us/project-stats.png'
 import aboutLeadershipPhoto from '@/assets/images/about-us/leadership.png'
-import whyUsBanner1 from '@/assets/images/abouts-us-why/why-us-banner 1.png'
-import whyUsBanner2 from '@/assets/images/abouts-us-why/why-us-banner2.png'
-import whyUsBanner3 from '@/assets/images/abouts-us-why/why-us-banner 3.png'
-import whyUsBanner4 from '@/assets/images/abouts-us-why/why-us-banner 4.png'
-import whyUsIconNut from '@/assets/images/abouts-us-why/Nut.png'
-import whyUsIconEqualizer from '@/assets/images/abouts-us-why/Equalizer.png'
-import whyUsIconKey from '@/assets/images/abouts-us-why/Key.png'
-import whyUsIconSealCheck from '@/assets/images/abouts-us-why/SealCheck.png'
-import whyUsIconCertificate from '@/assets/images/abouts-us-why/Certificate.png'
+import whyUsBanner1 from '@/assets/images/about-us-why/protect-banner-1.png'
+import whyUsBanner2 from '@/assets/images/about-us-why/protect-banner-2.png'
+import whyUsBanner3 from '@/assets/images/about-us-why/protect-banner-3.png'
+import whyUsBanner4 from '@/assets/images/about-us-why/protect-banner-4.png'
+import whyUsIconNut from '@/assets/images/about-us-why/icon-nut.png'
+import whyUsIconEqualizer from '@/assets/images/about-us-why/icon-equalizer.png'
+import whyUsIconKey from '@/assets/images/about-us-why/icon-key.png'
+import whyUsIconSealCheck from '@/assets/images/about-us-why/icon-seal-check.png'
+import whyUsIconCertificate from '@/assets/images/about-us-why/icon-certificate.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1632,7 +1632,7 @@ export const site = {
             index: '02',
             icon: { src: whyUsIconEqualizer, alt: '' },
             background: {
-              src: whyUsBanner3,
+              src: whyUsBanner2,
               alt: 'Paved plot road with curb and streetlights',
             },
             title: 'On The Ground: Uncompromising Layout Engineering',
@@ -1646,7 +1646,7 @@ export const site = {
             index: '03',
             icon: { src: whyUsIconKey, alt: '' },
             background: {
-              src: whyUsBanner2,
+              src: whyUsBanner3,
               alt: 'Golden sunset over palm trees',
             },
             title: 'At Purchase: Effortless Ownership',
@@ -1693,13 +1693,13 @@ export const site = {
         cards: [
           {
             tone: 'primary',
-            icon: { src: whyUsIconNut, alt: '' },
+            icon: { src: nriFileIcon, alt: '' },
             watermark: { src: nriFileWatermark, alt: '' },
             title: '100% Clear paperwork',
           },
           {
             tone: 'accent',
-            icon: { src: whyUsIconNut, alt: '' },
+            icon: { src: whyUsIconSealCheck, alt: '' },
             title: 'Ethical business practices',
           },
           {
@@ -1709,7 +1709,7 @@ export const site = {
           },
           {
             tone: 'primary',
-            icon: { src: whyUsIconNut, alt: '' },
+            icon: { src: whyUsIconEqualizer, alt: '' },
             watermark: { src: nriBuildingsWatermark, alt: '' },
             title: 'Quality developments',
           },
