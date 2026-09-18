@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { FormEvent } from 'react'
 import type { ImageAsset } from '@/types'
+import { MediaImage, Reveal } from '@/components/ui'
 import { cn } from '@/lib'
 
 type BackgroundEnquirySectionProps = {
@@ -43,18 +44,18 @@ export function BackgroundEnquirySection({
 
   return (
     <section className="bg-paper">
-      <div
+      <Reveal
         className={cn(
           'mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px]',
           padding === 'compact' ? 'lg:py-[50px]' : 'lg:py-[75px]',
         )}
       >
         <div className="relative isolate overflow-hidden rounded-2xl">
-          <img
+          <MediaImage
             src={background.src}
             alt={background.alt}
-            className="absolute inset-0 -z-10 size-full object-cover"
-            loading="lazy"
+            fill
+            wrapperClassName="-z-10"
           />
           <span className={cn('absolute inset-0 -z-10', overlayClassName)} aria-hidden="true" />
 
@@ -70,7 +71,7 @@ export function BackgroundEnquirySection({
             {hasAside && asidePosition === 'end' ? aside : null}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

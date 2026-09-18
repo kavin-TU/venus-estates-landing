@@ -1,7 +1,7 @@
 import type { FaqItem } from '@/types'
 import { site } from '@/content'
 import { cn } from '@/lib'
-import { Accordion, InlineMediaHeading } from '@/components/ui'
+import { Accordion, InlineMediaHeading, Reveal } from '@/components/ui'
 
 /**
  * The Figma node crops a 64% vertical band of the source starting 25.5% down,
@@ -33,7 +33,7 @@ export function FaqSection() {
   return (
     <section className="bg-paper text-ink">
       {/* White strips above and below the sand band */}
-      <div className="lg:py-[50px]">
+      <Reveal className="lg:py-[50px]">
         {/* min-height keeps the full sketch (top 150 + 397 tall) revealed even
             when every accordion item is collapsed and the grid is short. */}
         <div className="relative overflow-hidden bg-sand lg:min-h-[547px]">
@@ -57,7 +57,7 @@ export function FaqSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

@@ -7,6 +7,7 @@ import {
   CarouselArrows,
   CarouselDots,
   InlineMediaHeading,
+  Reveal,
 } from '@/components/ui'
 import { BlogCard } from '@/features/blog'
 
@@ -25,7 +26,7 @@ export function BlogsSection() {
 
   return (
     <section className="bg-paper text-ink">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[32px] lg:px-[100px] lg:py-[75px]">
+      <Reveal className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[32px] lg:px-[100px] lg:py-[75px]">
         <div className="flex items-start justify-between gap-6">
           <InlineMediaHeading
             lines={blogs.heading.lines}
@@ -68,7 +69,7 @@ export function BlogsSection() {
             label="Show article"
           />
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

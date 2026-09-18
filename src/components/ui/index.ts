@@ -19,8 +19,10 @@ export {
   Star,
 } from './Icons'
 export { InlineMediaHeading } from './InlineMediaHeading'
+export { MediaImage } from './MediaImage'
 export { MediaListingCard } from './MediaListingCard'
 export { PageIntro } from './PageIntro'
+export { PageFade, Reveal, REVEAL_EASE } from './Reveal'
 export { SectionShell } from './SectionShell'
 export { SocialIcon } from './SocialIcon'
 export { StatRow } from './StatRow'

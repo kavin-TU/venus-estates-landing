@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, EmphasisText, primaryCtaClass } from '@/components/ui'
+import { ArrowUpRight, EmphasisText, MediaImage, Reveal, primaryCtaClass } from '@/components/ui'
 import { cn } from '@/lib'
 
 export function NriHeroSection() {
@@ -9,12 +9,17 @@ export function NriHeroSection() {
   const heading: readonly EmphasisRun[] = hero.heading
 
   return (
-    <section className="relative isolate flex min-h-[600px] flex-col items-center justify-center overflow-hidden bg-ink text-center text-paper lg:h-[780px]">
-      <img
+    <Reveal
+      as="section"
+      fadeOnly
+      className="relative isolate flex min-h-[600px] flex-col items-center justify-center overflow-hidden bg-ink text-center text-paper lg:h-[780px]"
+    >
+      <MediaImage
         src={hero.image.src}
         alt={hero.image.alt}
-        className="absolute inset-0 -z-10 size-full object-cover"
+        fill
         loading="eager"
+        wrapperClassName="-z-10"
       />
       <span className="absolute inset-0 -z-10 bg-ink/40" aria-hidden="true" />
 
@@ -39,6 +44,6 @@ export function NriHeroSection() {
           <ArrowUpRight className="size-4" />
         </Link>
       </div>
-    </section>
+    </Reveal>
   )
 }

@@ -1,15 +1,15 @@
 import type { EmphasisRun, ProtectCard } from '@/types'
 import { site } from '@/content'
-import { EmphasisText, SectionShell } from '@/components/ui'
+import { EmphasisText, MediaImage, SectionShell } from '@/components/ui'
 
 function Card({ card }: { card: ProtectCard }) {
   return (
     <div className="relative isolate flex min-h-[220px] flex-col justify-between overflow-hidden rounded-xl p-6 text-paper">
-      <img
+      <MediaImage
         src={card.background.src}
         alt={card.background.alt}
-        className="absolute inset-0 -z-10 size-full object-cover"
-        loading="lazy"
+        fill
+        wrapperClassName="-z-10"
       />
       <span className="absolute inset-0 -z-10 bg-ink/50" aria-hidden="true" />
 

@@ -1,3 +1,5 @@
+import { MediaImage, Reveal } from '@/components/ui'
+
 type PlotDetailHeroProps = {
   image: { src: string; alt: string }
   title: string
@@ -7,11 +9,11 @@ type PlotDetailHeroProps = {
 
 export function PlotDetailHero({ image, title, body, stats }: PlotDetailHeroProps) {
   return (
-    <section className="relative isolate min-h-[520px] overflow-hidden bg-ink lg:h-[820px]">
-      <img
+    <Reveal as="section" fadeOnly className="relative isolate min-h-[520px] overflow-hidden bg-ink lg:h-[820px]">
+      <MediaImage
         src={image.src}
         alt={image.alt}
-        className="absolute inset-0 size-full object-cover"
+        fill
         loading="eager"
       />
       <span className="absolute inset-0 bg-ink/35" aria-hidden="true" />
@@ -42,6 +44,6 @@ export function PlotDetailHero({ image, title, body, stats }: PlotDetailHeroProp
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   )
 }

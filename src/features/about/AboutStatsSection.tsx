@@ -1,15 +1,16 @@
+import { MediaImage, Reveal } from '@/components/ui'
 import { site } from '@/content'
 
 export function AboutStatsSection() {
   const { stats } = site.aboutPage
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink">
-      <img
+    <Reveal as="section" className="relative isolate overflow-hidden bg-ink">
+      <MediaImage
         src={stats.background.src}
         alt={stats.background.alt}
-        className="absolute inset-0 -z-10 size-full object-cover"
-        loading="lazy"
+        fill
+        wrapperClassName="-z-10"
       />
       <span className="absolute inset-0 -z-10 bg-ink/45" aria-hidden="true" />
 
@@ -25,6 +26,6 @@ export function AboutStatsSection() {
           </div>
         ))}
       </div>
-    </section>
+    </Reveal>
   )
 }

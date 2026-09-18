@@ -1,5 +1,5 @@
 import type { EmphasisRun } from '@/types'
-import { CredentialCard, EmphasisText, SectionShell } from '@/components/ui'
+import { CredentialCard, EmphasisText, MediaImage, SectionShell } from '@/components/ui'
 import { site } from '@/content'
 
 export function NriCredentialsSection() {
@@ -26,12 +26,11 @@ export function NriCredentialsSection() {
             <CredentialCard card={leftBottom} className="min-h-[160px] lg:flex-1" />
           </div>
 
-          <div className="md:col-span-2 lg:col-span-1 lg:h-full">
-            <img
+          <div className="relative min-h-[220px] overflow-hidden rounded-xl md:col-span-2 lg:col-span-1 lg:h-full lg:min-h-0">
+            <MediaImage
               src={credentials.image.src}
               alt={credentials.image.alt}
-              className="h-full w-full rounded-xl object-cover"
-              loading="lazy"
+              className="size-full object-cover"
             />
           </div>
 

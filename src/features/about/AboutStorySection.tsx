@@ -1,10 +1,11 @@
+import { Reveal } from '@/components/ui'
 import { site } from '@/content'
 
 export function AboutStorySection() {
   const { story } = site.aboutPage
 
   return (
-    <section className="relative isolate overflow-hidden bg-sand text-ink">
+    <Reveal as="section" className="relative isolate overflow-hidden bg-sand text-ink">
       <div className="mx-auto grid max-w-[1440px] gap-8 px-6 pt-12 sm:grid-cols-2 sm:gap-x-12 sm:px-10 lg:gap-x-16 lg:px-[100px] lg:pt-[75px]">
         <div className="flex flex-col gap-6">
           {story.paragraphsLeft.map((paragraph, index) => (
@@ -22,7 +23,6 @@ export function AboutStorySection() {
         </div>
       </div>
 
-      {/* Full-bleed sketch under the copy; sand shows through via multiply */}
       <div className="relative mt-10 w-full overflow-hidden lg:mt-14">
         <img
           src={story.watermark.src}
@@ -32,6 +32,6 @@ export function AboutStorySection() {
           loading="lazy"
         />
       </div>
-    </section>
+    </Reveal>
   )
 }

@@ -1,4 +1,5 @@
 import type { ImageAsset } from '@/types'
+import { MediaImage, Reveal } from '@/components/ui'
 
 type MosaicHeroSectionProps = {
   image: ImageAsset
@@ -11,9 +12,14 @@ export function MosaicHeroSection({ image, heading }: MosaicHeroSectionProps) {
   const [firstWord, ...rest] = heading.split(' ')
 
   return (
-    <section className="relative isolate bg-ink">
+    <Reveal as="section" fadeOnly className="relative isolate bg-ink">
       <div className="relative aspect-[1440/820] overflow-hidden lg:aspect-auto lg:h-[820px]">
-        <img src={image.src} alt={image.alt} className="size-full object-cover" loading="eager" />
+        <MediaImage
+          src={image.src}
+          alt={image.alt}
+          loading="eager"
+          className="size-full object-cover"
+        />
 
         {/* Sits over the mosaic's blank tile: 4 cols x 3 rows, row 2 / col 1 */}
         <div className="absolute left-0 top-1/3 flex h-1/3 w-1/4 items-center justify-center">
@@ -23,6 +29,6 @@ export function MosaicHeroSection({ image, heading }: MosaicHeroSectionProps) {
           </h1>
         </div>
       </div>
-    </section>
+    </Reveal>
   )
 }

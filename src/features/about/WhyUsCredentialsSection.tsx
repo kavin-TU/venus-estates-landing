@@ -1,5 +1,5 @@
 import type { EmphasisRun } from '@/types'
-import { CredentialCard, EmphasisText, SectionShell } from '@/components/ui'
+import { CredentialCard, EmphasisText, MediaImage, SectionShell } from '@/components/ui'
 import { site } from '@/content'
 
 export function WhyUsCredentialsSection() {
@@ -21,11 +21,11 @@ export function WhyUsCredentialsSection() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="relative isolate flex flex-col justify-end overflow-hidden rounded-xl text-paper sm:min-h-[420px]">
-            <img
+            <MediaImage
               src={credentials.feature.image.src}
               alt={credentials.feature.image.alt}
-              className="absolute inset-0 -z-10 size-full object-cover"
-              loading="lazy"
+              fill
+              wrapperClassName="-z-10"
             />
             <span
               className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent"

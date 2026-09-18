@@ -8,6 +8,7 @@ import {
   HourglassLow,
   InlineMediaHeading,
   MapPin,
+  Reveal,
   SealCheck,
 } from '@/components/ui'
 
@@ -90,7 +91,7 @@ export function ReasonSection() {
         loading="lazy"
       />
 
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-14 sm:px-10 lg:gap-[32px] lg:px-[100px] lg:py-[100px]">
+      <Reveal className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-14 sm:px-10 lg:gap-[32px] lg:px-[100px] lg:py-[100px]">
         <InlineMediaHeading lines={reasons.heading.lines} className="text-ink" />
 
         <div className="grid gap-4 md:grid-cols-2 lg:h-[494px] lg:grid-cols-[389fr_431fr_389fr]">
@@ -108,7 +109,7 @@ export function ReasonSection() {
             <PlainCard card={rightBottom} tinted />
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

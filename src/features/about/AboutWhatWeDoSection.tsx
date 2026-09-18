@@ -1,6 +1,6 @@
 import type { AboutFocusCard, EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { EmphasisText, SectionShell } from '@/components/ui'
+import { EmphasisText, MediaImage, SectionShell } from '@/components/ui'
 
 function FocusCard({ card }: { card: AboutFocusCard }) {
   return (
@@ -34,12 +34,13 @@ export function AboutWhatWeDoSection() {
 
         <div className="grid gap-4 sm:grid-cols-3 sm:items-stretch">
           <FocusCard card={visionCard} />
-          <img
-            src={whatWeDo.image.src}
-            alt={whatWeDo.image.alt}
-            className="h-full w-full rounded-xl object-cover"
-            loading="lazy"
-          />
+          <div className="relative min-h-[220px] overflow-hidden rounded-xl sm:min-h-0">
+            <MediaImage
+              src={whatWeDo.image.src}
+              alt={whatWeDo.image.alt}
+              className="size-full object-cover"
+            />
+          </div>
           <FocusCard card={missionCard} />
         </div>
       </SectionShell>

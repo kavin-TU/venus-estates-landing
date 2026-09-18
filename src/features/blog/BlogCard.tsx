@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { BlogArticle } from '@/types'
+import { MediaImage } from '@/components/ui'
 import { cn } from '@/lib'
 
 type BlogCardProps = {
@@ -17,15 +18,16 @@ export function BlogCard({
 }: BlogCardProps) {
   return (
     <Link to={post.path} className="group flex flex-col gap-3">
-      <div className="overflow-hidden rounded-lg">
-        <img
+      <div
+        className={cn(
+          'overflow-hidden rounded-lg',
+          featured ? 'aspect-[506/280]' : 'aspect-[351/177]',
+        )}
+      >
+        <MediaImage
           src={post.image.src}
           alt={post.image.alt}
-          className={cn(
-            'w-full object-cover transition-transform duration-500 group-hover:scale-105',
-            featured ? 'aspect-[506/280]' : 'aspect-[351/177]',
-          )}
-          loading="lazy"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
       <div className="flex flex-col gap-1">

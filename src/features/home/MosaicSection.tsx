@@ -1,6 +1,7 @@
 import type { ImageAsset, InlineMediaHeadingSegment } from '@/types'
 import { site } from '@/content'
 import { cn } from '@/lib'
+import { Reveal } from '@/components/ui'
 
 function Tile({ image, className }: { image: ImageAsset; className?: string }) {
   return (
@@ -21,7 +22,7 @@ export function MosaicSection() {
 
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-[1440px] px-5 py-12 lg:py-[75px]">
+      <Reveal className="mx-auto max-w-[1440px] px-5 py-12 lg:py-[75px]">
         <div className="grid gap-3.5 md:grid-cols-2 lg:h-[684px] lg:grid-cols-[511fr_350fr_511fr]">
           {/* Left column — two equal tiles */}
           <div className="flex flex-col gap-3.5">
@@ -73,7 +74,7 @@ export function MosaicSection() {
             className="aspect-[511/684] md:col-span-2 lg:col-span-1 lg:aspect-auto lg:h-full"
           />
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

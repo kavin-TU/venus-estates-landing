@@ -1,30 +1,29 @@
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { EmphasisText } from '@/components/ui'
+import { EmphasisText, MediaImage, Reveal } from '@/components/ui'
 
 export function ProjectsBanner() {
   const { banner } = site.projects
   const heading: readonly EmphasisRun[] = banner.heading
 
   return (
-    <section className="relative isolate bg-paper">
+    <Reveal as="section" fadeOnly className="relative isolate bg-paper">
       <div className="aspect-[1440/820] overflow-hidden lg:aspect-auto lg:h-[820px]">
-        <img
+        <MediaImage
           src={banner.image.src}
           alt={banner.image.alt}
-          className="size-full object-cover"
           loading="eager"
+          className="size-full object-cover"
         />
       </div>
 
       <div className="pointer-events-none absolute inset-0 flex items-center">
         <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-[60px]">
-          {/* Sits on the light sketch tile at row 2, column 1 — hence black */}
           <h1 className="text-[20px] font-bold uppercase leading-[1.3125] text-ink sm:text-[28px] lg:text-[32px]">
             <EmphasisText runs={heading} />
           </h1>
         </div>
       </div>
-    </section>
+    </Reveal>
   )
 }

@@ -1,7 +1,7 @@
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
 import logo from '@/assets/images/logo.png'
-import { EmphasisText, SectionShell } from '@/components/ui'
+import { EmphasisText, MediaImage, SectionShell } from '@/components/ui'
 
 function LogoBadge() {
   return (
@@ -49,11 +49,10 @@ export function AboutLeadershipSection() {
             </div>
 
             <div className="relative w-full sm:w-1/2">
-              <img
+              <MediaImage
                 src={profile.photo.src}
                 alt={profile.photo.alt}
-                className="h-[320px] w-full object-cover sm:h-full"
-                loading="lazy"
+                className="h-[320px] w-full object-cover sm:h-full sm:min-h-[360px]"
               />
               <LogoBadge />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-6 py-5" />

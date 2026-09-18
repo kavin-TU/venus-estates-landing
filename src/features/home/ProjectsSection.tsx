@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { EmphasisRun, ProjectCard } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, EmphasisText, InlineMediaHeading } from '@/components/ui'
+import { ArrowUpRight, EmphasisText, InlineMediaHeading, MediaImage, Reveal } from '@/components/ui'
 import {
   projectsCard,
   projectsCardRatio,
@@ -13,11 +13,10 @@ function ProjectTile({ card }: { card: ProjectCard }) {
   return (
     <Link to={card.path} className={projectsCard} aria-label={card.name}>
       <div className={projectsCardRatio}>
-        <img
+        <MediaImage
           src={card.image.src}
           alt={card.image.alt}
           className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
         />
       </div>
 
@@ -48,7 +47,7 @@ export function ProjectsSection() {
   const cards: readonly ProjectCard[] = projects.cards
 
   return (
-    <section className="bg-mist text-ink">
+    <Reveal as="section" className="bg-mist text-ink">
       {/* Header keeps the 1440 container; the card rail below is full-bleed. */}
       <div className="mx-auto max-w-[1440px] pt-12 lg:pt-[50px]">
         <div className="flex flex-col gap-8 px-6 pb-10 sm:px-10 lg:flex-row lg:items-start lg:gap-[50px] lg:px-[100px] lg:pb-[50px]">
@@ -77,6 +76,6 @@ export function ProjectsSection() {
           <ProjectTile key={card.name} card={card} />
         ))}
       </div>
-    </section>
+    </Reveal>
   )
 }

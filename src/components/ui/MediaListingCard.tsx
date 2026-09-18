@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import type { ImageAsset } from '@/types'
 import { ArrowUpRight } from './ArrowUpRight'
+import { MediaImage } from './MediaImage'
 
 type MediaListingCardProps = {
   to: string
@@ -27,11 +28,12 @@ export function MediaListingCard({
       aria-label={ariaLabel}
       className="group relative isolate block aspect-[608/404] overflow-hidden rounded-xl"
     >
-      <img
+      <MediaImage
         src={image.src}
         alt={image.alt}
-        className="absolute inset-0 -z-10 size-full object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
+        fill
+        className="transition-transform duration-500 group-hover:scale-105"
+        wrapperClassName="-z-10"
       />
       <span className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-ink/20" />
 

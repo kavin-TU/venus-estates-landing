@@ -1,4 +1,5 @@
 import type { EmphasisRun, EnquiryField, ImageAsset } from '@/types'
+import { MediaImage, Reveal } from '@/components/ui'
 import {
   EnquiryFormFields,
   useEnquiryForm,
@@ -34,7 +35,7 @@ export function TwoPanelEnquirySection({
 
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[75px]">
+      <Reveal className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[75px]">
         <div className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 lg:flex-row">
           <form
             onSubmit={handleSubmit}
@@ -54,11 +55,11 @@ export function TwoPanelEnquirySection({
             />
           </form>
 
-          <div className="min-h-[240px] flex-1">
-            <img src={image.src} alt={image.alt} className="size-full object-cover" loading="lazy" />
+          <div className="relative min-h-[240px] flex-1">
+            <MediaImage src={image.src} alt={image.alt} fill />
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

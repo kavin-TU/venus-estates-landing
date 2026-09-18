@@ -1,4 +1,5 @@
 import type { ImageAsset } from '@/types'
+import { MediaImage } from '@/components/ui'
 import { cn } from '@/lib'
 
 type GalleryAlbumMosaicProps = {
@@ -60,13 +61,8 @@ function Tile({
   className?: string
 }) {
   return (
-    <div className={cn('overflow-hidden rounded-[10px] bg-mist', className)}>
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="size-full object-cover"
-        loading="lazy"
-      />
+    <div className={cn('relative overflow-hidden rounded-[10px] bg-mist', className)}>
+      <MediaImage src={image.src} alt={image.alt} className="size-full object-cover" />
     </div>
   )
 }
