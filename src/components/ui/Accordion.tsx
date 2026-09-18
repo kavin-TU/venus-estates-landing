@@ -1,6 +1,8 @@
 import { useId, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import type { FaqItem } from '@/types'
-import { cn } from '@/lib'
+import { cn, useReducedMotion } from '@/lib'
+import { REVEAL_EASE } from './Reveal'
 import { ArrowUpRight } from './ArrowUpRight'
 
 type AccordionProps = {
@@ -13,6 +15,8 @@ type AccordionProps = {
 export function Accordion({ items, defaultOpen = 0, className }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState(defaultOpen)
   const baseId = useId()
+  const reducedMotion = useReducedMotion()
+  const duration = reducedMotion ? 0 : 0.35
 
   return (
     <div className={cn('flex flex-col gap-3.5', className)}>
@@ -24,7 +28,7 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
         return (
           <div
             key={item.question}
-            className="flex flex-col gap-4 rounded-lg border border-line bg-paper p-4"
+            className="flex flex-col rounded-lg border border-line bg-paper p-4"
           >
             <h3>
               <button
@@ -44,15 +48,26 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
                 />
               </button>
             </h3>
-            <div
-              id={panelId}
-              role="region"
-              aria-labelledby={buttonId}
-              hidden={!open}
-              className="text-[16px] font-medium leading-relaxed text-ink/80"
-            >
-              {item.answer}
-            </div>
+
+            <AnimatePresence initial={false}>
+              {open ? (
+                <motion.div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  key="panel"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration, ease: REVEAL_EASE }}
+                  className="overflow-hidden"
+                >
+                  <p className="pt-4 text-[16px] font-medium leading-relaxed text-ink/80">
+                    {item.answer}
+                  </p>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
         )
       })}
