@@ -9,7 +9,7 @@ import {
   InlineMediaHeading,
   Reveal,
 } from '@/components/ui'
-import { BlogCard } from '@/features/blog'
+import { BlogCard } from '@/features/blog/BlogCard'
 
 export function BlogsSection() {
   const { blogs } = site.home

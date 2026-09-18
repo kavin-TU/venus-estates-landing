@@ -1,5 +1,6 @@
 import type { StatItem } from '@/types'
 import { cn } from '@/lib'
+import { CountUp } from './CountUp'
 
 type StatRowProps = {
   items: readonly StatItem[]
@@ -22,10 +23,12 @@ export function StatRow({ items, className }: StatRowProps) {
           className="flex flex-col items-center gap-2 pt-4 text-center"
         >
           <p className="font-stat text-[32px] font-semibold leading-10 text-ink sm:text-[40px]">
-            {item.value}
-            {item.suffix ? (
-              <span className="text-secondary">{item.suffix}</span>
-            ) : null}
+            <CountUp
+              value={Number.parseInt(item.value, 10) || 0}
+              pad={item.value.length}
+              suffix={item.suffix}
+              suffixClassName="text-secondary"
+            />
           </p>
           <p className="text-[14px] font-medium leading-[21px] text-ink sm:text-[16px]">
             {item.label}

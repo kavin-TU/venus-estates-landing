@@ -1,4 +1,4 @@
-import { MediaImage, Reveal } from '@/components/ui'
+import { CountUp, MediaImage, Reveal } from '@/components/ui'
 import { site } from '@/content'
 
 export function AboutStatsSection() {
@@ -18,7 +18,11 @@ export function AboutStatsSection() {
         {stats.items.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-1 px-2 text-center">
             <span className="font-stat text-[28px] font-bold text-paper sm:text-[36px] lg:text-[44px]">
-              {stat.value}
+              <CountUp
+                value={Number.parseInt(stat.value, 10) || 0}
+                pad={stat.value.length}
+                suffix={stat.suffix}
+              />
             </span>
             <span className="text-[12px] font-medium text-paper/90 sm:text-[14px] lg:text-[16px]">
               {stat.label}

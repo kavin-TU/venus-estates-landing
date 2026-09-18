@@ -225,6 +225,7 @@ export type AboutFocusCard = {
 
 export type AboutStat = {
   value: string
+  suffix?: string
   label: string
 }
 

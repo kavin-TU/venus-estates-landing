@@ -1571,9 +1571,9 @@ export const site = {
         alt: 'The Prestige by Global Venus Estates entrance gate at dusk',
       } satisfies ImageAsset,
       items: [
-        { value: '10+', label: 'Years of Combined Industry Experience' },
-        { value: '10+', label: 'Projects Completed' },
-        { value: '05+', label: 'Ongoing Projects' },
+        { value: '10', suffix: '+', label: 'Years of Combined Industry Experience' },
+        { value: '10', suffix: '+', label: 'Projects Completed' },
+        { value: '05', suffix: '+', label: 'Ongoing Projects' },
       ] as const satisfies readonly AboutStat[],
     },
 
