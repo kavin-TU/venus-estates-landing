@@ -45,7 +45,7 @@ export const heroWatermarkSettled = cn(
   // tablet
   'md:max-lg:translate-y-[80%]',
   // desktop
-  'lg:translate-y-[10%]',
+  'lg:translate-y-[18%]',
 )
 
 /** Stats carousel layout */

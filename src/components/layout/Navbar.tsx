@@ -35,6 +35,7 @@ export function Navbar() {
   const { pathname } = useLocation()
   const chrome = getNavChrome(pathname)
   const light = chrome === 'light'
+  const isHome = pathname === '/'
   const { navLinks, cta, logoAlt } = site
 
   return (
@@ -58,7 +59,10 @@ export function Navbar() {
         </NavLink>
 
         <nav
-          className="hidden h-[52px] w-full max-w-[868px] items-center justify-between rounded-full bg-transparent px-[50px] lg:flex"
+          className={cn(
+            'hidden h-[52px] w-full max-w-[868px] items-center justify-between rounded-full px-[50px] lg:flex',
+            isHome ? 'bg-transparent' : 'bg-nav-pill backdrop-blur-[25px]',
+          )}
           aria-label="Primary"
         >
           {navLinks.map((link) => (
