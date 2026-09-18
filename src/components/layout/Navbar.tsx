@@ -2,9 +2,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import logo from '@/assets/images/logo.png'
-import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
-import { primaryCtaBaseClass } from '@/components/ui'
+import { ArrowUpRight, primaryCtaBaseClass } from '@/components/ui'
 import { cn } from '@/lib'
 
 type NavChrome = 'overlay' | 'light' | 'dark'
@@ -132,7 +131,7 @@ export function Navbar() {
             )}
           >
             {cta.bookVisit.label}
-            <img src={arrowUpRight} alt="" className="size-4" width={16} height={16} />
+            <ArrowUpRight className="size-4" />
           </Link>
 
           <button

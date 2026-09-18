@@ -1,5 +1,5 @@
 import type { EmphasisRun } from '@/types'
-import { CredentialCard, EmphasisText, MediaImage, SectionShell } from '@/components/ui'
+import { CredentialCard, EmphasisText, MediaImage, SectionShell, SiteIcon } from '@/components/ui'
 import { site } from '@/content'
 
 export function WhyUsCredentialsSection() {
@@ -33,12 +33,7 @@ export function WhyUsCredentialsSection() {
             />
 
             <div className="flex flex-col gap-2 p-6">
-              <img
-                src={credentials.feature.icon.src}
-                alt=""
-                className="size-6"
-                aria-hidden="true"
-              />
+              <SiteIcon name={credentials.feature.icon} className="size-6 text-paper" />
               <h3 className="text-[18px] font-medium lg:text-[20px]">{credentials.feature.label}</h3>
               <p className="text-[14px] font-medium leading-snug text-paper/85">
                 {credentials.feature.caption}

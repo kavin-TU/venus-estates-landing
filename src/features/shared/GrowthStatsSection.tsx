@@ -1,10 +1,10 @@
-import type { EmphasisRun, GrowthStat, ImageAsset } from '@/types'
-import { EmphasisText } from '@/components/ui'
+import type { EmphasisRun, GrowthStat, SiteIconName } from '@/types'
+import { EmphasisText, SiteIcon } from '@/components/ui'
 
 type GrowthStatsSectionProps = {
   heading: readonly EmphasisRun[]
   body: string
-  icon: ImageAsset
+  icon: SiteIconName
   stats: readonly GrowthStat[]
 }
 
@@ -24,7 +24,7 @@ export function GrowthStatsSection({ heading, body, icon, stats }: GrowthStatsSe
         <ul className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
           {stats.map((stat) => (
             <li key={stat.index} className="flex flex-col gap-3">
-              <img src={icon.src} alt={icon.alt} className="size-10" width={40} height={40} />
+              <SiteIcon name={icon} className="size-10 text-secondary" />
               <span className="block h-px w-full bg-ink/20" aria-hidden="true" />
               <span className="font-stat text-[24px] font-semibold leading-none text-secondary">
                 {stat.index}

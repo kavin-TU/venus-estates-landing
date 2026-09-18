@@ -1,17 +1,11 @@
 import type { AboutFocusCard, EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { EmphasisText, MediaImage, SectionShell } from '@/components/ui'
+import { EmphasisText, MediaImage, SectionShell, SiteIcon } from '@/components/ui'
 
 function FocusCard({ card }: { card: AboutFocusCard }) {
   return (
     <div className="flex flex-1 flex-col gap-3 rounded-xl bg-footer p-6 text-paper">
-      <img
-        src={card.icon.src}
-        alt={card.icon.alt}
-        className="size-6 mix-blend-screen"
-        width={24}
-        height={24}
-      />
+      <SiteIcon name={card.icon} className="size-6 text-paper" />
       <h3 className="text-[18px] font-bold uppercase leading-snug lg:text-[20px]">{card.title}</h3>
       <p className="text-[14px] font-medium leading-snug text-paper/85 sm:text-[16px]">
         {card.body}

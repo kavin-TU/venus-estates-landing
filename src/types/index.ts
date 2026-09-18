@@ -31,6 +31,7 @@ export type {
   ProtectCard,
   ReasonCard,
   ReasonIcon,
+  SiteIconName,
   SiteAddress,
   SiteContact,
   SocialLink,

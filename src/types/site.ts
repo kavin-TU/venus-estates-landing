@@ -68,6 +68,35 @@ export type ReasonCard = {
   image?: ImageAsset
 }
 
+/** Content keys for SVG icons in `@/components/ui/Icons`. */
+export type SiteIconName =
+  | 'arrowClockwise'
+  | 'arrowRight'
+  | 'bank'
+  | 'buildings'
+  | 'caretDown'
+  | 'certificate'
+  | 'chartLineUp'
+  | 'equalizer'
+  | 'eye'
+  | 'facebookLogo'
+  | 'file'
+  | 'fileText'
+  | 'flipHorizontal'
+  | 'handshake'
+  | 'hourglassLow'
+  | 'instagramLogo'
+  | 'key'
+  | 'mapPinSimpleArea'
+  | 'mapTrifold'
+  | 'nut'
+  | 'sealCheck'
+  | 'shieldCheck'
+  | 'star'
+  | 'target'
+  | 'video'
+  | 'youtubeLogo'
+
 /** One run of mixed-emphasis copy: accent runs render orange, muted runs grey */
 export type EmphasisRun = {
   text: string
@@ -183,7 +212,7 @@ export type NriCredentialTone = 'primary' | 'accent'
 
 export type NriCredentialCard = {
   tone: NriCredentialTone
-  icon: ImageAsset
+  icon: SiteIconName
   /** Large low-opacity icon in the card's bottom-right corner; only set on some cards. */
   watermark?: ImageAsset
   title: string
@@ -199,7 +228,7 @@ export type AssetComparisonColumn = {
 }
 
 export type CapitalGrowthCard = {
-  icon: ImageAsset
+  icon: SiteIconName
   title: string
   body: string
 }
@@ -218,7 +247,7 @@ export type ConsentRun = {
 }
 
 export type AboutFocusCard = {
-  icon: ImageAsset
+  icon: SiteIconName
   title: string
   body: string
 }
@@ -240,7 +269,7 @@ export type LeaderProfile = {
 /** One card in the Why Us "How We Protect Your Life Savings" grid. */
 export type ProtectCard = {
   index: string
-  icon: ImageAsset
+  icon: SiteIconName
   background: ImageAsset
   title: string
   bullets: readonly string[]
@@ -248,7 +277,7 @@ export type ProtectCard = {
 
 /** The large feature card ("RERA-Registered") beside the Why Us credentials grid. */
 export type WhyUsFeatureCard = {
-  icon: ImageAsset
+  icon: SiteIconName
   label: string
   image: ImageAsset
   caption: string

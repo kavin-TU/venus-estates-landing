@@ -1,11 +1,11 @@
 import type { CapitalGrowthCard, EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { EmphasisText, SectionShell } from '@/components/ui'
+import { EmphasisText, SectionShell, SiteIcon } from '@/components/ui'
 
 function Card({ card }: { card: CapitalGrowthCard }) {
   return (
     <div className="flex flex-col gap-4 rounded-xl border border-secondary/40 bg-mist p-6">
-      <img src={card.icon.src} alt={card.icon.alt} className="size-6" width={24} height={24} />
+      <SiteIcon name={card.icon} className="size-6 text-secondary" />
       <h3 className="text-[18px] font-medium leading-snug text-ink lg:text-[20px]">
         {card.title}
       </h3>

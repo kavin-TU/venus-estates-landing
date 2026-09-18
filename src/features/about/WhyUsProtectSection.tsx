@@ -1,6 +1,6 @@
 import type { EmphasisRun, ProtectCard } from '@/types'
 import { site } from '@/content'
-import { EmphasisText, MediaImage, SectionShell } from '@/components/ui'
+import { EmphasisText, MediaImage, SectionShell, SiteIcon } from '@/components/ui'
 
 function Card({ card }: { card: ProtectCard }) {
   return (
@@ -14,7 +14,7 @@ function Card({ card }: { card: ProtectCard }) {
       <span className="absolute inset-0 -z-10 bg-ink/50" aria-hidden="true" />
 
       <div className="flex items-start justify-between gap-4">
-        <img src={card.icon.src} alt="" className="size-7" aria-hidden="true" />
+        <SiteIcon name={card.icon} className="size-7 text-paper" />
         <span className="font-stat text-[32px] font-bold leading-none text-paper/30">
           {card.index}
         </span>

@@ -3,8 +3,8 @@ import { motion } from 'motion/react'
 import heroBgImage from '@/assets/images/hero/bg.png'
 import heroBgCutout from '@/assets/images/hero/cutout.png'
 import aboutConnector from '@/assets/images/hero/about-connector.svg'
-import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
+import { ArrowUpRight } from '@/components/ui'
 import { cn } from '@/lib'
 import {
   heroAbout,
@@ -111,13 +111,7 @@ export function HeroSection() {
               {hero.exploreLabel}
             </span>
             <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-paper p-2.5">
-              <img
-                src={arrowUpRight}
-                alt=""
-                className="h-[14px] w-[14px] brightness-0"
-                width={14}
-                height={14}
-              />
+              <ArrowUpRight className="size-[14px] text-ink" />
             </span>
           </Link>
         </motion.div>

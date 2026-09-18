@@ -29,6 +29,7 @@ import type {
   SocialLink,
   StatItem,
   Testimonial,
+  SiteIconName,
   WhyUsFeatureCard,
 } from '@/types'
 import heroSlide1 from '@/assets/images/hero/slides/slide-1.png'
@@ -76,35 +77,20 @@ import galleryJk4 from '@/assets/images/gallery/jk-4.jpg'
 import nriHero from '@/assets/images/nri/hero.png'
 import nriCredentialsImage from '@/assets/images/nri/credentials.png'
 import nriEnquiryBg from '@/assets/images/nri/enquiry-bg.png'
-import nriStepperIcon from '@/assets/images/nri/icon-stepper.png'
-import nriFileIcon from '@/assets/images/nri/icon-file.png'
 import nriFileWatermark from '@/assets/images/nri/watermark-file.png'
-import nriVideoIcon from '@/assets/images/nri/icon-video.png'
-import nriBankIcon from '@/assets/images/nri/icon-bank.png'
-import nriHandshakeIcon from '@/assets/images/nri/icon-handshake.png'
 import nriBuildingsWatermark from '@/assets/images/nri/watermark-buildings.png'
 import investorHero from '@/assets/images/investor/hero.png'
-import investorChartIcon from '@/assets/images/investor/icon-chart.png'
-import investorMapIcon from '@/assets/images/investor/icon-map.png'
-import investorShieldIcon from '@/assets/images/investor/icon-shield.png'
 import contactMap from '@/assets/images/contact/map.png'
 import contactEnquiryBg from '@/assets/images/contact/enquiry-bg.png'
 import aboutHeroMosaic from '@/assets/images/about-us/hero-mosaic.png'
 import aboutStoryWatermark from '@/assets/images/about-us/about-us-hero.png'
 import aboutWhatWeDoImage from '@/assets/images/about-us/what-we-do.png'
-import aboutVisionIcon from '@/assets/images/about-us/icon-eye.png'
-import aboutMissionIcon from '@/assets/images/about-us/icon-target.png'
 import aboutStatsBg from '@/assets/images/about-us/project-stats.png'
 import aboutLeadershipPhoto from '@/assets/images/about-us/leadership.png'
 import whyUsBanner1 from '@/assets/images/about-us-why/protect-banner-1.png'
 import whyUsBanner2 from '@/assets/images/about-us-why/protect-banner-2.png'
 import whyUsBanner3 from '@/assets/images/about-us-why/protect-banner-3.png'
 import whyUsBanner4 from '@/assets/images/about-us-why/protect-banner-4.png'
-import whyUsIconNut from '@/assets/images/about-us-why/icon-nut.png'
-import whyUsIconEqualizer from '@/assets/images/about-us-why/icon-equalizer.png'
-import whyUsIconKey from '@/assets/images/about-us-why/icon-key.png'
-import whyUsIconSealCheck from '@/assets/images/about-us-why/icon-seal-check.png'
-import whyUsIconCertificate from '@/assets/images/about-us-why/icon-certificate.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1231,10 +1217,7 @@ export const site = {
   /** Content chunks shared verbatim across multiple "corner" pages. */
   shared: {
     growthStats: {
-      icon: {
-        src: nriStepperIcon,
-        alt: '',
-      } satisfies ImageAsset,
+      icon: 'arrowClockwise' satisfies SiteIconName,
       stats: [
         { index: '01', value: '15–20% Growth', label: 'Forecast' },
         { index: '02', value: 'Up to 15% Commercial', label: 'Yields' },
@@ -1286,23 +1269,23 @@ export const site = {
       cards: [
         {
           tone: 'primary',
-          icon: { src: nriFileIcon, alt: '' },
+          icon: 'file',
           watermark: { src: nriFileWatermark, alt: '' },
           title: '100% Transparent Paperwork',
         },
         {
           tone: 'accent',
-          icon: { src: nriVideoIcon, alt: '' },
+          icon: 'video',
           title: 'Live Video Tours',
         },
         {
           tone: 'accent',
-          icon: { src: nriBankIcon, alt: '' },
+          icon: 'bank',
           title: 'Remote Banking & Financial Support',
         },
         {
           tone: 'primary',
-          icon: { src: nriHandshakeIcon, alt: '' },
+          icon: 'handshake',
           watermark: { src: nriBuildingsWatermark, alt: '' },
           title: 'After-Sale Property Stewardship',
         },
@@ -1398,17 +1381,17 @@ export const site = {
       body: 'Invest in thoughtfully selected real estate opportunities designed to build long-term wealth. With strategic locations, quality developments, and strong growth potential, Venus Estates helps you make confident investments for a more valuable future.',
       cards: [
         {
-          icon: { src: investorMapIcon, alt: '' },
+          icon: 'mapTrifold',
           title: 'High-Growth Site Selection',
           body: 'Layouts developed along growth corridors — bypass corridors, industrial zones & education hubs.',
         },
         {
-          icon: { src: investorChartIcon, alt: '' },
+          icon: 'chartLineUp',
           title: 'Infrastructure Value boost',
           body: 'We don’t just sell land. We add value — 10+ premium amenities.',
         },
         {
-          icon: { src: investorShieldIcon, alt: '' },
+          icon: 'shieldCheck',
           title: 'Bank-Verified Security',
           body: '100% clear parent titles & multi-bank clearances — ensuring your capital is safe from disputes.',
         },
@@ -1554,12 +1537,12 @@ export const site = {
       } satisfies ImageAsset,
       cards: [
         {
-          icon: { src: aboutVisionIcon, alt: '' },
+          icon: 'eye',
           title: 'Our Vision',
           body: 'To redefine real estate development through thoughtful design, innovation and integrity — creating spaces that inspire trust, comfort and long-term value.',
         },
         {
-          icon: { src: aboutMissionIcon, alt: '' },
+          icon: 'target',
           title: 'Our Mission',
           body: 'To consistently deliver high-quality projects that reflect excellence in architecture, engineering and execution — while nurturing long-term relationships with clients, investors and communities.',
         },
@@ -1621,7 +1604,7 @@ export const site = {
         cards: [
           {
             index: '01',
-            icon: { src: whyUsIconNut, alt: '' },
+            icon: 'nut',
             background: {
               src: whyUsBanner1,
               alt: 'Street lamp against a mountain silhouette at dusk',
@@ -1631,7 +1614,7 @@ export const site = {
           },
           {
             index: '02',
-            icon: { src: whyUsIconEqualizer, alt: '' },
+            icon: 'equalizer',
             background: {
               src: whyUsBanner2,
               alt: 'Paved plot road with curb and streetlights',
@@ -1645,7 +1628,7 @@ export const site = {
           },
           {
             index: '03',
-            icon: { src: whyUsIconKey, alt: '' },
+            icon: 'key',
             background: {
               src: whyUsBanner3,
               alt: 'Golden sunset over palm trees',
@@ -1659,7 +1642,7 @@ export const site = {
           },
           {
             index: '04',
-            icon: { src: whyUsIconSealCheck, alt: '' },
+            icon: 'sealCheck',
             background: {
               src: whyUsBanner4,
               alt: 'Plot marker sign on a residential layout',
@@ -1682,7 +1665,7 @@ export const site = {
         ] as const satisfies readonly EmphasisRun[],
         body: 'Built on trust, transparency, and quality, Venus Estates is committed to delivering legally secure, thoughtfully planned, and high-quality developments. Our credentials reflect our dedication to customer satisfaction, responsible development, and creating lasting value for every investment.',
         feature: {
-          icon: { src: whyUsIconCertificate, alt: '' },
+          icon: 'certificate',
           label: 'RERA-Registered',
           image: {
             src: nriCredentialsImage,
@@ -1694,23 +1677,23 @@ export const site = {
         cards: [
           {
             tone: 'primary',
-            icon: { src: nriFileIcon, alt: '' },
+            icon: 'file',
             watermark: { src: nriFileWatermark, alt: '' },
             title: '100% Clear paperwork',
           },
           {
             tone: 'accent',
-            icon: { src: whyUsIconSealCheck, alt: '' },
+            icon: 'sealCheck',
             title: 'Ethical business practices',
           },
           {
             tone: 'accent',
-            icon: { src: whyUsIconNut, alt: '' },
+            icon: 'nut',
             title: 'Customer-centric Service',
           },
           {
             tone: 'primary',
-            icon: { src: whyUsIconEqualizer, alt: '' },
+            icon: 'equalizer',
             watermark: { src: nriBuildingsWatermark, alt: '' },
             title: 'Quality developments',
           },

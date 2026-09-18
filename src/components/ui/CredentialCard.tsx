@@ -1,4 +1,5 @@
 import type { NriCredentialCard } from '@/types'
+import { SiteIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib'
 
 type CredentialCardProps = {
@@ -25,7 +26,7 @@ export function CredentialCard({ card, className }: CredentialCardProps) {
         />
       ) : null}
 
-      <img src={card.icon.src} alt={card.icon.alt} className="size-[30px]" width={30} height={30} />
+      <SiteIcon name={card.icon} className="size-[30px] text-paper" />
       <h3 className="text-[18px] font-medium leading-snug lg:text-[20px]">{card.title}</h3>
     </div>
   )

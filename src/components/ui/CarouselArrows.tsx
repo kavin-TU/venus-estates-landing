@@ -1,5 +1,5 @@
 import { cn } from '@/lib'
-import { ArrowLeft, ArrowRight } from './Icons'
+import { ArrowRight } from './Icons'
 
 type CarouselArrowsProps = {
   onPrev: () => void
@@ -25,7 +25,7 @@ export function CarouselArrows({
         aria-label={`Previous ${label}`}
         className={button}
       >
-        <ArrowLeft className="h-[21px] w-[25px]" />
+        <ArrowRight className="h-[21px] w-[25px] -scale-x-100" />
       </button>
       <button
         type="button"

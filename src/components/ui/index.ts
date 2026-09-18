@@ -10,16 +10,37 @@ export { EmphasisText } from './EmphasisText'
 export { Checkbox, Input, Textarea } from './Field'
 export { FullBleedBanner } from './FullBleedBanner'
 export {
-  ArrowLeft,
+  ArrowClockwise,
   ArrowRight,
-  FileIcon,
+  Bank,
+  Buildings,
+  CaretDown,
+  Certificate,
+  ChartLineUp,
+  Equalizer,
+  Eye,
+  FacebookLogo,
+  File,
+  FileText,
   FlipHorizontal,
+  Handshake,
   HourglassLow,
-  MapPin,
+  InstagramLogo,
+  Key,
+  MapPinSimpleArea,
+  MapTrifold,
+  Nut,
   Quotes,
   SealCheck,
+  ShieldCheck,
+  SiteIcon,
   Star,
+  Target,
+  Video,
+  YoutubeLogo,
+  siteIcons,
 } from './Icons'
+export type { IconProps, SiteIconName } from './Icons'
 export { InlineMediaHeading } from './InlineMediaHeading'
 export { MediaImage } from './MediaImage'
 export { MediaListingCard } from './MediaListingCard'

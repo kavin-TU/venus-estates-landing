@@ -3,11 +3,11 @@ import type { ReasonCard, ReasonIcon } from '@/types'
 import { site } from '@/content'
 import { cn } from '@/lib'
 import {
-  FileIcon,
+  File,
   FlipHorizontal,
   HourglassLow,
   InlineMediaHeading,
-  MapPin,
+  MapPinSimpleArea,
   Reveal,
   SealCheck,
 } from '@/components/ui'
@@ -15,10 +15,10 @@ import {
 const ICONS: Record<ReasonIcon, (props: { className?: string }) => JSX.Element> =
   {
     transparent: FlipHorizontal,
-    legal: FileIcon,
+    legal: File,
     approved: SealCheck,
     onTime: HourglassLow,
-    location: MapPin,
+    location: MapPinSimpleArea,
   }
 
 const CARD_BASE =

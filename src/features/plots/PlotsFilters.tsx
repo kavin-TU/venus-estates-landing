@@ -1,4 +1,5 @@
 import { site } from '@/content'
+import { ArrowClockwise, CaretDown } from '@/components/ui'
 import { cn } from '@/lib'
 
 export type PlotsFilterState = {
@@ -11,22 +12,6 @@ type PlotsFiltersProps = {
   value: PlotsFilterState
   onChange: (next: PlotsFilterState) => void
   onReset: () => void
-}
-
-function CaretDown({ className = 'size-[18px]' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
-      <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function ArrowClockwise({ className = 'size-4' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-      <path d="M13.65 2.35A7.96 7.96 0 0 0 8 0C3.58 0 0 3.58 0 8s3.58 8 8 8a7.95 7.95 0 0 0 6.5-3.35l-1.7-1.3A5.96 5.96 0 0 1 8 14a6 6 0 1 1 5.45-8.55L11 8h5V3l-2.35-.65Z" />
-    </svg>
-  )
 }
 
 function FilterSelect({
@@ -108,7 +93,7 @@ export function PlotsFilters({ value, onChange, onReset }: PlotsFiltersProps) {
         className="inline-flex h-[45px] shrink-0 items-center justify-center gap-2 rounded-full border border-secondary px-5 text-[16px] font-semibold text-secondary transition hover:bg-secondary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
       >
         {filters.resetLabel}
-        <ArrowClockwise />
+        <ArrowClockwise className="size-4" />
       </button>
     </div>
   )
