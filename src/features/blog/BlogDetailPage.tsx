@@ -3,6 +3,7 @@ import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
 import { BlogArticleBody } from './BlogArticleBody'
 import { BlogCard } from './BlogCard'
+import { EmphasisText } from '@/components/ui'
 
 export function BlogDetailPage() {
   const { slug = '' } = useParams<{ slug: string }>()
@@ -43,14 +44,7 @@ export function BlogDetailPage() {
         {related.length > 0 ? (
           <div className="flex flex-col gap-6 lg:gap-8">
             <h2 className="text-[24px] font-bold uppercase leading-[1.3125] text-ink sm:text-[28px] lg:text-[32px]">
-              {relatedHeading.map((run, index) => (
-                <span
-                  key={index}
-                  className={run.accent ? 'text-secondary' : undefined}
-                >
-                  {run.text}
-                </span>
-              ))}
+              <EmphasisText runs={relatedHeading} />
             </h2>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-5">

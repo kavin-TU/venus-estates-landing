@@ -8,32 +8,7 @@ import {
   CarouselDots,
   InlineMediaHeading,
 } from '@/components/ui'
-
-function BlogCard({ post, featured }: { post: BlogPost; featured: boolean }) {
-  return (
-    <Link to={post.path} className="group flex flex-col gap-3">
-      <div className="overflow-hidden rounded-lg">
-        <img
-          src={post.image.src}
-          alt={post.image.alt}
-          className="aspect-[351/177] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-[14px] font-semibold text-ink/60">{post.date}</p>
-        <h3
-          className={cn(
-            'text-[16px] font-semibold uppercase leading-snug text-ink transition-colors group-hover:text-secondary',
-            featured && 'lg:max-w-[506px]',
-          )}
-        >
-          {post.title}
-        </h3>
-      </div>
-    </Link>
-  )
-}
+import { BlogCard } from '@/features/blog'
 
 export function BlogsSection() {
   const { blogs } = site.home

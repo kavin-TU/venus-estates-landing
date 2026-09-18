@@ -1,8 +1,8 @@
-import type { FormEvent } from 'react'
-import { useState } from 'react'
 import type { EmphasisRun, EnquiryField, ImageAsset } from '@/types'
-import { ArrowUpRight, Input, primaryCtaClass } from '@/components/ui'
-import { cn } from '@/lib'
+import {
+  EnquiryFormFields,
+  useEnquiryForm,
+} from '@/features/shared/enquiry'
 
 type TwoPanelEnquirySectionProps = {
   heading: readonly EmphasisRun[]
@@ -20,14 +20,6 @@ type TwoPanelEnquirySectionProps = {
   submitLabel: string
 }
 
-const EMPTY = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  desiredDate: '',
-}
-
 /** The bordered form-panel + side-image enquiry layout shared by the NRI and Investor corner pages. */
 export function TwoPanelEnquirySection({
   heading,
@@ -38,18 +30,7 @@ export function TwoPanelEnquirySection({
   fields,
   submitLabel,
 }: TwoPanelEnquirySectionProps) {
-  const [values, setValues] = useState(EMPTY)
-
-  const update =
-    (name: keyof typeof EMPTY) =>
-    (event: { target: { value: string } }) => {
-      setValues((current) => ({ ...current, [name]: event.target.value }))
-    }
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    // TODO: no enquiry endpoint exists yet — wire this up when the backend lands.
-  }
+  const { values, update, handleSubmit } = useEnquiryForm()
 
   return (
     <section className="bg-paper">
@@ -59,82 +40,18 @@ export function TwoPanelEnquirySection({
             onSubmit={handleSubmit}
             className="flex w-full flex-col gap-5 bg-paper p-6 lg:w-[550px] lg:p-8"
           >
-            <div className="flex flex-col gap-2.5">
-              <h3 className="text-[18px] font-bold uppercase leading-none text-ink">
-                {heading.map((run, i) => (
-                  <span key={i} className={run.accent ? 'text-secondary' : undefined}>
-                    {run.text}
-                  </span>
-                ))}
-              </h3>
-              <p className="text-[14px] font-medium leading-snug text-ink">{subheading}</p>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Input
-                label={fields.firstName.label}
-                name={fields.firstName.name}
-                placeholder={fields.firstName.placeholder}
-                autoComplete="given-name"
-                required
-                value={values.firstName}
-                onChange={update('firstName')}
-              />
-              <Input
-                label={fields.lastName.label}
-                name={fields.lastName.name}
-                placeholder={fields.lastName.placeholder}
-                autoComplete="family-name"
-                required
-                value={values.lastName}
-                onChange={update('lastName')}
-              />
-            </div>
-
-            <Input
-              label={fields.email.label}
-              name={fields.email.name}
-              type="email"
-              placeholder={fields.email.placeholder}
-              autoComplete="email"
-              required
-              value={values.email}
-              onChange={update('email')}
+            <EnquiryFormFields
+              heading={heading}
+              subheading={subheading}
+              fields={fields}
+              dialCode={dialCode}
+              otpNotice={otpNotice}
+              submitLabel={submitLabel}
+              values={values}
+              update={update}
+              showAdditional={false}
+              submitClassName="mt-1"
             />
-
-            <div className="flex flex-col gap-2">
-              <Input
-                label={fields.phone.label}
-                name={fields.phone.name}
-                type="tel"
-                inputMode="tel"
-                pattern="[0-9 ]{10,14}"
-                placeholder={fields.phone.placeholder}
-                autoComplete="tel-national"
-                required
-                value={values.phone}
-                onChange={update('phone')}
-                prefix={<span className="text-[16px] font-medium text-secondary">{dialCode}</span>}
-              />
-              <p className="text-[14px] font-medium leading-snug text-secondary">{otpNotice}</p>
-            </div>
-
-            <Input
-              label={fields.desiredDate.label}
-              name={fields.desiredDate.name}
-              type="date"
-              placeholder={fields.desiredDate.placeholder}
-              value={values.desiredDate}
-              onChange={update('desiredDate')}
-            />
-
-            <button
-              type="submit"
-              className={cn(primaryCtaClass, 'mt-1')}
-            >
-              {submitLabel}
-              <ArrowUpRight className="size-4" />
-            </button>
           </form>
 
           <div className="min-h-[240px] flex-1">

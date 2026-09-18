@@ -1,6 +1,7 @@
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
 import logo from '@/assets/images/logo.png'
+import { EmphasisText, SectionShell } from '@/components/ui'
 
 function LogoBadge() {
   return (
@@ -16,13 +17,9 @@ export function AboutLeadershipSection() {
 
   return (
     <section className="bg-paper text-ink">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
+      <SectionShell>
         <h2 className="text-center text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:text-[32px]">
-          {heading.map((run, index) => (
-            <span key={index} className={run.accent ? 'text-secondary' : undefined}>
-              {run.text}
-            </span>
-          ))}
+          <EmphasisText runs={heading} />
         </h2>
 
         {leadership.profiles.map((profile) => (
@@ -67,7 +64,7 @@ export function AboutLeadershipSection() {
             </div>
           </div>
         ))}
-      </div>
+      </SectionShell>
     </section>
   )
 }

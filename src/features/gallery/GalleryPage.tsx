@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { GalleryAlbum } from '@/types'
 import { site } from '@/content'
-import { CarouselArrows, CarouselDots } from '@/components/ui'
+import { CarouselArrows, CarouselDots, SectionShell } from '@/components/ui'
 import { GalleryBanner } from './GalleryBanner'
 import { GalleryGrid } from './GalleryGrid'
 import { GalleryIntro } from './GalleryIntro'
@@ -20,7 +20,7 @@ export function GalleryPage() {
       <GalleryBanner />
 
       <section className="bg-paper text-ink">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
+        <SectionShell padding="compact">
           <GalleryIntro />
           <GalleryGrid albums={visible} />
 
@@ -39,7 +39,7 @@ export function GalleryPage() {
               />
             </div>
           ) : null}
-        </div>
+        </SectionShell>
       </section>
     </>
   )

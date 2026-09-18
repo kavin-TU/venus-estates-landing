@@ -1,13 +1,7 @@
 import type { Testimonial } from '@/types'
 import { site } from '@/content'
 import { cn, useCarousel } from '@/lib'
-import {
-  CarouselArrows,
-  CarouselDots,
-  InlineMediaHeading,
-  Quotes,
-  Star,
-} from '@/components/ui'
+import { CarouselArrows, CarouselDots, InlineMediaHeading, Quotes, Star, SectionShell } from '@/components/ui'
 
 function TestimonialCard({
   item,
@@ -83,7 +77,7 @@ export function TestimonialsSection() {
 
   return (
     <section className="bg-paper text-ink">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
+      <SectionShell>
         <div className="flex items-center justify-between gap-6">
           <InlineMediaHeading
             lines={testimonials.heading.lines}
@@ -127,7 +121,7 @@ export function TestimonialsSection() {
           label="Show review"
           className="justify-center"
         />
-      </div>
+      </SectionShell>
     </section>
   )
 }

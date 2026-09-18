@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { PlotListing } from '@/types'
 import { site } from '@/content'
-import { CarouselArrows, CarouselDots } from '@/components/ui'
+import { CarouselArrows, CarouselDots, SectionShell } from '@/components/ui'
 import { PlotsBanner } from './PlotsBanner'
 import { PlotsFilters, type PlotsFilterState } from './PlotsFilters'
 import { PlotsGrid } from './PlotsGrid'
@@ -58,7 +58,7 @@ export function PlotsPage() {
       <PlotsBanner />
 
       <section className="bg-paper text-ink">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
+        <SectionShell padding="compact">
           <PlotsIntro />
 
           <div className="flex flex-col gap-8">
@@ -85,7 +85,7 @@ export function PlotsPage() {
               />
             </div>
           ) : null}
-        </div>
+        </SectionShell>
       </section>
     </>
   )

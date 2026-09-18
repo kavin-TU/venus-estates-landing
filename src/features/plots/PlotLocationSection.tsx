@@ -1,4 +1,5 @@
 import type { EmphasisRun } from '@/types'
+import { EmphasisText, SectionShell } from '@/components/ui'
 
 type MapCoordinates = {
   lat: number
@@ -35,20 +36,16 @@ export function PlotLocationSection({
 
   return (
     <section className="bg-paper text-ink">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
+      <SectionShell padding="compact">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
           <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:w-[320px] lg:shrink-0 lg:text-[32px]">
-            {heading.map((run, index) => (
-              <span key={index} className={run.accent ? 'text-secondary' : undefined}>
-                {run.text}
-              </span>
-            ))}
+            <EmphasisText runs={heading} />
           </h2>
           <p className="text-[16px] font-medium leading-[21px] lg:w-[598px] lg:text-justify">
             {body}
           </p>
         </div>
-      </div>
+      </SectionShell>
 
       <div className="relative isolate min-h-[420px] overflow-hidden lg:h-[800px]">
         <iframe

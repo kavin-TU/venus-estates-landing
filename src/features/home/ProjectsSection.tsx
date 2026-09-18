@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { EmphasisRun, ProjectCard } from '@/types'
 import { site } from '@/content'
-import { cn } from '@/lib'
-import { ArrowUpRight, InlineMediaHeading } from '@/components/ui'
+import { ArrowUpRight, EmphasisText, InlineMediaHeading } from '@/components/ui'
 import {
   projectsCard,
   projectsCardRatio,
@@ -68,14 +67,7 @@ export function ProjectsSection() {
           </div>
 
           <p className="text-[16px] font-semibold leading-normal lg:flex-1 lg:text-justify">
-            {intro.map((run, index) => (
-              <span
-                key={index}
-                className={cn(run.accent && 'text-secondary')}
-              >
-                {run.text}
-              </span>
-            ))}
+            <EmphasisText runs={intro} />
           </p>
         </div>
       </div>

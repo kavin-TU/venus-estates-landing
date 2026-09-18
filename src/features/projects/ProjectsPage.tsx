@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { ProjectFilter, ProjectListing } from '@/types'
 import { site } from '@/content'
-import { CarouselArrows, CarouselDots } from '@/components/ui'
+import { CarouselArrows, CarouselDots, SectionShell } from '@/components/ui'
 import { ProjectsBanner } from './ProjectsBanner'
 import { ProjectsFilters } from './ProjectsFilters'
 import { ProjectsGrid } from './ProjectsGrid'
@@ -34,7 +34,7 @@ export function ProjectsPage() {
       <ProjectsBanner />
 
       <section className="bg-paper text-ink">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
+        <SectionShell padding="compact">
           <ProjectsIntro />
 
           <div className="flex flex-col gap-8">
@@ -57,7 +57,7 @@ export function ProjectsPage() {
               />
             </div>
           ) : null}
-        </div>
+        </SectionShell>
       </section>
     </>
   )

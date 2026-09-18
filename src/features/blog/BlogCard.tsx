@@ -3,7 +3,9 @@ import type { BlogArticle } from '@/types'
 import { cn } from '@/lib'
 
 type BlogCardProps = {
-  post: Pick<BlogArticle, 'date' | 'title' | 'image' | 'path' | 'excerpt'>
+  post: Pick<BlogArticle, 'date' | 'title' | 'image' | 'path'> & {
+    excerpt?: string
+  }
   featured?: boolean
   showExcerpt?: boolean
 }

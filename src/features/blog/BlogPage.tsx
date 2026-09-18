@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { BlogArticle } from '@/types'
 import { site } from '@/content'
-import { CarouselArrows, CarouselDots } from '@/components/ui'
+import { CarouselArrows, CarouselDots, SectionShell } from '@/components/ui'
 import { BlogBanner } from './BlogBanner'
 import { BlogGrid } from './BlogGrid'
 import { BlogIntro } from './BlogIntro'
@@ -20,7 +20,7 @@ export function BlogPage() {
       <BlogBanner />
 
       <section className="bg-paper text-ink">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
+        <SectionShell padding="compact">
           <BlogIntro />
           <BlogGrid posts={visible} />
 
@@ -39,7 +39,7 @@ export function BlogPage() {
               />
             </div>
           ) : null}
-        </div>
+        </SectionShell>
       </section>
     </>
   )

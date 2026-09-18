@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, primaryCtaClass } from '@/components/ui'
+import { ArrowUpRight, EmphasisText, primaryCtaClass } from '@/components/ui'
 import { cn } from '@/lib'
 
 export function NriHeroSection() {
@@ -20,11 +20,7 @@ export function NriHeroSection() {
 
       <div className="mx-auto flex max-w-[900px] flex-col items-center gap-6 px-6 pt-20 lg:pt-16">
         <h1 className="text-[24px] font-bold uppercase leading-[1.3] sm:text-[32px] lg:text-[40px]">
-          {heading.map((run, index) => (
-            <span key={index} className={run.accent ? 'text-secondary' : undefined}>
-              {run.text}
-            </span>
-          ))}
+          <EmphasisText runs={heading} />
         </h1>
 
         <p className="max-w-[640px] text-[16px] font-semibold leading-normal text-paper/90">

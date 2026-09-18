@@ -1,18 +1,6 @@
+import { FullBleedBanner } from '@/components/ui'
 import { site } from '@/content'
 
 export function GalleryBanner() {
-  const { banner } = site.gallery
-
-  return (
-    <section className="relative isolate bg-paper">
-      <div className="aspect-[1440/820] overflow-hidden lg:aspect-auto lg:h-[820px]">
-        <img
-          src={banner.image.src}
-          alt={banner.image.alt}
-          className="size-full object-cover"
-          loading="eager"
-        />
-      </div>
-    </section>
-  )
+  return <FullBleedBanner image={site.gallery.banner.image} />
 }
