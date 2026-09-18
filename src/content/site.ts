@@ -1217,7 +1217,7 @@ export const site = {
   /** Content chunks shared verbatim across multiple "corner" pages. */
   shared: {
     growthStats: {
-      icon: 'arrowClockwise' satisfies SiteIconName,
+      icon: 'signpost' satisfies SiteIconName,
       stats: [
         { index: '01', value: '15–20% Growth', label: 'Forecast' },
         { index: '02', value: 'Up to 15% Commercial', label: 'Yields' },

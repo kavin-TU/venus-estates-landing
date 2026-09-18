@@ -24,7 +24,7 @@ export function GrowthStatsSection({ heading, body, icon, stats }: GrowthStatsSe
         <ul className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
           {stats.map((stat) => (
             <li key={stat.index} className="flex flex-col gap-3">
-              <SiteIcon name={icon} className="size-10 text-secondary" />
+              <SiteIcon name={icon} className="size-10 text-earth" />
               <span className="block h-px w-full bg-ink/20" aria-hidden="true" />
               <span className="font-stat text-[24px] font-semibold leading-none text-secondary">
                 {stat.index}

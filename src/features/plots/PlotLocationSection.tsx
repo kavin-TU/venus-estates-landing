@@ -1,5 +1,5 @@
 import type { EmphasisRun } from '@/types'
-import { EmphasisText, SectionShell } from '@/components/ui'
+import { EmphasisText, FlagCheckered, SectionShell } from '@/components/ui'
 
 type MapCoordinates = {
   lat: number
@@ -76,12 +76,14 @@ export function PlotLocationSection({
                 {reasons.map((reason) => (
                   <li
                     key={reason}
-                    className="flex gap-3 text-[16px] font-medium leading-[21px] text-paper/90"
+                    className="flex items-start gap-3 text-[16px] font-medium leading-[21px] text-paper/90"
                   >
                     <span
-                      className="mt-2 size-1.5 shrink-0 rounded-full bg-secondary"
+                      className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-secondary text-secondary"
                       aria-hidden="true"
-                    />
+                    >
+                      <FlagCheckered className="size-3.5" />
+                    </span>
                     {reason}
                   </li>
                 ))}
