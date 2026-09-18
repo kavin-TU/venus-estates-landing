@@ -1,4 +1,5 @@
 export { Accordion } from './Accordion'
+export { ArrowUp } from './ArrowUp'
 export { ArrowUpRight } from './ArrowUpRight'
 export { primaryCtaBaseClass, primaryCtaClass } from './buttonStyles'
 export { CarouselArrows } from './CarouselArrows'

@@ -181,6 +181,7 @@ export const site = {
     addressHeading: 'ADDRESS',
     contactHeading: 'CONTACT US',
     assistancePrompt: 'HAVE A QUESTION OR NEED ASSISTANCE?',
+    backToTopLabel: 'Back to top',
   },
 
   home: {

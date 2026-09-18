@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { site } from '@/content'
-import { ArrowUpRight, SocialIcon } from '@/components/ui'
+import { ArrowUp, ArrowUpRight, SocialIcon } from '@/components/ui'
+import { useReducedMotion } from '@/lib'
 
 export function Footer() {
   const {
@@ -14,6 +15,15 @@ export function Footer() {
     cta,
     footer,
   } = site
+  const reducedMotion = useReducedMotion()
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: reducedMotion ? 'auto' : 'smooth',
+    })
+  }
 
   return (
     <footer className="bg-footer text-paper">
@@ -78,7 +88,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-paper/40 pt-8">
+        <div className="relative mt-12 border-t border-paper/40 pt-8">
           <div className="flex justify-center gap-4">
             {socialLinks.map(({ id, label, href }) => (
               <a
@@ -104,6 +114,17 @@ export function Footer() {
               </span>
             ))}
           </p>
+
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              aria-label={footer.backToTopLabel}
+              onClick={scrollToTop}
+              className="inline-flex size-10 items-center justify-center rounded-full border border-paper/80 text-paper transition hover:bg-paper/10"
+            >
+              <ArrowUp className="size-4" />
+            </button>
+          </div>
         </div>
 
         <div className="mt-10 overflow-hidden pb-2">
