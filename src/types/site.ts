@@ -235,3 +235,20 @@ export type LeaderProfile = {
   body: readonly string[]
   photo: ImageAsset
 }
+
+/** One card in the Why Us "How We Protect Your Life Savings" grid. */
+export type ProtectCard = {
+  index: string
+  icon: ImageAsset
+  background: ImageAsset
+  title: string
+  bullets: readonly string[]
+}
+
+/** The large feature card ("RERA-Registered") beside the Why Us credentials grid. */
+export type WhyUsFeatureCard = {
+  icon: ImageAsset
+  label: string
+  image: ImageAsset
+  caption: string
+}

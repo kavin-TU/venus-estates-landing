@@ -1,7 +1,7 @@
 import { site } from '@/content'
 import { MosaicHeroSection } from '@/features/shared'
 
-export function AboutHeroSection() {
-  const { hero } = site.aboutPage
+export function WhyUsHeroSection() {
+  const { hero } = site.aboutPage.whyUs
   return <MosaicHeroSection image={hero.image} heading={hero.heading} />
 }

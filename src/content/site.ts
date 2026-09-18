@@ -24,10 +24,12 @@ import type {
   ProjectCard,
   ProjectFilter,
   ProjectListing,
+  ProtectCard,
   ReasonCard,
   SocialLink,
   StatItem,
   Testimonial,
+  WhyUsFeatureCard,
 } from '@/types'
 import heroSlide1 from '@/assets/images/hero/slides/slide-1.png'
 import heroSlide2 from '@/assets/images/hero/slides/slide-2.png'
@@ -94,6 +96,15 @@ import aboutVisionIcon from '@/assets/images/about-us/icon-eye.png'
 import aboutMissionIcon from '@/assets/images/about-us/icon-target.png'
 import aboutStatsBg from '@/assets/images/about-us/projectstats.png'
 import aboutLeadershipPhoto from '@/assets/images/about-us/leadership.png'
+import whyUsBanner1 from '@/assets/images/abouts-us-why/why-us-banner 1.png'
+import whyUsBanner2 from '@/assets/images/abouts-us-why/why-us-banner2.png'
+import whyUsBanner3 from '@/assets/images/abouts-us-why/why-us-banner 3.png'
+import whyUsBanner4 from '@/assets/images/abouts-us-why/why-us-banner 4.png'
+import whyUsIconNut from '@/assets/images/abouts-us-why/Nut.png'
+import whyUsIconEqualizer from '@/assets/images/abouts-us-why/Equalizer.png'
+import whyUsIconKey from '@/assets/images/abouts-us-why/Key.png'
+import whyUsIconSealCheck from '@/assets/images/abouts-us-why/SealCheck.png'
+import whyUsIconCertificate from '@/assets/images/abouts-us-why/Certificate.png'
 
 /** Stand-in review text repeated across the testimonial carousel in the design. */
 const placeholderReview =
@@ -1588,6 +1599,122 @@ export const site = {
           },
         },
       ] as const satisfies readonly LeaderProfile[],
+    },
+
+    whyUs: {
+      hero: {
+        image: {
+          src: aboutHeroMosaic,
+          alt: 'Mosaic of Venus Estates project photography including The Metro City entrance and site details',
+        } satisfies ImageAsset,
+        heading: 'WHY US',
+      },
+
+      protect: {
+        heading: [
+          { text: 'HOW WE PROTECT YOUR ' },
+          { text: 'LIFE SAVINGS', accent: true },
+          { text: ' AT EVERY STEP' },
+        ] as const satisfies readonly EmphasisRun[],
+        body: 'Choosing the right plot shouldn’t feel like a gamble. At Venus Estates, we make your property journey smooth, secure, and stress-free—from selecting the right location to completing the purchase.',
+        cards: [
+          {
+            index: '01',
+            icon: { src: whyUsIconNut, alt: '' },
+            background: {
+              src: whyUsBanner1,
+              alt: 'Street lamp against a mountain silhouette at dusk',
+            },
+            title: 'After Ownership: Site Maintenance & Guidance',
+            bullets: ['Post-Sale Site Maintenance', 'Construction Assistance Whenever Needed'],
+          },
+          {
+            index: '02',
+            icon: { src: whyUsIconEqualizer, alt: '' },
+            background: {
+              src: whyUsBanner3,
+              alt: 'Paved plot road with curb and streetlights',
+            },
+            title: 'On The Ground: Uncompromising Layout Engineering',
+            bullets: [
+              'Heavy-Duty Blacktop Tar Roads',
+              'Concrete Drainage, Power Lines, Individual Water & EB Lines',
+              'Gated Boundaries & CCTV Security',
+            ],
+          },
+          {
+            index: '03',
+            icon: { src: whyUsIconKey, alt: '' },
+            background: {
+              src: whyUsBanner2,
+              alt: 'Golden sunset over palm trees',
+            },
+            title: 'At Purchase: Effortless Ownership',
+            bullets: [
+              'Administrative & Paperwork Support',
+              'Frictionless Bank Financial Support',
+              'Seamless Registration Guidance',
+            ],
+          },
+          {
+            index: '04',
+            icon: { src: whyUsIconSealCheck, alt: '' },
+            background: {
+              src: whyUsBanner4,
+              alt: 'Plot marker sign on a residential layout',
+            },
+            title: 'Before You Buy: The Legal & Bank Vetting',
+            bullets: [
+              '100% Clear Title Audits',
+              'DTCP & RERA Certified',
+              'Up to 90% Pre-Approved Instant Bank Loans',
+            ],
+          },
+        ] as const satisfies readonly ProtectCard[],
+      },
+
+      credentials: {
+        heading: [
+          { text: 'OUR ' },
+          { text: 'CREDENTIALS', accent: true },
+          { text: ' & COMMITMENTS' },
+        ] as const satisfies readonly EmphasisRun[],
+        body: 'Built on trust, transparency, and quality, Venus Estates is committed to delivering legally secure, thoughtfully planned, and high-quality developments. Our credentials reflect our dedication to customer satisfaction, responsible development, and creating lasting value for every investment.',
+        feature: {
+          icon: { src: whyUsIconCertificate, alt: '' },
+          label: 'RERA-Registered',
+          image: {
+            src: nriCredentialsImage,
+            alt: 'Plotted development road at sunset with completed homes in the distance',
+          },
+          caption:
+            'All Venus Estates projects are registered under the Tamil Nadu Real Estate Regulatory Authority (TNRERA) — ensuring complete transparency, buyer protection and project accountability.',
+        } satisfies WhyUsFeatureCard,
+        cards: [
+          {
+            tone: 'primary',
+            icon: { src: whyUsIconNut, alt: '' },
+            watermark: { src: nriFileWatermark, alt: '' },
+            title: '100% Clear paperwork',
+          },
+          {
+            tone: 'accent',
+            icon: { src: whyUsIconNut, alt: '' },
+            title: 'Ethical business practices',
+          },
+          {
+            tone: 'accent',
+            icon: { src: whyUsIconNut, alt: '' },
+            title: 'Customer-centric Service',
+          },
+          {
+            tone: 'primary',
+            icon: { src: whyUsIconNut, alt: '' },
+            watermark: { src: nriBuildingsWatermark, alt: '' },
+            title: 'Quality developments',
+          },
+        ] as const satisfies readonly NriCredentialCard[],
+      },
     },
   },
 } as const

@@ -28,6 +28,7 @@ export type {
   ProjectFilter,
   ProjectListing,
   ProjectStatus,
+  ProtectCard,
   ReasonCard,
   ReasonIcon,
   SiteAddress,
@@ -36,4 +37,5 @@ export type {
   SocialPlatform,
   StatItem,
   Testimonial,
+  WhyUsFeatureCard,
 } from './site'

@@ -19,6 +19,7 @@ function getNavChrome(pathname: string): NavChrome {
     pathname === '/investor-corner' ||
     pathname === '/contact' ||
     pathname === '/about/our-story' ||
+    pathname === '/about/why-us' ||
     pathname.startsWith('/plots')
   ) {
     return 'overlay'
