@@ -24,7 +24,7 @@ export function Accordion({ items, defaultOpen = 0, className }: AccordionProps)
         return (
           <div
             key={item.question}
-            className="flex flex-col gap-4 rounded-lg border border-line bg-white p-4"
+            className="flex flex-col gap-4 rounded-lg border border-line bg-paper p-4"
           >
             <h3>
               <button

@@ -1,5 +1,6 @@
 export { Accordion } from './Accordion'
 export { ArrowUpRight } from './ArrowUpRight'
+export { primaryCtaBaseClass, primaryCtaClass } from './buttonStyles'
 export { CarouselArrows } from './CarouselArrows'
 export { CarouselDots } from './CarouselDots'
 export { Checkbox, Input, Textarea } from './Field'

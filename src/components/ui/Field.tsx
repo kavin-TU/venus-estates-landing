@@ -3,7 +3,7 @@ import { useId } from 'react'
 import { cn } from '@/lib'
 
 const CONTROL =
-  'w-full rounded-lg border border-ink/15 bg-white px-4 text-[14px] font-medium text-ink placeholder:text-ink/40 transition-colors focus:border-secondary focus:outline-none'
+  'w-full rounded-lg border border-ink/15 bg-paper px-4 text-[14px] font-medium text-ink placeholder:text-ink/40 transition-colors focus:border-secondary focus:outline-none'
 
 const LABEL = 'text-[16px] font-semibold capitalize text-ink'
 

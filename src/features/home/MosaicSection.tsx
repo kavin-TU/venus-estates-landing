@@ -20,7 +20,7 @@ export function MosaicSection() {
   const label: readonly InlineMediaHeadingSegment[] = site.home.mosaic.label
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-[1440px] px-5 py-12 lg:py-[75px]">
         <div className="grid gap-3.5 md:grid-cols-2 lg:h-[684px] lg:grid-cols-[511fr_350fr_511fr]">
           {/* Left column — two equal tiles */}
@@ -48,7 +48,7 @@ export function MosaicSection() {
                 loading="lazy"
               />
               <span className="absolute inset-0 bg-ink/45" />
-              <p className="relative flex h-full items-center justify-center gap-2 text-[24px] font-bold uppercase leading-none text-white lg:text-[32px]">
+              <p className="relative flex h-full items-center justify-center gap-2 text-[24px] font-bold uppercase leading-none text-paper lg:text-[32px]">
                 {label.map((segment, index) =>
                   segment.type === 'text' ? (
                     <span

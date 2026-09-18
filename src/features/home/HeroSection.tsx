@@ -87,7 +87,7 @@ export function HeroSection() {
           }}
           transition={{ duration: reducedMotion ? 0 : 0.7, ease: COLORIZE_EASE, delay: 0.08 }}
         >
-          <div className="relative w-full text-white">
+          <div className="relative w-full text-paper">
             <img
               src={aboutConnector}
               alt=""
@@ -97,7 +97,7 @@ export function HeroSection() {
               <h2 className="text-[18px] font-black leading-normal lg:text-[20px]">
                 {hero.projectName}
               </h2>
-              <p className="text-[14px] font-semibold leading-snug text-white/95 lg:text-[16px] lg:leading-normal">
+              <p className="text-[14px] font-semibold leading-snug text-paper/95 lg:text-[16px] lg:leading-normal">
                 {hero.projectBlurb}
               </p>
             </div>
@@ -105,12 +105,12 @@ export function HeroSection() {
 
           <Link
             to={hero.explorePath}
-            className="relative h-10 w-[200px] shrink-0 overflow-hidden rounded-full border-2 border-white"
+            className="relative h-10 w-[200px] shrink-0 overflow-hidden rounded-full border-2 border-paper"
           >
-            <span className="absolute top-1/2 left-[calc(50%-29px)] -translate-y-1/2 text-[16px] font-semibold text-white">
+            <span className="absolute top-1/2 left-[calc(50%-29px)] -translate-y-1/2 text-[16px] font-semibold text-paper">
               {hero.exploreLabel}
             </span>
-            <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-white p-2.5">
+            <span className="absolute top-[3px] right-[3px] flex size-[30px] items-center justify-center rounded-full bg-paper p-2.5">
               <img
                 src={arrowUpRight}
                 alt=""

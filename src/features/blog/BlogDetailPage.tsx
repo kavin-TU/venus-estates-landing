@@ -16,7 +16,7 @@ export function BlogDetailPage() {
   const relatedHeading: readonly EmphasisRun[] = site.blog.relatedHeading
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-10 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:pb-[75px] lg:pt-10">
         <article className="flex flex-col gap-6 lg:gap-8">
           <div className="overflow-hidden rounded-lg">

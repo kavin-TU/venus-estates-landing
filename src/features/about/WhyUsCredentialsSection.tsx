@@ -7,7 +7,7 @@ function CredentialCard({ card }: { card: NriCredentialCard }) {
     <div
       className={cn(
         'relative isolate flex min-h-[140px] flex-col justify-between gap-3 overflow-hidden rounded-xl p-5',
-        card.tone === 'primary' ? 'bg-footer text-white' : 'bg-secondary text-white',
+        card.tone === 'primary' ? 'bg-footer text-paper' : 'bg-secondary text-paper',
       )}
     >
       {card.watermark ? (
@@ -30,7 +30,7 @@ export function WhyUsCredentialsSection() {
   const heading: readonly EmphasisRun[] = credentials.heading
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
           <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:w-[420px] lg:shrink-0 lg:text-[32px]">
@@ -47,7 +47,7 @@ export function WhyUsCredentialsSection() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="relative isolate flex flex-col justify-end overflow-hidden rounded-xl text-white sm:min-h-[420px]">
+          <div className="relative isolate flex flex-col justify-end overflow-hidden rounded-xl text-paper sm:min-h-[420px]">
             <img
               src={credentials.feature.image.src}
               alt={credentials.feature.image.alt}
@@ -67,7 +67,7 @@ export function WhyUsCredentialsSection() {
                 aria-hidden="true"
               />
               <h3 className="text-[18px] font-medium lg:text-[20px]">{credentials.feature.label}</h3>
-              <p className="text-[14px] font-medium leading-snug text-white/85">
+              <p className="text-[14px] font-medium leading-snug text-paper/85">
                 {credentials.feature.caption}
               </p>
             </div>

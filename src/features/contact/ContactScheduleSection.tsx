@@ -2,7 +2,7 @@ import type { FormEvent } from 'react'
 import { useState } from 'react'
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, Input, Textarea } from '@/components/ui'
+import { ArrowUpRight, Input, Textarea, primaryCtaClass } from '@/components/ui'
 
 const EMPTY = {
   firstName: '',
@@ -34,7 +34,7 @@ export function ContactScheduleSection() {
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[50px]">
         <div className="relative isolate overflow-hidden rounded-2xl">
           <img
@@ -46,7 +46,7 @@ export function ContactScheduleSection() {
           <span className="absolute inset-0 -z-10 bg-ink/45" aria-hidden="true" />
 
           <div className="flex flex-col gap-8 p-4 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:px-[30px] lg:py-[30px]">
-            <div className="flex w-full flex-col gap-8 text-white lg:w-[465px]">
+            <div className="flex w-full flex-col gap-8 text-paper lg:w-[465px]">
               <div>
                 <h2 className="text-[28px] font-bold uppercase leading-tight sm:text-[32px]">
                   {heading.map((run, i) => (
@@ -55,7 +55,7 @@ export function ContactScheduleSection() {
                     </span>
                   ))}
                 </h2>
-                <p className="mt-2 text-[16px] font-medium text-white/85">{schedule.body}</p>
+                <p className="mt-2 text-[16px] font-medium text-paper/85">{schedule.body}</p>
               </div>
 
               <div className="flex flex-col gap-5">
@@ -82,7 +82,7 @@ export function ContactScheduleSection() {
                   <p className="text-[16px] font-semibold text-secondary">
                     {schedule.contactLabels.address}
                   </p>
-                  <p className="text-[16px] font-medium leading-[21px] text-white/90">
+                  <p className="text-[16px] font-medium leading-[21px] text-paper/90">
                     {address.company}, {address.lines.join(' ')}
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export function ContactScheduleSection() {
                     {schedule.contactLabels.hours}
                   </p>
                   {schedule.hoursLines.map((line) => (
-                    <p key={line} className="text-[16px] font-medium text-white/90">
+                    <p key={line} className="text-[16px] font-medium text-paper/90">
                       {line}
                     </p>
                   ))}
@@ -101,7 +101,7 @@ export function ContactScheduleSection() {
 
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col gap-5 rounded-[10px] bg-white p-6 text-ink lg:w-[550px]"
+              className="flex w-full flex-col gap-5 rounded-[10px] bg-paper p-6 text-ink lg:w-[550px]"
             >
               <h3 className="text-[18px] font-bold uppercase leading-none">
                 {formHeading.map((run, i) => (
@@ -186,7 +186,7 @@ export function ContactScheduleSection() {
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+                className={primaryCtaClass}
               >
                 {schedule.submitLabel}
                 <ArrowUpRight className="size-4" />

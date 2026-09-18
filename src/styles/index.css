@@ -6,11 +6,14 @@
   --font-display: "Syne", "DM Sans", ui-sans-serif, sans-serif;
   --font-stat: "Sarpanch", "DM Sans", ui-sans-serif, sans-serif;
 
+  /* Palette: ink / brand / accent / footer / surfaces — hex lives here once */
   --color-ink: #000000;
+  --color-brand: #f2964c;
   --color-accent: #e89354;
-  --color-accent-bright: #f2964c;
-  --color-secondary: #f2964c;
+  --color-accent-bright: var(--color-brand);
+  --color-secondary: var(--color-brand);
   --color-footer: #5e3325;
+  --color-paper: #ffffff;
   --color-nav-pill: rgba(255, 255, 255, 0.01);
   --color-glass: rgba(0, 0, 0, 0.2);
   --color-surface: #0a0a0a;
@@ -30,7 +33,7 @@
     min-height: 100dvh;
     font-family: var(--font-sans);
     background-color: var(--color-ink);
-    color: #ffffff;
+    color: var(--color-paper);
     -webkit-font-smoothing: antialiased;
   }
 

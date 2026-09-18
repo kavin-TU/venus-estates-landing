@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import type { EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight } from '@/components/ui'
+import { ArrowUpRight, primaryCtaClass } from '@/components/ui'
+import { cn } from '@/lib'
 
 export function NriHeroSection() {
   const { hero } = site.nriCorner
   const heading: readonly EmphasisRun[] = hero.heading
 
   return (
-    <section className="relative isolate flex min-h-[600px] flex-col items-center justify-center overflow-hidden bg-ink text-center text-white lg:h-[780px]">
+    <section className="relative isolate flex min-h-[600px] flex-col items-center justify-center overflow-hidden bg-ink text-center text-paper lg:h-[780px]">
       <img
         src={hero.image.src}
         alt={hero.image.alt}
@@ -26,17 +27,17 @@ export function NriHeroSection() {
           ))}
         </h1>
 
-        <p className="max-w-[640px] text-[16px] font-semibold leading-normal text-white/90">
+        <p className="max-w-[640px] text-[16px] font-semibold leading-normal text-paper/90">
           {hero.body}
         </p>
 
-        <p className="text-[14px] font-medium leading-snug text-white/80">
+        <p className="text-[14px] font-medium leading-snug text-paper/80">
           {hero.complianceLine}
         </p>
 
         <Link
           to={hero.cta.path}
-          className="mt-2 inline-flex h-12 items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110"
+          className={cn(primaryCtaClass, 'mt-2 overflow-hidden')}
         >
           {hero.cta.label}
           <ArrowUpRight className="size-4" />

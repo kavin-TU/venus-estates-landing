@@ -22,8 +22,8 @@ function TestimonialCard({
         className={cn(
           'rounded-xl border px-6 pt-[54px] pb-6',
           active
-            ? 'border-white bg-secondary text-white'
-            : 'border-line bg-white text-ink',
+            ? 'border-paper bg-secondary text-paper'
+            : 'border-line bg-paper text-ink',
         )}
       >
         <p className="text-[16px] font-medium leading-normal">{item.quote}</p>
@@ -37,7 +37,7 @@ function TestimonialCard({
                   key={i}
                   className={cn(
                     'h-[13px] w-[14px]',
-                    active ? 'text-white' : 'text-secondary',
+                    active ? 'text-paper' : 'text-secondary',
                   )}
                 />
               ))}
@@ -46,7 +46,7 @@ function TestimonialCard({
           <Quotes
             className={cn(
               'h-[43px] w-[59px] shrink-0',
-              active ? 'text-white/50' : 'text-line',
+              active ? 'text-paper/50' : 'text-line',
             )}
           />
         </div>
@@ -55,7 +55,7 @@ function TestimonialCard({
       <div
         className={cn(
           'absolute top-0 left-1/2 size-[70px] -translate-x-1/2 rounded-full border p-1',
-          active ? 'border-white bg-secondary' : 'border-line bg-white',
+          active ? 'border-paper bg-secondary' : 'border-line bg-paper',
         )}
       >
         <img
@@ -82,7 +82,7 @@ export function TestimonialsSection() {
   const following = items[(index + 1) % items.length]
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
         <div className="flex items-center justify-between gap-6">
           <InlineMediaHeading

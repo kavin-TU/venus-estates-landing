@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ConsentRun, EmphasisRun } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, Checkbox, Input, Textarea } from '@/components/ui'
+import { ArrowUpRight, Checkbox, Input, Textarea, primaryCtaClass } from '@/components/ui'
 
 const EMPTY = {
   firstName: '',
@@ -36,7 +36,7 @@ export function EnquiryFormSection() {
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[75px]">
         <div className="relative isolate overflow-hidden rounded-2xl">
           <img
@@ -50,7 +50,7 @@ export function EnquiryFormSection() {
           <div className="p-4 sm:p-8 lg:px-[30px] lg:py-[30px]">
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col gap-5 rounded-[10px] bg-white p-6 lg:w-[550px]"
+              className="flex w-full flex-col gap-5 rounded-[10px] bg-paper p-6 lg:w-[550px]"
             >
               <div className="flex flex-col gap-2.5">
                 <h3 className="text-[18px] font-bold uppercase leading-none text-ink">
@@ -173,7 +173,7 @@ export function EnquiryFormSection() {
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+                className={primaryCtaClass}
               >
                 {enquiry.submitLabel}
                 <ArrowUpRight className="size-4" />

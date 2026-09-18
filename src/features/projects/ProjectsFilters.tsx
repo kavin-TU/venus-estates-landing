@@ -28,7 +28,7 @@ export function ProjectsFilters({ active, onChange }: ProjectsFiltersProps) {
               'h-[39px] shrink-0 rounded-full border border-secondary px-5 text-[16px] font-semibold capitalize transition-colors',
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary',
               selected
-                ? 'bg-secondary text-white'
+                ? 'bg-secondary text-paper'
                 : 'text-secondary hover:bg-secondary/10',
             )}
           >

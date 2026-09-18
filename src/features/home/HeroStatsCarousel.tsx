@@ -129,8 +129,8 @@ export function HeroStatsCarousel({
                 key={slide.src}
                 className={
                   i === index
-                    ? 'size-1.5 rounded-full bg-white'
-                    : 'size-1.5 rounded-full bg-white/40'
+                    ? 'size-1.5 rounded-full bg-paper'
+                    : 'size-1.5 rounded-full bg-paper/40'
                 }
               />
             ))}

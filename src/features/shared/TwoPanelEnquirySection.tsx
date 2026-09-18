@@ -1,7 +1,8 @@
 import type { FormEvent } from 'react'
 import { useState } from 'react'
 import type { EmphasisRun, EnquiryField, ImageAsset } from '@/types'
-import { ArrowUpRight, Input } from '@/components/ui'
+import { ArrowUpRight, Input, primaryCtaClass } from '@/components/ui'
+import { cn } from '@/lib'
 
 type TwoPanelEnquirySectionProps = {
   heading: readonly EmphasisRun[]
@@ -51,12 +52,12 @@ export function TwoPanelEnquirySection({
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[75px]">
         <div className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 lg:flex-row">
           <form
             onSubmit={handleSubmit}
-            className="flex w-full flex-col gap-5 bg-white p-6 lg:w-[550px] lg:p-8"
+            className="flex w-full flex-col gap-5 bg-paper p-6 lg:w-[550px] lg:p-8"
           >
             <div className="flex flex-col gap-2.5">
               <h3 className="text-[18px] font-bold uppercase leading-none text-ink">
@@ -129,7 +130,7 @@ export function TwoPanelEnquirySection({
 
             <button
               type="submit"
-              className="mt-1 inline-flex h-12 items-center justify-center gap-1 rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+              className={cn(primaryCtaClass, 'mt-1')}
             >
               {submitLabel}
               <ArrowUpRight className="size-4" />

@@ -27,7 +27,7 @@ export const heroAbout = cn(
 /** VENUS watermark — base styles + transform transition (CSS owns breakpoint Y) */
 export const heroWatermark = cn(
   // shared
-  'pointer-events-none absolute top-0 left-1/2 z-[1] -translate-x-1/2 font-display leading-none font-extrabold tracking-tight whitespace-nowrap text-white select-none',
+  'pointer-events-none absolute top-0 left-1/2 z-[1] -translate-x-1/2 font-display leading-none font-extrabold tracking-tight whitespace-nowrap text-paper select-none',
   'transition-transform duration-[1150ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none',
   // mobile + tablet type
   'text-[clamp(48px,16vw,88px)]',
@@ -62,7 +62,7 @@ export const heroStats = {
   ),
   card: cn(
     // shared
-    'flex min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-white backdrop-blur-[8px]',
+    'flex min-w-0 flex-1 flex-col items-start justify-between gap-2 rounded-[12px] bg-glass px-3 py-3 text-paper backdrop-blur-[8px]',
     // mobile
     'min-h-[72px]',
     // tablet
@@ -82,7 +82,7 @@ export const heroStats = {
   ),
   value: cn(
     // shared
-    'font-stat leading-none font-semibold whitespace-nowrap text-white',
+    'font-stat leading-none font-semibold whitespace-nowrap text-paper',
     // mobile
     'text-[22px]',
     // tablet

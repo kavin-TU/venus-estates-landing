@@ -29,14 +29,14 @@ function ProjectTile({ card }: { card: ProjectCard }) {
         <span className="font-stat text-[16px] font-semibold leading-none text-secondary">
           {card.index}
         </span>
-        <span className="text-[16px] font-bold leading-none text-white">
+        <span className="text-[16px] font-bold leading-none text-paper">
           {card.name}
         </span>
       </div>
 
       <span className={projectsPlots}>{card.plots}</span>
 
-      <span className="absolute right-5 bottom-5 z-10 flex size-10 items-center justify-center rounded-full bg-glass text-white backdrop-blur-[8px] transition-colors group-hover:bg-secondary">
+      <span className="absolute right-5 bottom-5 z-10 flex size-10 items-center justify-center rounded-full bg-glass text-paper backdrop-blur-[8px] transition-colors group-hover:bg-secondary">
         <ArrowUpRight className="size-4" />
       </span>
     </Link>

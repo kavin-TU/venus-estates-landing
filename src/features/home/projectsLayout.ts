@@ -38,6 +38,6 @@ export const projectsCardRatio = cn(
 /** "50+ Plots", set sideways so it reads bottom-to-top up the left edge. */
 export const projectsPlots = cn(
   // shared
-  'absolute bottom-5 left-5 z-10 text-[16px] font-semibold whitespace-nowrap text-white',
+  'absolute bottom-5 left-5 z-10 text-[16px] font-semibold whitespace-nowrap text-paper',
   '[writing-mode:vertical-rl] rotate-180',
 )

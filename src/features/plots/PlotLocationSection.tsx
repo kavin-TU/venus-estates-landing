@@ -34,7 +34,7 @@ export function PlotLocationSection({
   const mapSrc = googleMapsEmbedSrc(coordinates)
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
           <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:w-[320px] lg:shrink-0 lg:text-[32px]">
@@ -61,15 +61,15 @@ export function PlotLocationSection({
         />
 
         <div className="pointer-events-none relative mx-auto flex h-full max-w-[1440px] items-center px-6 py-12 sm:px-10 lg:px-[100px]">
-          <aside className="pointer-events-auto w-full max-w-[408px] rounded-[10px] bg-ink/70 p-6 text-white backdrop-blur-[10px] sm:p-8">
+          <aside className="pointer-events-auto w-full max-w-[408px] rounded-[10px] bg-ink/70 p-6 text-paper backdrop-blur-[10px] sm:p-8">
             <div className="flex flex-col gap-2">
               <h3 className="text-[24px] font-bold uppercase leading-none">{label}</h3>
-              <p className="text-[16px] font-medium leading-[21px] text-white/90">
+              <p className="text-[16px] font-medium leading-[21px] text-paper/90">
                 {address}
               </p>
             </div>
 
-            <hr className="my-5 border-white/20" />
+            <hr className="my-5 border-paper/20" />
 
             <div className="flex flex-col gap-4">
               <p className="text-[16px] font-semibold capitalize text-secondary">
@@ -79,7 +79,7 @@ export function PlotLocationSection({
                 {reasons.map((reason) => (
                   <li
                     key={reason}
-                    className="flex gap-3 text-[16px] font-medium leading-[21px] text-white/90"
+                    className="flex gap-3 text-[16px] font-medium leading-[21px] text-paper/90"
                   >
                     <span
                       className="mt-2 size-1.5 shrink-0 rounded-full bg-secondary"

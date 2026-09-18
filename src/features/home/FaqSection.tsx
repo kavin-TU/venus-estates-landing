@@ -31,7 +31,7 @@ export function FaqSection() {
   const items: readonly FaqItem[] = faq.items
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       {/* White strips above and below the sand band */}
       <div className="lg:py-[50px]">
         {/* min-height keeps the full sketch (top 150 + 397 tall) revealed even

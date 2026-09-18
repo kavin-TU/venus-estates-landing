@@ -16,10 +16,10 @@ export function AboutStatsSection() {
       <div className="mx-auto grid max-w-[1440px] grid-cols-3 divide-x divide-white/30 px-6 py-10 sm:px-10 lg:px-[100px] lg:py-[60px]">
         {stats.items.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-1 px-2 text-center">
-            <span className="font-stat text-[28px] font-bold text-white sm:text-[36px] lg:text-[44px]">
+            <span className="font-stat text-[28px] font-bold text-paper sm:text-[36px] lg:text-[44px]">
               {stat.value}
             </span>
-            <span className="text-[12px] font-medium text-white/90 sm:text-[14px] lg:text-[16px]">
+            <span className="text-[12px] font-medium text-paper/90 sm:text-[14px] lg:text-[16px]">
               {stat.label}
             </span>
           </div>

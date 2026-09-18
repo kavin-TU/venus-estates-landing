@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ConsentRun, EmphasisRun, EnquiryField, ImageAsset } from '@/types'
 import { site } from '@/content'
-import { ArrowUpRight, Checkbox, Input, Textarea } from '@/components/ui'
+import { ArrowUpRight, Checkbox, Input, Textarea, primaryCtaClass } from '@/components/ui'
 
 const EMPTY = {
   firstName: '',
@@ -53,7 +53,7 @@ export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent })
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-10 lg:px-[100px] lg:py-[50px]">
         <div className="relative isolate overflow-hidden rounded-2xl">
           <img
@@ -67,7 +67,7 @@ export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent })
           <div className="flex flex-col gap-8 p-4 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:px-[30px] lg:py-[30px]">
             <form
               onSubmit={handleSubmit}
-              className="flex w-full flex-col gap-5 rounded-[10px] bg-white p-6 text-ink lg:w-[550px]"
+              className="flex w-full flex-col gap-5 rounded-[10px] bg-paper p-6 text-ink lg:w-[550px]"
             >
               <h3 className="text-[18px] font-bold uppercase leading-none">
                 {heading.map((run, i) => (
@@ -183,19 +183,19 @@ export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent })
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+                className={primaryCtaClass}
               >
                 {enquiry.submitLabel}
                 <ArrowUpRight className="size-4" />
               </button>
             </form>
 
-            <div className="flex w-full flex-col gap-8 text-white lg:w-[465px]">
+            <div className="flex w-full flex-col gap-8 text-paper lg:w-[465px]">
               <div>
                 <p className="text-[28px] font-bold leading-tight sm:text-[32px]">
                   {enquiry.interestHeading}
                 </p>
-                <p className="mt-2 text-[16px] font-medium text-white/85">
+                <p className="mt-2 text-[16px] font-medium text-paper/85">
                   {enquiry.interestBody}
                 </p>
               </div>
@@ -227,7 +227,7 @@ export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent })
                   <p className="text-[16px] font-semibold capitalize text-secondary">
                     {enquiry.contactLabels.office}
                   </p>
-                  <p className="text-[16px] font-medium leading-[21px] text-white/90">
+                  <p className="text-[16px] font-medium leading-[21px] text-paper/90">
                     {enquiry.officeAddress ||
                       `${address.company}, ${address.lines.join(' ')}`}
                   </p>

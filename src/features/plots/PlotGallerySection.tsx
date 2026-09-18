@@ -21,7 +21,7 @@ export function PlotGallerySection({
   const visible = images.slice(current * pageSize, current * pageSize + pageSize)
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
           <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:w-[292px] lg:shrink-0 lg:text-[32px]">

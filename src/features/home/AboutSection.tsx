@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { site } from '@/content'
-import { ArrowUpRight, InlineMediaHeading, StatRow } from '@/components/ui'
+import { ArrowUpRight, InlineMediaHeading, StatRow, primaryCtaBaseClass } from '@/components/ui'
+import { cn } from '@/lib'
 
 export function AboutSection() {
   const { about } = site.home
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       {/* 1340 of content: 692 image + 50 gap + 598 text, gutter on the right only */}
       <div className="mx-auto flex max-w-[1440px] flex-col gap-10 px-6 py-12 sm:px-10 lg:flex-row lg:items-start lg:gap-[50px] lg:py-[50px] lg:pr-[100px] lg:pl-0">
         {/* 692 and 598 are the 1440-frame widths; both shrink below that so the
@@ -39,7 +40,7 @@ export function AboutSection() {
             </p>
             <Link
               to={about.cta.path}
-              className="inline-flex h-[45px] items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] text-[16px] font-semibold text-white transition hover:brightness-110"
+              className={cn(primaryCtaBaseClass, 'h-[45px] overflow-hidden')}
             >
               {about.cta.label}
               <ArrowUpRight className="size-4" />

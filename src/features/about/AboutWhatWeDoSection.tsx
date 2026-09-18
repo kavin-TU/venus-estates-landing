@@ -3,7 +3,7 @@ import { site } from '@/content'
 
 function FocusCard({ card }: { card: AboutFocusCard }) {
   return (
-    <div className="flex flex-1 flex-col gap-3 rounded-xl bg-footer p-6 text-white">
+    <div className="flex flex-1 flex-col gap-3 rounded-xl bg-footer p-6 text-paper">
       <img
         src={card.icon.src}
         alt={card.icon.alt}
@@ -12,7 +12,7 @@ function FocusCard({ card }: { card: AboutFocusCard }) {
         height={24}
       />
       <h3 className="text-[18px] font-bold uppercase leading-snug lg:text-[20px]">{card.title}</h3>
-      <p className="text-[14px] font-medium leading-snug text-white/85 sm:text-[16px]">
+      <p className="text-[14px] font-medium leading-snug text-paper/85 sm:text-[16px]">
         {card.body}
       </p>
     </div>
@@ -25,7 +25,7 @@ export function AboutWhatWeDoSection() {
   const [visionCard, missionCard] = whatWeDo.cards
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
         <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:text-[32px]">
           {heading.map((run, index) => (

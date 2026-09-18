@@ -17,7 +17,7 @@ function PlotListingCard({ plot }: { plot: PlotListing }) {
       />
       <span className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-ink/20" />
 
-      <div className="absolute top-0 right-0 flex h-10 min-w-[211px] items-center justify-center gap-3 bg-secondary px-4 text-[14px] font-semibold text-white sm:text-[16px]">
+      <div className="absolute top-0 right-0 flex h-10 min-w-[211px] items-center justify-center gap-3 bg-secondary px-4 text-[14px] font-semibold text-paper sm:text-[16px]">
         <span>Facing : {plot.facingLabel}</span>
         <span aria-hidden="true">|</span>
         <span>Sqft : {plot.sqftLabel}</span>
@@ -25,15 +25,15 @@ function PlotListingCard({ plot }: { plot: PlotListing }) {
 
       <div className="absolute inset-x-[30px] bottom-[30px] flex items-end justify-between gap-4">
         <div className="flex min-w-0 flex-col">
-          <span className="truncate text-[20px] font-semibold uppercase text-white lg:text-[24px]">
+          <span className="truncate text-[20px] font-semibold uppercase text-paper lg:text-[24px]">
             {plot.name}
           </span>
-          <span className="truncate text-[16px] font-medium capitalize text-white">
+          <span className="truncate text-[16px] font-medium capitalize text-paper">
             {plot.location}
           </span>
         </div>
 
-        <span className="flex size-[50px] shrink-0 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-[8px] transition-colors group-hover:bg-secondary">
+        <span className="flex size-[50px] shrink-0 items-center justify-center rounded-full bg-paper/15 text-paper backdrop-blur-[8px] transition-colors group-hover:bg-secondary">
           <ArrowUpRight className="size-6" />
         </span>
       </div>

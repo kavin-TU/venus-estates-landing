@@ -13,9 +13,9 @@ export function ContactHeroSection() {
           loading="eager"
         />
 
-        <div className="absolute bottom-6 left-6 max-w-[360px] rounded-xl bg-ink/70 px-5 py-4 text-white backdrop-blur-sm sm:bottom-10 sm:left-10 lg:bottom-14 lg:left-[100px]">
+        <div className="absolute bottom-6 left-6 max-w-[360px] rounded-xl bg-ink/70 px-5 py-4 text-paper backdrop-blur-sm sm:bottom-10 sm:left-10 lg:bottom-14 lg:left-[100px]">
           <p className="text-[16px] font-semibold text-secondary">{hero.locationHeading}</p>
-          <p className="mt-2 text-[14px] font-medium leading-relaxed text-white/90">
+          <p className="mt-2 text-[14px] font-medium leading-relaxed text-paper/90">
             {hero.locationBody}
           </p>
         </div>

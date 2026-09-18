@@ -11,7 +11,7 @@ type InlineMediaHeadingProps = {
 function HeadingSegment({ segment }: { segment: InlineMediaHeadingSegment }) {
   if (segment.type === 'image') {
     return (
-      <span className="inline-block h-[22px] w-14 shrink-0 overflow-hidden rounded-full bg-white align-middle lg:h-[30px] lg:w-20">
+      <span className="inline-block h-[22px] w-14 shrink-0 overflow-hidden rounded-full bg-paper align-middle lg:h-[30px] lg:w-20">
         <img
           src={segment.src}
           alt={segment.alt}

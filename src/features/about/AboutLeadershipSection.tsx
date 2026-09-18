@@ -4,7 +4,7 @@ import logo from '@/assets/images/logo.png'
 
 function LogoBadge() {
   return (
-    <span className="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-white shadow-md sm:size-12">
+    <span className="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-paper shadow-md sm:size-12">
       <img src={logo} alt="" className="h-6 w-auto object-contain sm:h-7" aria-hidden="true" />
     </span>
   )
@@ -15,7 +15,7 @@ export function AboutLeadershipSection() {
   const heading: readonly EmphasisRun[] = leadership.heading
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[75px]">
         <h2 className="text-center text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:text-[32px]">
           {heading.map((run, index) => (
@@ -30,7 +30,7 @@ export function AboutLeadershipSection() {
             key={profile.index}
             className="relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 sm:flex-row"
           >
-            <span className="absolute left-6 top-0 z-10 flex h-12 w-9 items-end justify-center rounded-b-md bg-footer pb-2 text-[16px] font-bold text-white sm:left-10">
+            <span className="absolute left-6 top-0 z-10 flex h-12 w-9 items-end justify-center rounded-b-md bg-footer pb-2 text-[16px] font-bold text-paper sm:left-10">
               {profile.index}
             </span>
 
@@ -60,9 +60,9 @@ export function AboutLeadershipSection() {
               />
               <LogoBadge />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-6 py-5" />
-              <div className="absolute inset-x-0 bottom-0 px-6 py-5 text-white">
+              <div className="absolute inset-x-0 bottom-0 px-6 py-5 text-paper">
                 <p className="text-[16px] font-bold leading-snug">{profile.name}</p>
-                <p className="text-[14px] font-medium text-white/85">{profile.title}</p>
+                <p className="text-[14px] font-medium text-paper/85">{profile.title}</p>
               </div>
             </div>
           </div>

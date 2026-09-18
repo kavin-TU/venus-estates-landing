@@ -19,7 +19,7 @@ export function GalleryPage() {
     <>
       <GalleryBanner />
 
-      <section className="bg-white text-ink">
+      <section className="bg-paper text-ink">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[50px] lg:px-[100px] lg:py-[50px]">
           <GalleryIntro />
           <GalleryGrid albums={visible} />

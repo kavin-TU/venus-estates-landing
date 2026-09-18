@@ -4,6 +4,7 @@ import { useState } from 'react'
 import logo from '@/assets/images/logo.png'
 import arrowUpRight from '@/assets/images/icons/arrow-up-right.svg'
 import { site } from '@/content'
+import { primaryCtaBaseClass } from '@/components/ui'
 import { cn } from '@/lib'
 
 type NavChrome = 'overlay' | 'light' | 'dark'
@@ -42,7 +43,7 @@ export function Navbar() {
       className={cn(
         'pointer-events-none inset-x-0 top-0 z-50',
         chrome === 'overlay' && 'absolute',
-        chrome === 'light' && 'sticky bg-white',
+        chrome === 'light' && 'sticky bg-paper',
         chrome === 'dark' && 'sticky bg-ink',
       )}
     >
@@ -73,7 +74,7 @@ export function Navbar() {
                       ? 'text-secondary'
                       : light
                         ? 'text-ink hover:text-secondary'
-                        : 'text-white hover:text-secondary',
+                        : 'text-paper hover:text-secondary',
                   )
                 }
               >
@@ -97,7 +98,7 @@ export function Navbar() {
 
               {link.children ? (
                 <div className="invisible absolute top-full left-1/2 z-10 -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-200 group-hover/dropdown:visible group-hover/dropdown:opacity-100">
-                  <ul className="flex min-w-[160px] flex-col gap-0.5 rounded-xl border border-ink/10 bg-white p-1.5 shadow-lg">
+                  <ul className="flex min-w-[160px] flex-col gap-0.5 rounded-xl border border-ink/10 bg-paper p-1.5 shadow-lg">
                     {link.children.map((child) => (
                       <li key={child.path}>
                         <NavLink
@@ -125,7 +126,10 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to={cta.bookVisit.path}
-            className="hidden items-center justify-center gap-1 overflow-hidden rounded-full bg-secondary px-[25px] py-3 text-[16px] font-semibold text-white transition hover:brightness-110 lg:inline-flex"
+            className={cn(
+              primaryCtaBaseClass,
+              'hidden overflow-hidden py-3 lg:inline-flex',
+            )}
           >
             {cta.bookVisit.label}
             <img src={arrowUpRight} alt="" className="size-4" width={16} height={16} />
@@ -137,7 +141,7 @@ export function Navbar() {
               'inline-flex size-10 items-center justify-center rounded-full lg:hidden',
               light
                 ? 'border border-ink/15 text-ink'
-                : 'border border-white/20 text-white',
+                : 'border border-paper/20 text-paper',
             )}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
@@ -172,8 +176,8 @@ export function Navbar() {
           className={cn(
             'pointer-events-auto border-t px-4 py-4 lg:hidden',
             light
-              ? 'border-ink/10 bg-white'
-              : 'border-white/10 bg-ink',
+              ? 'border-ink/10 bg-paper'
+              : 'border-paper/10 bg-ink',
           )}
           aria-label="Mobile"
         >
@@ -190,10 +194,10 @@ export function Navbar() {
                       isActive
                         ? light
                           ? 'bg-ink/5 text-secondary'
-                          : 'bg-white/5 text-secondary'
+                          : 'bg-paper/5 text-secondary'
                         : light
                           ? 'text-ink/90 hover:bg-ink/5'
-                          : 'text-white/90 hover:bg-white/5',
+                          : 'text-paper/90 hover:bg-paper/5',
                     )
                   }
                 >
@@ -213,10 +217,10 @@ export function Navbar() {
                               isActive
                                 ? light
                                   ? 'bg-ink/5 text-secondary'
-                                  : 'bg-white/5 text-secondary'
+                                  : 'bg-paper/5 text-secondary'
                                 : light
                                   ? 'text-ink/80 hover:bg-ink/5'
-                                  : 'text-white/80 hover:bg-white/5',
+                                  : 'text-paper/80 hover:bg-paper/5',
                             )
                           }
                         >

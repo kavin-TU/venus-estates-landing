@@ -6,7 +6,7 @@ export function ProjectsBanner() {
   const heading: readonly EmphasisRun[] = banner.heading
 
   return (
-    <section className="relative isolate bg-white">
+    <section className="relative isolate bg-paper">
       <div className="aspect-[1440/820] overflow-hidden lg:aspect-auto lg:h-[820px]">
         <img
           src={banner.image.src}

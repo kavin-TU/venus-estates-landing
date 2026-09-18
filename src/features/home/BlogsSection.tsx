@@ -49,7 +49,7 @@ export function BlogsSection() {
   )
 
   return (
-    <section className="bg-white text-ink">
+    <section className="bg-paper text-ink">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-12 sm:px-10 lg:gap-[32px] lg:px-[100px] lg:py-[75px]">
         <div className="flex items-start justify-between gap-6">
           <InlineMediaHeading

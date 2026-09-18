@@ -30,7 +30,7 @@ function PlainCard({ card, tinted }: { card: ReasonCard; tinted: boolean }) {
       className={cn(
         CARD_BASE,
         'min-h-[200px] lg:min-h-0 lg:flex-1',
-        tinted ? 'bg-mist' : 'bg-white',
+        tinted ? 'bg-mist' : 'bg-paper',
       )}
     >
       <div className="flex flex-col gap-2.5">
@@ -52,7 +52,7 @@ function FeaturedCard({ card }: { card: ReasonCard }) {
     <div
       className={cn(
         CARD_BASE,
-        'relative isolate h-full min-h-[280px] overflow-hidden text-white lg:min-h-0',
+        'relative isolate h-full min-h-[280px] overflow-hidden text-paper lg:min-h-0',
       )}
     >
       {card.image ? (
@@ -66,7 +66,7 @@ function FeaturedCard({ card }: { card: ReasonCard }) {
       <span className="absolute inset-0 -z-10 bg-ink/20" />
 
       <div className="flex flex-col gap-2.5">
-        <Icon className="size-[27px] text-white" />
+        <Icon className="size-[27px] text-paper" />
         <h3 className="text-[20px] font-medium leading-snug lg:text-[24px]">
           {card.title}
         </h3>

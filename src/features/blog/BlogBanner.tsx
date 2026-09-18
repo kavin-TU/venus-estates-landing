@@ -4,7 +4,7 @@ export function BlogBanner() {
   const { banner } = site.blog
 
   return (
-    <section className="relative isolate bg-white">
+    <section className="relative isolate bg-paper">
       <div className="aspect-[1440/820] overflow-hidden lg:aspect-auto lg:h-[820px]">
         <img
           src={banner.image.src}
