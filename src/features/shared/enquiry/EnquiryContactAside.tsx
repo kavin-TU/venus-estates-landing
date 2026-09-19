@@ -31,7 +31,7 @@ export function EnquiryContactAside({
     officeAddress || `${address.company}, ${address.lines.join(' ')}`
 
   return (
-    <div className="flex w-full flex-col gap-8 text-paper lg:w-[465px]">
+    <div className="flex w-full flex-col gap-8 text-paper lg:h-full lg:w-[465px] lg:justify-between">
       <div>
         <div
           className={cn(

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import type { ConsentRun, EmphasisRun, EnquiryField, ImageAsset } from '@/types'
+import type { EmphasisRun, EnquiryField, ImageAsset } from '@/types'
+import { EmphasisText } from '@/components/ui'
 import {
   BackgroundEnquirySection,
   EnquiryContactAside,
@@ -10,15 +10,11 @@ import {
 type PlotEnquiryContent = {
   background: ImageAsset
   heading: readonly EmphasisRun[]
-  interestHeading: string
+  interestHeading: readonly EmphasisRun[]
   interestBody: string
   fields: Record<string, EnquiryField>
   dialCode: string
   otpNotice: string
-  consents: {
-    policy: readonly ConsentRun[]
-    contact: string
-  }
   submitLabel: string
   contactLabels: { phone: string; email: string; office: string }
   officeAddress: string
@@ -26,20 +22,19 @@ type PlotEnquiryContent = {
 
 export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent }) {
   const heading: readonly EmphasisRun[] = enquiry.heading
-  const policyRuns: readonly ConsentRun[] = enquiry.consents.policy
+  const interestHeading: readonly EmphasisRun[] = enquiry.interestHeading
   const { values, update, handleSubmit } = useEnquiryForm()
-  const [acceptedPolicy, setAcceptedPolicy] = useState(false)
-  const [authorizedContact, setAuthorizedContact] = useState(false)
 
   return (
     <BackgroundEnquirySection
       background={enquiry.background}
       padding="compact"
-      asidePosition="end"
+      asidePosition="start"
       onSubmit={handleSubmit}
       aside={
         <EnquiryContactAside
-          title={enquiry.interestHeading}
+          title={<EmphasisText runs={interestHeading} />}
+          titleClassName="uppercase"
           body={enquiry.interestBody}
           labels={enquiry.contactLabels}
           officeAddress={enquiry.officeAddress}
@@ -61,14 +56,6 @@ export function PlotEnquirySection({ enquiry }: { enquiry: PlotEnquiryContent })
           submitLabel={enquiry.submitLabel}
           values={values}
           update={update}
-          consents={{
-            policy: policyRuns,
-            contact: enquiry.consents.contact,
-            acceptedPolicy,
-            authorizedContact,
-            onAcceptedPolicy: setAcceptedPolicy,
-            onAuthorizedContact: setAuthorizedContact,
-          }}
         />
       }
     />

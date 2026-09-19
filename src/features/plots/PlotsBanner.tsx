@@ -1,6 +1,7 @@
-import { FullBleedBanner } from '@/components/ui'
 import { site } from '@/content'
+import { MosaicHeroSection } from '@/features/shared'
 
 export function PlotsBanner() {
-  return <FullBleedBanner image={site.plots.banner.image} />
+  const { banner } = site.plots
+  return <MosaicHeroSection image={banner.image} heading={banner.heading} />
 }

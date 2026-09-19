@@ -641,10 +641,7 @@ export const site = {
 
   projects: {
     banner: {
-      heading: [
-        { text: 'OUR', accent: true },
-        { text: ' PROJECTS' },
-      ] as const satisfies readonly EmphasisRun[],
+      heading: 'OUR PROJECTS',
       image: {
         src: projectsBanner,
         alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
@@ -702,6 +699,7 @@ export const site = {
 
   plots: {
     banner: {
+      heading: 'OUR PROJECTS',
       image: {
         src: projectsBanner,
         alt: 'Venus Avenue entrance gate, alternating photo and pencil-study tiles',
@@ -806,7 +804,7 @@ export const site = {
           coordinates: {
             lat: 11.6761,
             lng: 78.0067,
-            zoom: 15,
+            zoom: 18,
             markerLabel: 'Marutham Garden',
           },
           label: 'Location',
@@ -826,9 +824,13 @@ export const site = {
             alt: '',
           } satisfies ImageAsset,
           heading: [
-            { text: 'enquiry form' },
+            { text: 'ENQUIRY', accent: true },
+            { text: ' FORM' },
           ] as const satisfies readonly EmphasisRun[],
-          interestHeading: 'Interested in the project?',
+          interestHeading: [
+            { text: 'INTERESTED', accent: true },
+            { text: ' IN THE PROJECT?' },
+          ] as const satisfies readonly EmphasisRun[],
           interestBody: 'Book the site visit and team get you in touch',
           fields: {
             firstName: {

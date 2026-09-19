@@ -20,7 +20,8 @@ type PlotLocationSectionProps = {
 
 function googleMapsEmbedSrc({ lat, lng, zoom, markerLabel }: MapCoordinates) {
   const query = encodeURIComponent(`${markerLabel}@${lat},${lng}`)
-  return `https://www.google.com/maps?q=${query}&z=${zoom}&output=embed`
+  // t=k → satellite basemap (Google Maps embed, no API key)
+  return `https://www.google.com/maps?q=${query}&z=${zoom}&t=k&output=embed`
 }
 
 export function PlotLocationSection({

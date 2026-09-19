@@ -63,7 +63,7 @@ export function BackgroundEnquirySection({
             className={cn(
               'p-4 sm:p-8 lg:px-[30px] lg:py-[30px]',
               hasAside &&
-                'flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between',
+                'flex flex-col gap-8 lg:flex-row lg:items-stretch lg:justify-between',
             )}
           >
             {hasAside && asidePosition === 'start' ? aside : null}

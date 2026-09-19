@@ -23,12 +23,12 @@ export function AboutStorySection() {
         </div>
       </div>
 
-      <div className="relative mt-10 w-full overflow-hidden lg:mt-14">
+      <div className="relative mt-10 w-full overflow-visible lg:mt-14">
         <img
           src={story.watermark.src}
           alt=""
           aria-hidden="true"
-          className="relative left-1/2 block h-auto w-screen max-w-none -translate-x-1/2 scale-[1.2] origin-bottom object-cover object-bottom mix-blend-multiply [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_22%)]"
+          className="relative left-1/2 block h-auto w-screen max-w-none -translate-x-1/2 mix-blend-multiply"
           loading="lazy"
         />
       </div>
