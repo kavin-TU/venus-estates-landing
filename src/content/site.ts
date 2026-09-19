@@ -129,7 +129,6 @@ export const site = {
         { label: 'Why Us', path: '/about/why-us' },
       ],
     },
-    { label: 'Store', path: '/store' },
     { label: 'Gallery', path: '/gallery' },
     { label: 'Blog', path: '/blog' },
     { label: 'NRI Corner', path: '/nri-corner' },
