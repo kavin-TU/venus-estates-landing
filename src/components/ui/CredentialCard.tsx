@@ -9,11 +9,13 @@ type CredentialCardProps = {
 
 /** Shared Why Us / NRI credential commitment card. */
 export function CredentialCard({ card, className }: CredentialCardProps) {
+  const isPrimary = card.tone === 'primary'
+
   return (
     <div
       className={cn(
         'relative isolate flex min-h-[140px] flex-col justify-between gap-3 overflow-hidden rounded-xl p-5',
-        card.tone === 'primary' ? 'bg-footer text-paper' : 'bg-secondary text-paper',
+        isPrimary ? 'bg-footer text-paper' : 'bg-accent text-footer',
         className,
       )}
     >
@@ -26,7 +28,10 @@ export function CredentialCard({ card, className }: CredentialCardProps) {
         />
       ) : null}
 
-      <SiteIcon name={card.icon} className="size-[30px] text-paper" />
+      <SiteIcon
+        name={card.icon}
+        className={cn('size-[30px]', isPrimary ? 'text-accent' : 'text-footer')}
+      />
       <h3 className="text-[18px] font-medium leading-snug lg:text-[20px]">{card.title}</h3>
     </div>
   )

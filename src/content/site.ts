@@ -1663,7 +1663,7 @@ export const site = {
         heading: [
           { text: 'OUR ' },
           { text: 'CREDENTIALS', accent: true },
-          { text: ' & COMMITMENTS' },
+          { text: '& COMMITMENTS' },
         ] as const satisfies readonly EmphasisRun[],
         body: 'Built on trust, transparency, and quality, Venus Estates is committed to delivering legally secure, thoughtfully planned, and high-quality developments. Our credentials reflect our dedication to customer satisfaction, responsible development, and creating lasting value for every investment.',
         feature: {
