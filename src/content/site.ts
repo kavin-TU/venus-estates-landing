@@ -798,9 +798,28 @@ export const site = {
         },
         location: {
           heading: [
-            { text: 'Location And Neighbourhoods' },
+            { text: 'LOCATION', accent: true },
+            { text: ' AND' },
+            { text: 'NEIGHBOURHOODS' },
           ] as const satisfies readonly EmphasisRun[],
-          body: 'Marutham Garden is thoughtfully located in Salem, offering convenient access to key roads, essential amenities, educational institutions, healthcare facilities, and everyday conveniences. Its well-connected surroundings make it an ideal choice for building your dream home and a promising long-term investment.',
+          body: [
+            { text: 'Marutham', accent: true },
+            {
+              text: ' Garden is thoughtfully located in Salem, offering convenient access to ',
+            },
+            { text: 'key roads,', accent: true },
+            { text: ' ' },
+            { text: 'essential amenities,', accent: true },
+            { text: ' ' },
+            { text: 'educational institutions,', accent: true },
+            { text: ' ' },
+            { text: 'healthcare facilities,', accent: true },
+            { text: ' and ' },
+            { text: 'everyday conveniences.', accent: true },
+            {
+              text: ' Its well-connected surroundings make it an ideal choice for building your dream home and a promising long-term investment.',
+            },
+          ] as const satisfies readonly EmphasisRun[],
           coordinates: {
             lat: 11.6761,
             lng: 78.0067,

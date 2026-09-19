@@ -1,5 +1,5 @@
 import type { EmphasisRun } from '@/types'
-import { EmphasisText, FlagCheckered, SectionShell } from '@/components/ui'
+import { FlagCheckered, SectionShell } from '@/components/ui'
 
 type MapCoordinates = {
   lat: number
@@ -10,7 +10,7 @@ type MapCoordinates = {
 
 type PlotLocationSectionProps = {
   heading: readonly EmphasisRun[]
-  body: string
+  body: readonly EmphasisRun[]
   coordinates: MapCoordinates
   label: string
   address: string
@@ -38,12 +38,21 @@ export function PlotLocationSection({
   return (
     <section className="bg-paper text-ink">
       <SectionShell padding="compact">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-[50px]">
-          <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:w-[320px] lg:shrink-0 lg:text-[32px]">
-            <EmphasisText runs={heading} />
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+          <h2 className="text-[24px] font-bold uppercase leading-[1.3125] sm:text-[28px] lg:max-w-[420px] lg:shrink-0 lg:text-[32px]">
+            {heading.map((run, index) => (
+              <span key={index}>
+                {index === 2 ? <br /> : null}
+                <span className={run.accent ? 'text-accent' : 'text-ink'}>{run.text}</span>
+              </span>
+            ))}
           </h2>
-          <p className="text-[16px] font-medium leading-[21px] lg:w-[598px] lg:text-justify">
-            {body}
+          <p className="text-[16px] font-medium leading-[21px] text-ink lg:max-w-[598px] lg:pt-1 lg:text-left">
+            {body.map((run, index) => (
+              <span key={index} className={run.accent ? 'text-accent' : 'text-ink'}>
+                {run.text}
+              </span>
+            ))}
           </p>
         </div>
       </SectionShell>
@@ -59,7 +68,7 @@ export function PlotLocationSection({
         />
 
         <div className="pointer-events-none relative mx-auto flex h-full max-w-[1440px] items-center px-6 py-12 sm:px-10 lg:px-[100px]">
-          <aside className="pointer-events-auto w-full max-w-[408px] rounded-[10px] bg-ink/70 p-6 text-paper backdrop-blur-[10px] sm:p-8">
+          <aside className="pointer-events-auto w-full max-w-[408px] rounded-[10px] bg-ink/50 p-6 text-paper backdrop-blur-[10px] sm:p-8">
             <div className="flex flex-col gap-2">
               <h3 className="text-[24px] font-bold uppercase leading-none">{label}</h3>
               <p className="text-[16px] font-medium leading-[21px] text-paper/90">
